@@ -1,0 +1,35 @@
+{
+  "atualizado_em": "2026-08-31T18:19:16Z",
+  "projetos": [
+    {
+      "repo": "anatomia",
+      "url": "https://github.com/ferlief/anatomia",
+      "ultimo_commit": {
+        "sha": "eee758b",
+        "mensagem": "strict mode compares against identification threshold, not veto threshold",
+        "data": "2026-08-30T18:36:21Z"
+      },
+      "resultado": null
+    },
+    {
+      "repo": "protocolo-vies",
+      "url": "https://github.com/ferlief/protocolo-vies",
+      "ultimo_commit": {
+        "sha": "8862655",
+        "mensagem": "README declara estado real e corrige o que promete",
+        "data": "2026-08-30T18:36:22Z"
+      },
+      "resultado": null
+    },
+    {
+      "repo": "ferlief-tech",
+      "url": "https://github.com/ferlief/ferlief-tech",
+      "ultimo_commit": {
+        "sha": "ebc19a7",
+        "mensagem": "fix: push nunca rodava - segunda checagem de diff via --cached ja via commit absorvido",
+        "data": "2026-08-31T18:18:56Z"
+      },
+      "resultado": null
+    }
+  ]
+}
