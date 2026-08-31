@@ -1,0 +1,142 @@
+/* ---------------------------------------------------------------
+   million-dollar-homepage.css — grade de blocos, um por tecnologia
+   do stack. Vanilla CSS, injetado/removido pelo próprio módulo do
+   layout (js/layouts/million-dollar-homepage.js) via mount/unmount.
+   --------------------------------------------------------------- */
+
+.mdh-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.mdh-intro {
+  max-width: 42rem;
+  font-size: 0.9rem;
+  color: #a8a8a4;
+}
+
+.mdh-intro strong {
+  color: #e8e8e6;
+  font-weight: 600;
+}
+
+.mdh-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18rem;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* ---------------------------------------------------------------
+   grade de blocos
+   --------------------------------------------------------------- */
+
+.mdh-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3px;
+  border: 1px solid #26262a;
+  padding: 3px;
+  background: #0e0e10;
+}
+
+.mdh-bloco {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #0b0b0c;
+  background: var(--cor);
+  opacity: 0.82;
+  transition: opacity 0.12s ease, transform 0.12s ease, outline-color 0.12s ease;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+
+.mdh-bloco:hover,
+.mdh-bloco:focus-visible {
+  opacity: 1;
+  transform: scale(1.08);
+  z-index: 1;
+}
+
+.mdh-bloco:focus-visible {
+  outline-color: #e8e8e6;
+}
+
+.mdh-bloco[aria-pressed="true"] {
+  opacity: 1;
+  outline-color: #e8e8e6;
+}
+
+/* ---------------------------------------------------------------
+   painel lateral — detalhe da tecnologia em foco/hover/clique
+   --------------------------------------------------------------- */
+
+.mdh-painel {
+  border: 1px solid #26262a;
+  padding: 1rem;
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.mdh-painel-vazio {
+  color: #6a6a72;
+  font-size: 0.85rem;
+  margin: auto 0;
+}
+
+.mdh-painel-swatch {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--cor);
+}
+
+.mdh-painel-categoria {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6a6a72;
+}
+
+.mdh-painel-nome {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.mdh-painel-desc {
+  font-size: 0.85rem;
+  color: #c8c8c4;
+  line-height: 1.55;
+}
+
+.mdh-painel-estado {
+  margin-top: auto;
+  font-size: 0.72rem;
+  color: #6a6a72;
+  border-top: 1px solid #26262a;
+  padding-top: 0.6rem;
+}
+
+/* ---------------------------------------------------------------
+   responsivo — painel desce para baixo da grade em telas estreitas
+   --------------------------------------------------------------- */
+
+@media (max-width: 42rem) {
+  .mdh-area {
+    grid-template-columns: 1fr;
+  }
+
+  .mdh-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

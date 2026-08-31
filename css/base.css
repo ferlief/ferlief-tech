@@ -1,0 +1,133 @@
+/* ---------------------------------------------------------------
+   base.css — reset mínimo + menu de blocos geométricos + botões
+   Vanilla CSS. Sem framework, sem CDN, sem ícone externo:
+   todo shape é desenhado com CSS (border-radius / rotate / border).
+   --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  line-height: 1.5;
+  background: #0b0b0c;
+  color: #e8e8e6;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------------------------------------------------------------
+   header
+   --------------------------------------------------------------- */
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #26262a;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-right: auto;
+}
+
+/* ---------------------------------------------------------------
+   menu de layouts (montado dinamicamente por motor.js)
+   --------------------------------------------------------------- */
+
+.menu-layouts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.layout-btn,
+.btn-randomize {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #3a3a40;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.layout-btn:hover,
+.btn-randomize:hover {
+  border-color: #6a6a72;
+  background-color: #18181a;
+}
+
+.layout-btn:focus-visible,
+.btn-randomize:focus-visible {
+  outline: 2px solid #e8e8e6;
+  outline-offset: 2px;
+}
+
+.layout-btn[aria-pressed="true"] {
+  border-color: #e8e8e6;
+  background-color: #18181a;
+}
+
+/* ---------------------------------------------------------------
+   blocos geométricos — quadrado / losango / triângulo, CSS puro
+   --------------------------------------------------------------- */
+
+.shape {
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.shape-quadrado {
+  background: currentColor;
+}
+
+.shape-losango {
+  background: currentColor;
+  transform: rotate(45deg);
+}
+
+.shape-triangulo {
+  width: 0;
+  height: 0;
+  border-left: 0.4rem solid transparent;
+  border-right: 0.4rem solid transparent;
+  border-bottom: 0.7rem solid currentColor;
+}
+
+/* ---------------------------------------------------------------
+   layout-root — onde o layout ativo monta
+   --------------------------------------------------------------- */
+
+#layout-root {
+  min-height: calc(100vh - 4rem);
+}

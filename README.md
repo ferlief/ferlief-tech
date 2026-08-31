@@ -9,7 +9,7 @@ Site pessoal e vitrine de front-end. Motor de layouts intercambiáveis: um menu 
 
 ## Estado
 
-Esqueleto. Nada implementado — nem o motor de layouts, nem os dois layouts acima.
+Motor de layouts e os dois layouts acima estão implementados (`js/motor.js`, `js/catalogo.js`, `js/layouts/`) — sem framework, sem dependência externa, sem build step.
 
 Vai abrigar também os ensaios em Markdown sobre arquitetura de dados, Edge AI e engenharia. Nenhum escrito até agora.
 
