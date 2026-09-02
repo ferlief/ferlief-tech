@@ -1,13 +1,13 @@
 {
-  "atualizado_em": "2026-09-01T13:43:49Z",
+  "atualizado_em": "2026-09-02T02:32:02Z",
   "projetos": [
     {
       "repo": "anatomia",
       "url": "https://github.com/ferlief/anatomia",
       "ultimo_commit": {
-        "sha": "eee758b",
-        "mensagem": "strict mode compares against identification threshold, not veto threshold",
-        "data": "2026-08-30T18:36:21Z"
+        "sha": "fec82d7",
+        "mensagem": "docs: standardize commit convention to English + Conventional Commits",
+        "data": "2026-09-02T01:37:47Z"
       },
       "resultado": null
     },
@@ -15,9 +15,9 @@
       "repo": "protocolo-vies",
       "url": "https://github.com/ferlief/protocolo-vies",
       "ultimo_commit": {
-        "sha": "8862655",
-        "mensagem": "README declara estado real e corrige o que promete",
-        "data": "2026-08-30T18:36:22Z"
+        "sha": "816c872",
+        "mensagem": "docs: standardize commit convention to English + Conventional Commits",
+        "data": "2026-09-02T01:37:58Z"
       },
       "resultado": null
     },
@@ -25,9 +25,9 @@
       "repo": "ferlief-tech",
       "url": "https://github.com/ferlief/ferlief-tech",
       "ultimo_commit": {
-        "sha": "c0b3632",
-        "mensagem": "atualiza feed de atividade",
-        "data": "2026-08-31T18:19:16Z"
+        "sha": "8c19330",
+        "mensagem": "chore(ci): use Conventional Commits message in activity feed workflow",
+        "data": "2026-09-02T01:57:13Z"
       },
       "resultado": null
     }
