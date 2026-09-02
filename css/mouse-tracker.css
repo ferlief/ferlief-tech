@@ -22,7 +22,7 @@
 .mt-seta {
   width: 1.75rem;
   height: 1.75rem;
-  background-color: #e8e8e6;
+  background-color: var(--color-fg);
   clip-path: polygon(
     0%   38%,
     55%  38%,

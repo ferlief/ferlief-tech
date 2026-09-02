@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ferlief.tech</title>
+  <script>
+    // Aplica o tema salvo antes do primeiro paint, para não piscar o
+    // tema errado entre o HTML carregar e js/tema.js rodar. Sem escolha
+    // salva, não seta nada — a media query em css/base.css já resolve
+    // pela preferência de sistema.
+    try {
+      const salvo = localStorage.getItem('tema');
+      if (salvo === 'light' || salvo === 'dark') {
+        document.documentElement.dataset.theme = salvo;
+      }
+    } catch {}
+  </script>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/atividade.css">
 </head>
@@ -11,6 +23,10 @@
   <header>
     <h1 class="logo">ferlief.tech</h1>
     <nav id="menu-layouts" class="menu-layouts" aria-label="Layouts disponíveis"></nav>
+    <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
+      <span class="shape shape-lua" aria-hidden="true"></span>
+      <span id="btn-tema-label">Modo claro</span>
+    </button>
     <button id="btn-randomize" class="btn-randomize" type="button">
       <span class="shape shape-triangulo" aria-hidden="true"></span>
       Randomize
@@ -21,6 +37,7 @@
 
   <footer id="atividade-root"></footer>
 
+  <script type="module" src="js/tema.js"></script>
   <script type="module" src="js/motor.js"></script>
   <script type="module" src="js/atividade.js"></script>
 </body>
