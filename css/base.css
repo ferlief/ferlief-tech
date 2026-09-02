@@ -116,9 +116,60 @@ header {
   margin-right: auto;
 }
 
+.logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* ---------------------------------------------------------------
-   menu de layouts (montado dinamicamente por motor.js)
+   site-nav — navegação entre páginas (Início/Experiência/Projetos/
+   Blog), presente no header de toda página. Distinta de
+   .menu-layouts, que é o catálogo de layouts interativos da home.
    --------------------------------------------------------------- */
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.site-nav a {
+  color: var(--color-fg-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--color-fg);
+}
+
+.site-nav a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--color-fg);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------------
+   demo-toolbar — barra secundária, só na home: catálogo de layouts
+   interativos (js/motor.js) + Randomize. Separada do site-nav porque
+   é específica da vitrine de front-end, não navegação de site.
+   --------------------------------------------------------------- */
+
+.demo-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
 
 .menu-layouts {
   display: flex;
@@ -128,7 +179,8 @@ header {
 
 .layout-btn,
 .btn-randomize,
-.btn-tema {
+.btn-tema,
+.btn-idioma {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -141,14 +193,16 @@ header {
 
 .layout-btn:hover,
 .btn-randomize:hover,
-.btn-tema:hover {
+.btn-tema:hover,
+.btn-idioma:hover {
   border-color: var(--color-border-hover);
   background-color: var(--color-bg-hover);
 }
 
 .layout-btn:focus-visible,
 .btn-randomize:focus-visible,
-.btn-tema:focus-visible {
+.btn-tema:focus-visible,
+.btn-idioma:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
@@ -200,6 +254,44 @@ header {
   border-left: 0.4rem solid transparent;
   border-right: 0.4rem solid transparent;
   border-bottom: 0.7rem solid currentColor;
+}
+
+/* ---------------------------------------------------------------
+   btn-idioma — toggle PT/EN (js/idioma.js). Bandeiras estilizadas,
+   camadas de linear-gradient — a mesma regra de "nenhum ícone
+   externo" vale para elas: são retângulos com listras desenhadas em
+   CSS, não recortes fiéis de vexilologia. Largura maior que a altura
+   (proporção de bandeira, não o quadrado de .shape), então essas duas
+   precisam vir depois de .shape na cascata para vencer o width/height
+   da base.
+   --------------------------------------------------------------- */
+
+.shape-bandeira-uk,
+.shape-bandeira-br {
+  width: 1.05rem;
+  height: 0.7rem;
+  border-radius: 1px;
+}
+
+.shape-bandeira-uk {
+  background-color: #00247d;
+  background-image:
+    linear-gradient(rgba(200, 16, 46, 0) 44%, #c8102e 44%, #c8102e 56%, rgba(200, 16, 46, 0) 56%),
+    linear-gradient(90deg, rgba(200, 16, 46, 0) 46%, #c8102e 46%, #c8102e 54%, rgba(200, 16, 46, 0) 54%),
+    linear-gradient(45deg, transparent 48%, #c8102e 48%, #c8102e 52%, transparent 52%),
+    linear-gradient(135deg, transparent 48%, #c8102e 48%, #c8102e 52%, transparent 52%),
+    linear-gradient(rgba(255, 255, 255, 0) 38%, #fff 38%, #fff 62%, rgba(255, 255, 255, 0) 62%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0) 40%, #fff 40%, #fff 60%, rgba(255, 255, 255, 0) 60%),
+    linear-gradient(45deg, transparent 44%, #fff 44%, #fff 56%, transparent 56%),
+    linear-gradient(135deg, transparent 44%, #fff 44%, #fff 56%, transparent 56%);
+}
+
+.shape-bandeira-br {
+  background-color: #009c3b;
+  background-image:
+    radial-gradient(circle at 50% 50%, #002776 32%, transparent 33%),
+    linear-gradient(135deg, transparent 41%, #ffdf00 41%, #ffdf00 59%, transparent 59%),
+    linear-gradient(45deg, transparent 41%, #ffdf00 41%, #ffdf00 59%, transparent 59%);
 }
 
 /* ---------------------------------------------------------------

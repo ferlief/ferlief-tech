@@ -3,16 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ferlief.tech</title>
+  <title>Experiência — ferlief.tech</title>
   <script>
-    // Aplica tema e idioma salvos antes do primeiro paint. Tema: evita
-    // piscar o tema errado (sem escolha salva, não seta nada — a media
-    // query em css/base.css já resolve pela preferência de sistema).
-    // Idioma: garante <html lang> correto desde o início; o conteúdo
-    // textual em si só troca quando js/idioma.js e os módulos que
-    // escutam idioma:mudou rodarem, então uma escolha explícita
-    // diferente da preferência de sistema ainda pode piscar em PT por
-    // uma fração de segundo — limite aceito de um site sem SSR.
     try {
       const tema = localStorage.getItem('tema');
       if (tema === 'light' || tema === 'dark') {
@@ -27,13 +19,14 @@
   </script>
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/atividade.css">
+  <link rel="stylesheet" href="/css/paginas.css">
 </head>
 <body>
   <header>
     <h1 class="logo"><a href="/">ferlief.tech</a></h1>
     <nav class="site-nav" aria-label="Navegação do site" data-i18n-aria-label="nav.site">
-      <a href="/" aria-current="page" data-i18n="nav.inicio">Início</a>
-      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+      <a href="/" data-i18n="nav.inicio">Início</a>
+      <a href="/experiencia/" aria-current="page" data-i18n="nav.experiencia">Experiência</a>
       <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
       <a href="/blog/" data-i18n="nav.blog">Blog</a>
     </nav>
@@ -47,21 +40,29 @@
     </button>
   </header>
 
-  <div class="demo-toolbar">
-    <nav id="menu-layouts" class="menu-layouts" aria-label="Layouts disponíveis" data-i18n-aria-label="nav.layouts"></nav>
-    <button id="btn-randomize" class="btn-randomize" type="button">
-      <span class="shape shape-triangulo" aria-hidden="true"></span>
-      Randomize
-    </button>
-  </div>
+  <main class="pagina">
+    <h2 class="pagina-titulo" data-i18n="exp.titulo">Experiência</h2>
 
-  <main id="layout-root"></main>
+    <section class="pagina-secao">
+      <h3 class="pagina-secao-titulo" data-i18n="exp.focoTitulo">Foco atual</h3>
+      <p data-i18n="exp.focoTexto">Python, visão computacional aplicada, ferramentas de dados e IA local e privada. Rio de Janeiro — mercado local e remoto internacional.</p>
+    </section>
+
+    <section class="pagina-secao">
+      <h3 class="pagina-secao-titulo" data-i18n="exp.percursoTitulo">Percurso</h3>
+      <p data-i18n="exp.percursoTexto">De volta à tecnologia desde maio de 2026, depois de um período fora da área.</p>
+    </section>
+
+    <section class="pagina-secao">
+      <h3 class="pagina-secao-titulo" data-i18n="exp.historicoTitulo">Histórico profissional</h3>
+      <p class="pagina-pendente" data-i18n="exp.historicoPendente">Em construção — histórico detalhado chega aqui em breve.</p>
+    </section>
+  </main>
 
   <footer id="atividade-root"></footer>
 
   <script type="module" src="/js/tema.js"></script>
   <script type="module" src="/js/idioma.js"></script>
-  <script type="module" src="/js/motor.js"></script>
   <script type="module" src="/js/atividade.js"></script>
 </body>
 </html>

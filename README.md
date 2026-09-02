@@ -11,7 +11,9 @@ Site pessoal e vitrine de front-end. Motor de layouts intercambiáveis: um menu 
 
 Motor de layouts e os dois layouts acima estão implementados (`js/motor.js`, `js/catalogo.js`, `js/layouts/`) — sem framework, sem dependência externa, sem build step.
 
-Vai abrigar também os ensaios em Markdown sobre arquitetura de dados, Edge AI e engenharia. Nenhum escrito até agora.
+Toggle de tema (claro/escuro) e de idioma (PT/EN) cobrem o site inteiro, persistidos em `localStorage` e com fallback pela preferência do navegador.
+
+Páginas de site em `/experiencia`, `/projetos` e `/blog` existem como esqueleto: navegação, tema e idioma já funcionam neles, mas o conteúdo ainda está em construção — `/projetos` já lista os repositórios abertos a partir de `data/atividade.json`, `/experiencia` tem só o essencial verificado, e `/blog` vai abrigar os ensaios em Markdown sobre arquitetura de dados, Edge AI e engenharia. Nenhum escrito até agora.
 
 ## Licença
 

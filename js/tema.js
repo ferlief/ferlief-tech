@@ -12,6 +12,8 @@
 // e só sincroniza rótulo/aria-pressed do botão com o estado já
 // aplicado.
 
+import { EVENTO_MUDANCA, t } from './i18n.js';
+
 const STORAGE_KEY = 'tema';
 
 const btn = document.getElementById('btn-tema');
@@ -31,7 +33,7 @@ function sincronizarBotao() {
 
   btn.setAttribute('aria-pressed', String(atual === 'light'));
   shape.className = `shape ${alvo === 'light' ? 'shape-sol' : 'shape-lua'}`;
-  label.textContent = alvo === 'light' ? 'Modo claro' : 'Modo escuro';
+  label.textContent = alvo === 'light' ? t('tema.claro') : t('tema.escuro');
 }
 
 function alternar() {
@@ -48,5 +50,6 @@ if (btn) {
   sistemaEscuro.addEventListener('change', () => {
     if (!document.documentElement.dataset.theme) sincronizarBotao();
   });
+  window.addEventListener(EVENTO_MUDANCA, sincronizarBotao);
   sincronizarBotao();
 }

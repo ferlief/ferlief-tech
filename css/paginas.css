@@ -1,0 +1,105 @@
+/* ---------------------------------------------------------------
+   paginas.css — conteúdo das páginas de site (Início continua em
+   index.html/base.css; isto cobre /experiencia, /projetos, /blog).
+   Vanilla CSS, mesmos tokens de cor de base.css.
+   --------------------------------------------------------------- */
+
+.pagina {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pagina-titulo {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.pagina-intro {
+  color: var(--color-fg-secondary);
+  line-height: 1.6;
+}
+
+.pagina-secao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pagina-secao-titulo {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-fg-subtle);
+}
+
+.pagina-secao p {
+  color: var(--color-fg-secondary);
+  line-height: 1.6;
+}
+
+.pagina-pendente {
+  font-size: 0.8rem;
+  color: var(--color-fg-subtle);
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------------
+   /projetos — cartões de repositório, um por tecnologia de projeto
+   listada em data/atividade.json (js/projetos.js monta em runtime).
+   --------------------------------------------------------------- */
+
+.projetos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projeto-card {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.projeto-nome {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.projeto-desc {
+  font-size: 0.85rem;
+  color: var(--color-fg-secondary);
+}
+
+.projeto-commit {
+  font-size: 0.75rem;
+  color: var(--color-fg-subtle);
+}
+
+.projeto-link {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  color: var(--color-fg-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border-hover);
+}
+
+.projeto-link:hover,
+.projeto-link:focus-visible {
+  color: var(--color-fg);
+}
+
+/* ---------------------------------------------------------------
+   /blog — estado vazio (nenhum ensaio publicado ainda)
+   --------------------------------------------------------------- */
+
+.blog-vazio {
+  font-size: 0.9rem;
+  color: var(--color-fg-subtle);
+}

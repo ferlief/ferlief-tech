@@ -5,37 +5,41 @@
 // Implementa o contrato de layout definido em js/motor.js:
 // export default { id, nome, mount(container), unmount() }.
 
+import { EVENTO_MUDANCA, t } from '../i18n.js';
+
 const CSS_HREF = 'css/million-dollar-homepage.css';
 const CSS_ID = 'css-million-dollar-homepage';
 
 // Conjunto de tecnologias reais do stack (ver CLAUDE.md do repositório
 // e dos projetos irmãos em dev/workspace). Cada uma vira um bloco na
-// grade, identificada por uma sigla curta e uma cor própria.
+// grade, identificada por uma sigla curta e uma cor própria. nome/
+// sigla/cor não mudam com idioma (são nomes próprios); categoria e
+// descrição vêm do dicionário (js/i18n.js) via as chaves abaixo.
 const TECNOLOGIAS = [
-  { id: 'python', sigla: 'PY', nome: 'Python', categoria: 'Linguagem', cor: '#f4c542',
-    descricao: 'Linguagem principal do backend, dos scripts de dados e dos pipelines de visão computacional.' },
-  { id: 'sqlite', sigla: 'SQL', nome: 'SQLite', categoria: 'Dados', cor: '#5ecbf0',
-    descricao: 'Banco relacional embutido que conecta os produtos de acervo, com sha256 como chave — nunca o caminho do arquivo.' },
-  { id: 'git', sigla: 'GIT', nome: 'Git', categoria: 'Ferramentas', cor: '#f0654d',
-    descricao: 'Controle de versão: um repositório por projeto, histórico auditável de decisões técnicas.' },
-  { id: 'clip', sigla: 'CLIP', nome: 'CLIP', categoria: 'Visão computacional', cor: '#b48af0',
-    descricao: 'Modelo multimodal usado para embeddings de imagem e texto no mesmo espaço vetorial.' },
-  { id: 'pytorch', sigla: 'PT', nome: 'PyTorch', categoria: 'Deep learning', cor: '#f0764d',
-    descricao: 'Framework de treino e inferência para os modelos de visão e de reconhecimento facial.' },
-  { id: 'js-vanilla', sigla: 'JS', nome: 'JavaScript vanilla', categoria: 'Front-end', cor: '#f0d642',
-    descricao: 'Este próprio site: zero framework, zero dependência externa, DOM manipulado diretamente.' },
-  { id: 'phash', sigla: 'PHASH', nome: 'Hash perceptual', categoria: 'Visão computacional', cor: '#5ef0a8',
-    descricao: 'Assinatura tolerante a pequenas variações de imagem, usada na deduplicação do acervo.' },
-  { id: 'peft', sigla: 'PEFT', nome: 'PEFT / LoRA', categoria: 'Deep learning', cor: '#f05ec2',
-    descricao: 'Fine-tuning eficiente de modelos grandes, ajustando poucos parâmetros sem esquecimento catastrófico.' },
-  { id: 'docker', sigla: 'DKR', nome: 'Docker', categoria: 'Infraestrutura', cor: '#5e9bf0',
-    descricao: 'Containerização para ambientes reprodutíveis, aprendida dentro de projetos que a justificam.' },
-  { id: 'cli', sigla: 'SH', nome: 'Linux / CLI', categoria: 'Ferramentas', cor: '#9ef05e',
-    descricao: 'Ambiente de desenvolvimento e automação via shell — base de todo o fluxo de trabalho.' },
-  { id: 'html-css', sigla: 'CSS', nome: 'HTML & CSS', categoria: 'Front-end', cor: '#f0975e',
-    descricao: 'Estrutura e estilo deste site, escritos à mão, sem framework nem CDN.' },
-  { id: 'numpy', sigla: 'NP', nome: 'NumPy / Pandas', categoria: 'Dados', cor: '#7ef0e0',
-    descricao: 'Manipulação vetorizada de dados tabulares e arrays, base de qualquer pipeline de dados em Python.' },
+  { id: 'python', sigla: 'PY', nome: 'Python', categoriaChave: 'categoria.linguagem', cor: '#f4c542',
+    descricaoChave: 'tech.python' },
+  { id: 'sqlite', sigla: 'SQL', nome: 'SQLite', categoriaChave: 'categoria.dados', cor: '#5ecbf0',
+    descricaoChave: 'tech.sqlite' },
+  { id: 'git', sigla: 'GIT', nome: 'Git', categoriaChave: 'categoria.ferramentas', cor: '#f0654d',
+    descricaoChave: 'tech.git' },
+  { id: 'clip', sigla: 'CLIP', nome: 'CLIP', categoriaChave: 'categoria.visao', cor: '#b48af0',
+    descricaoChave: 'tech.clip' },
+  { id: 'pytorch', sigla: 'PT', nome: 'PyTorch', categoriaChave: 'categoria.deeplearning', cor: '#f0764d',
+    descricaoChave: 'tech.pytorch' },
+  { id: 'js-vanilla', sigla: 'JS', nome: 'JavaScript vanilla', categoriaChave: 'categoria.frontend', cor: '#f0d642',
+    descricaoChave: 'tech.js-vanilla' },
+  { id: 'phash', sigla: 'PHASH', nome: 'Hash perceptual', categoriaChave: 'categoria.visao', cor: '#5ef0a8',
+    descricaoChave: 'tech.phash' },
+  { id: 'peft', sigla: 'PEFT', nome: 'PEFT / LoRA', categoriaChave: 'categoria.deeplearning', cor: '#f05ec2',
+    descricaoChave: 'tech.peft' },
+  { id: 'docker', sigla: 'DKR', nome: 'Docker', categoriaChave: 'categoria.infra', cor: '#5e9bf0',
+    descricaoChave: 'tech.docker' },
+  { id: 'cli', sigla: 'SH', nome: 'Linux / CLI', categoriaChave: 'categoria.ferramentas', cor: '#9ef05e',
+    descricaoChave: 'tech.cli' },
+  { id: 'html-css', sigla: 'CSS', nome: 'HTML & CSS', categoriaChave: 'categoria.frontend', cor: '#f0975e',
+    descricaoChave: 'tech.html-css' },
+  { id: 'numpy', sigla: 'NP', nome: 'NumPy / Pandas', categoriaChave: 'categoria.dados', cor: '#7ef0e0',
+    descricaoChave: 'tech.numpy' },
 ];
 
 const COLUNAS = 8;
@@ -85,7 +89,7 @@ function renderPainelVazio(painel) {
   painel.replaceChildren();
   const vazio = document.createElement('p');
   vazio.className = 'mdh-painel-vazio';
-  vazio.textContent = 'Passe o mouse (ou navegue com Tab) sobre um bloco para ver a tecnologia. Clique para fixar.';
+  vazio.textContent = t('mdh.painelVazio');
   painel.appendChild(vazio);
 }
 
@@ -99,7 +103,7 @@ function renderPainelTech(painel, tech, fixada) {
 
   const categoria = document.createElement('p');
   categoria.className = 'mdh-painel-categoria';
-  categoria.textContent = tech.categoria;
+  categoria.textContent = t(tech.categoriaChave);
 
   const nome = document.createElement('h2');
   nome.className = 'mdh-painel-nome';
@@ -107,14 +111,14 @@ function renderPainelTech(painel, tech, fixada) {
 
   const desc = document.createElement('p');
   desc.className = 'mdh-painel-desc';
-  desc.textContent = tech.descricao;
+  desc.textContent = t(tech.descricaoChave);
 
   painel.append(swatch, categoria, nome, desc);
 
   if (fixada) {
     const estado = document.createElement('p');
     estado.className = 'mdh-painel-estado';
-    estado.textContent = 'Fixado — clique de novo no bloco ou pressione Esc para soltar.';
+    estado.textContent = t('mdh.painelFixado');
     painel.appendChild(estado);
   }
 }
@@ -157,7 +161,7 @@ function montarDom(container) {
 
   const intro = document.createElement('p');
   intro.className = 'mdh-intro';
-  intro.innerHTML = '<strong>Million Dollar Homepage</strong> — cada bloco da grade é uma tecnologia real do stack. Passe o mouse, navegue com Tab ou clique para explorar.';
+  preencherIntro(intro);
 
   const area = document.createElement('div');
   area.className = 'mdh-area';
@@ -176,7 +180,7 @@ function montarDom(container) {
     bloco.style.setProperty('--cor', tech.cor);
     bloco.setAttribute('role', 'listitem');
     bloco.setAttribute('aria-pressed', 'false');
-    bloco.setAttribute('aria-label', `${tech.nome} — ${tech.categoria}`);
+    bloco.setAttribute('aria-label', `${tech.nome} — ${t(tech.categoriaChave)}`);
     bloco.textContent = tech.sigla;
 
     grid.appendChild(bloco);
@@ -190,7 +194,31 @@ function montarDom(container) {
   wrapper.append(intro, area);
   container.appendChild(wrapper);
 
-  return { wrapper, grid, painel };
+  return { wrapper, intro, grid, painel };
+}
+
+function preencherIntro(intro) {
+  intro.replaceChildren();
+  const titulo = document.createElement('strong');
+  titulo.textContent = t('mdh.introTitulo');
+  intro.append(titulo, document.createTextNode(t('mdh.introTexto')));
+}
+
+// Reaplica textos traduzidos sem remontar o DOM: intro, aria-label de
+// cada bloco (que embute a categoria) e o painel lateral, no estado
+// em que já estava (fixado ou vazio — não tenta preservar um preview
+// de hover transitório).
+function atualizarTextosEstaticos() {
+  if (!elementos) return;
+
+  preencherIntro(elementos.intro);
+
+  for (const bloco of elementos.grid.children) {
+    const tech = TECNOLOGIAS.find((tec) => tec.id === bloco.dataset.techId);
+    if (tech) bloco.setAttribute('aria-label', `${tech.nome} — ${t(tech.categoriaChave)}`);
+  }
+
+  atualizarPainel();
 }
 
 const layout = {
@@ -236,6 +264,8 @@ const layout = {
         atualizarPainel();
       }
     });
+
+    on(window, EVENTO_MUDANCA, atualizarTextosEstaticos);
   },
 
   unmount() {
