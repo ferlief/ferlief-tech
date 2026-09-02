@@ -19,4 +19,6 @@ Referências: [conventionalcommits.org](https://www.conventionalcommits.org/) pa
 
 ## Antes de abrir um PR
 
-O motor de layouts (`js/motor.js`, `js/catalogo.js`, `js/layouts/`) é sem framework e sem build step, deliberadamente — é parte da vitrine. Uma contribuição que introduza dependência externa ou etapa de build muda o próprio ponto do projeto; discuta antes de abrir o PR.
+O site é sem framework e sem build step, deliberadamente — é parte da vitrine: as páginas de demonstração em `sites/` e `design/` provam que dá para entregar peça acabada só com HTML e CSS. Uma contribuição que introduza dependência externa ou etapa de build muda o próprio ponto do projeto; discuta antes de abrir o PR.
+
+Duas regras que não se negociam nas peças de portfólio: **marca fictícia é identificada como fictícia** na própria página, e **nenhum número entra sem origem** — nem em depoimento, nem em métrica de resultado.

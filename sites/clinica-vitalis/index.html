@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clínica Vitalis — peça de demonstração | ferlief.tech</title>
+  <meta name="description" content="Landing page de demonstração para clínica médica multiespecialidade. Marca fictícia, criada como peça de portfólio por ferlief.tech.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <!-- Barra de procedência: a peça é de demonstração e diz isso antes
+       de qualquer outra coisa na página. Marca fictícia, sem cliente
+       real por trás. -->
+  <div class="barra-demo">
+    <p><strong>Peça de demonstração.</strong> Clínica Vitalis é uma marca fictícia — nenhum dado, endereço ou profissional desta página existe.</p>
+    <a href="/sites/">← voltar ao portfólio</a>
+  </div>
+
+  <header class="cabecalho">
+    <div class="envelope cabecalho-linha">
+      <a class="marca" href="#topo">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M16 4v24M4 16h24" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/>
+        </svg>
+        <span>Clínica <strong>Vitalis</strong></span>
+      </a>
+
+      <nav class="menu" aria-label="Seções da página">
+        <a href="#especialidades">Especialidades</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#equipe">Corpo clínico</a>
+        <a href="#convenios">Convênios</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+
+      <a class="botao botao-primario" href="#agendar">Agendar consulta</a>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <div class="envelope hero-grade">
+        <div class="hero-texto">
+          <p class="sobretitulo">Clínica multiespecialidade · Zona Sul, Rio de Janeiro</p>
+          <h1>Consulta marcada hoje, atendimento no horário combinado.</h1>
+          <p class="chamada">Oito especialidades, exames no mesmo endereço e uma agenda que respeita o seu tempo: se atrasarmos mais de 20 minutos, a consulta sai sem custo.</p>
+
+          <div class="hero-acoes">
+            <a class="botao botao-primario botao-grande" href="#agendar">Agendar consulta</a>
+            <a class="botao botao-fantasma botao-grande" href="#especialidades">Ver especialidades</a>
+          </div>
+
+          <ul class="reforcos">
+            <li>Primeira consulta em até 48 h</li>
+            <li>Convênios e particular</li>
+            <li>Exames laboratoriais no local</li>
+          </ul>
+        </div>
+
+        <aside class="cartao-agenda" aria-label="Horários disponíveis hoje">
+          <p class="cartao-agenda-topo"><span class="ponto" aria-hidden="true"></span> Agenda de hoje</p>
+          <p class="cartao-agenda-titulo">Horários livres</p>
+          <ul class="horarios">
+            <li><span>08:30</span><em>Clínica geral</em></li>
+            <li><span>10:00</span><em>Cardiologia</em></li>
+            <li><span>13:30</span><em>Dermatologia</em></li>
+            <li class="ocupado"><span>15:00</span><em>Preenchido</em></li>
+            <li><span>16:30</span><em>Pediatria</em></li>
+          </ul>
+          <a class="botao botao-primario botao-bloco" href="#agendar">Reservar um horário</a>
+          <p class="cartao-agenda-nota">Confirmação por WhatsApp em até 15 minutos.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="faixa" aria-label="A clínica em números">
+      <div class="envelope faixa-grade">
+        <div><strong>8</strong><span>especialidades no mesmo endereço</span></div>
+        <div><strong>12</strong><span>profissionais no corpo clínico</span></div>
+        <div><strong>48 h</strong><span>prazo médio para a primeira consulta</span></div>
+        <div><strong>7 dias</strong><span>de atendimento, inclusive sábado</span></div>
+      </div>
+    </section>
+
+    <section class="secao" id="especialidades">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Especialidades</p>
+          <h2>Uma equipe fixa, não um rodízio de plantonistas</h2>
+          <p class="secao-chamada">Quem atende você na primeira consulta é quem acompanha o retorno. O prontuário é o mesmo entre as especialidades.</p>
+        </header>
+
+        <ul class="cartoes">
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.5-7 9-7 9z"/><path d="M3 13h4l1.5-2.5L11 15l2-4 1.5 2H21"/></svg>
+            </span>
+            <h3>Cardiologia</h3>
+            <p>Consulta, eletrocardiograma e MAPA de 24 horas realizados na própria clínica.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3.5c3.2 3.4 5 6 5 8.4a5 5 0 0 1-10 0c0-2.4 1.8-5 5-8.4z"/><path d="M9.5 12.5a2.5 2.5 0 0 0 2.5 2.5"/></svg>
+            </span>
+            <h3>Dermatologia</h3>
+            <p>Dermatoscopia digital, mapeamento de pintas e acompanhamento de lesões de pele.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v9M8.5 18h7"/></svg>
+            </span>
+            <h3>Ginecologia</h3>
+            <p>Preventivo, ultrassom transvaginal e acompanhamento de gestação de baixo risco.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 7.5 16.5 17"/><circle cx="5.5" cy="6" r="2.5"/><circle cx="8" cy="4.5" r="2"/><circle cx="18.5" cy="18" r="2.5"/><circle cx="16" cy="19.5" r="2"/></svg>
+            </span>
+            <h3>Ortopedia</h3>
+            <p>Dor articular, lesão esportiva e infiltração guiada, com raio-X no mesmo dia.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M8 20c0-2.2 1.8-4 4-4s4 1.8 4 4"/><path d="M9.5 8.5h.01M14.5 8.5h.01"/></svg>
+            </span>
+            <h3>Pediatria</h3>
+            <p>Puericultura, vacinação e consulta de urgência para crianças até 12 anos.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 4c-8 0-13 4-13 10 0 2 .8 3.8 2 5"/><path d="M6 19c8 1 14-4 14-15"/></svg>
+            </span>
+            <h3>Nutrição</h3>
+            <p>Avaliação corporal por bioimpedância e plano alimentar revisado a cada 30 dias.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao secao-clara" id="como-funciona">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Como funciona</p>
+          <h2>Do agendamento ao retorno, em três passos</h2>
+        </header>
+
+        <ol class="passos">
+          <li>
+            <span class="passo-numero">1</span>
+            <h3>Escolha o horário</h3>
+            <p>Pelo formulário desta página ou pelo WhatsApp. Você recebe a confirmação com o nome do profissional que vai atender.</p>
+          </li>
+          <li>
+            <span class="passo-numero">2</span>
+            <h3>Venha na hora marcada</h3>
+            <p>Chegue 10 minutos antes com documento e carteirinha. Se houver exame no mesmo dia, ele já sai agendado em seguida.</p>
+          </li>
+          <li>
+            <span class="passo-numero">3</span>
+            <h3>Retorno sem custo em 30 dias</h3>
+            <p>O resultado de exame é discutido em consulta de retorno, incluída no valor da primeira. Prontuário disponível pelo portal.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="secao" id="equipe">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Corpo clínico</p>
+          <h2>Quem atende</h2>
+          <p class="secao-chamada">Profissionais fictícios, criados para a peça — os registros aparecem no formato real, mas com número neutro.</p>
+        </header>
+
+        <ul class="equipe">
+          <li>
+            <span class="avatar" aria-hidden="true">MR</span>
+            <h3>Dra. Marina Rocha</h3>
+            <p class="cargo">Cardiologia · CRM-RJ 00.000</p>
+            <p>Insuficiência cardíaca e reabilitação após evento agudo. Atende às segundas, quartas e sextas.</p>
+          </li>
+          <li>
+            <span class="avatar" aria-hidden="true">AL</span>
+            <h3>Dr. André Lopes</h3>
+            <p class="cargo">Ortopedia · CRM-RJ 00.000</p>
+            <p>Joelho e ombro, com foco em lesão esportiva e retorno à atividade. Atende de terça a sábado.</p>
+          </li>
+          <li>
+            <span class="avatar" aria-hidden="true">CN</span>
+            <h3>Dra. Camila Nunes</h3>
+            <p class="cargo">Pediatria · CRM-RJ 00.000</p>
+            <p>Acompanhamento do recém-nascido ao adolescente, com consulta de urgência reservada todo dia.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao secao-clara" id="convenios">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Convênios</p>
+          <h2>Atendemos os principais planos</h2>
+          <p class="secao-chamada">Nomes fictícios nesta demonstração. Não encontrou o seu? A clínica atende particular com valor fechado e recibo para reembolso.</p>
+        </header>
+
+        <ul class="convenios">
+          <li>Assist Vida</li>
+          <li>Saúde Central</li>
+          <li>Unicare</li>
+          <li>PrevMed</li>
+          <li>Bem+ Saúde</li>
+          <li>Instituto Aurora</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao" id="depoimentos">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Depoimentos</p>
+          <h2>O que dizem os pacientes</h2>
+          <p class="secao-chamada">Textos fictícios, escritos para mostrar o formato do bloco — numa página real, entram avaliações verificáveis com origem declarada.</p>
+        </header>
+
+        <ul class="depoimentos">
+          <li>
+            <blockquote>Marquei numa terça e fui atendida na quinta. Saí com o exame já agendado e o resultado chegou pelo portal antes do retorno.</blockquote>
+            <p class="autor">Paciente de cardiologia · exemplo fictício</p>
+          </li>
+          <li>
+            <blockquote>A recepção avisou por mensagem que a médica estava 15 minutos atrasada. Parece pouco, mas foi a primeira vez que isso me aconteceu.</blockquote>
+            <p class="autor">Paciente de dermatologia · exemplo fictício</p>
+          </li>
+          <li>
+            <blockquote>Levei meu filho num sábado de manhã sem marcar. Esperamos 25 minutos e saímos com receita e retorno agendado.</blockquote>
+            <p class="autor">Responsável, pediatria · exemplo fictício</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao secao-clara" id="horarios">
+      <div class="envelope info-grade">
+        <div>
+          <p class="sobretitulo">Horários</p>
+          <h2>Quando a clínica está aberta</h2>
+          <table class="tabela-horarios">
+            <caption class="sr">Horário de funcionamento por dia da semana</caption>
+            <tbody>
+              <tr><th scope="row">Segunda a sexta</th><td>07h00 — 20h00</td></tr>
+              <tr><th scope="row">Sábado</th><td>08h00 — 14h00</td></tr>
+              <tr><th scope="row">Domingo</th><td>Fechado</td></tr>
+              <tr><th scope="row">Coleta de exames</th><td>07h00 — 10h30</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <p class="sobretitulo">Onde fica</p>
+          <h2>Endereço e contato</h2>
+          <address class="endereco">
+            <p>Rua Exemplo, 000 — sala 000<br>Zona Sul · Rio de Janeiro — RJ</p>
+            <p><strong>Telefone:</strong> (00) 0000-0000<br><strong>WhatsApp:</strong> (00) 00000-0000</p>
+            <p class="nota-endereco">Endereço e telefones fictícios: esta é uma peça de portfólio.</p>
+          </address>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="duvidas">
+      <div class="envelope envelope-estreito">
+        <header class="secao-topo">
+          <p class="sobretitulo">Dúvidas frequentes</p>
+          <h2>O que perguntam antes de marcar</h2>
+        </header>
+
+        <div class="faq">
+          <details>
+            <summary>Preciso de encaminhamento para marcar?</summary>
+            <p>Não. Você marca direto com a especialidade desejada. Se a avaliação indicar outra área, o encaminhamento interno sai na mesma consulta, sem nova espera.</p>
+          </details>
+          <details>
+            <summary>O retorno é cobrado?</summary>
+            <p>Não, desde que aconteça em até 30 dias da primeira consulta e com o mesmo profissional. É nele que os resultados de exame são discutidos.</p>
+          </details>
+          <details>
+            <summary>Consigo remarcar sem perder o valor pago?</summary>
+            <p>Sim, com aviso de até 24 horas de antecedência. Dentro desse prazo o horário é reagendado sem custo adicional.</p>
+          </details>
+          <details>
+            <summary>Atendem por convênio e particular?</summary>
+            <p>Os dois. No particular, o valor é fechado antes da consulta e o recibo sai com todos os campos necessários para reembolso.</p>
+          </details>
+          <details>
+            <summary>Fazem exames no mesmo endereço?</summary>
+            <p>Exames laboratoriais, eletrocardiograma, raio-X e ultrassom são feitos no local. Exames de imagem de alta complexidade são encaminhados a um parceiro a 400 metros.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao secao-escura" id="agendar">
+      <div class="envelope agendar-grade">
+        <div class="agendar-texto">
+          <p class="sobretitulo">Agendamento</p>
+          <h2>Marque sua consulta</h2>
+          <p>Responda em menos de um minuto. A recepção confirma por WhatsApp em até 15 minutos, dentro do horário de funcionamento.</p>
+          <ul class="reforcos reforcos-escuros">
+            <li>Sem pré-pagamento</li>
+            <li>Remarcação livre até 24 h antes</li>
+            <li>Retorno incluso em 30 dias</li>
+          </ul>
+        </div>
+
+        <!-- Formulário de demonstração: não tem action e o envio é
+             interceptado no fim da página. Numa entrega real, aqui
+             entra o endpoint do cliente (e-mail, CRM ou WhatsApp). -->
+        <form class="formulario" id="form-agendamento" novalidate>
+          <p class="campo">
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" required>
+          </p>
+          <p class="campo">
+            <label for="telefone">Telefone com DDD</label>
+            <input id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" required>
+          </p>
+          <p class="campo">
+            <label for="especialidade">Especialidade</label>
+            <select id="especialidade" name="especialidade" required>
+              <option value="">Selecione</option>
+              <option>Cardiologia</option>
+              <option>Dermatologia</option>
+              <option>Ginecologia</option>
+              <option>Ortopedia</option>
+              <option>Pediatria</option>
+              <option>Nutrição</option>
+              <option>Clínica geral</option>
+            </select>
+          </p>
+          <p class="campo">
+            <label for="periodo">Período preferido</label>
+            <select id="periodo" name="periodo">
+              <option>Manhã</option>
+              <option>Tarde</option>
+              <option>Sábado pela manhã</option>
+            </select>
+          </p>
+          <p class="campo campo-largo">
+            <label for="mensagem">Motivo da consulta <span class="opcional">(opcional)</span></label>
+            <textarea id="mensagem" name="mensagem" rows="3"></textarea>
+          </p>
+          <p class="campo campo-largo">
+            <button class="botao botao-primario botao-bloco botao-grande" type="submit">Pedir confirmação</button>
+            <span class="aviso-form" id="aviso-form" role="status">Formulário de demonstração: nada é enviado nem armazenado.</span>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="envelope rodape-grade">
+      <div>
+        <p class="marca marca-rodape"><span>Clínica <strong>Vitalis</strong></span></p>
+        <p>Marca fictícia usada em peça de portfólio. Nenhum serviço médico é oferecido nesta página.</p>
+      </div>
+      <div>
+        <h2>Seções</h2>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#equipe">Corpo clínico</a>
+        <a href="#convenios">Convênios</a>
+        <a href="#duvidas">Dúvidas</a>
+      </div>
+      <div>
+        <h2>Projeto</h2>
+        <a href="/sites/">Voltar ao portfólio</a>
+        <a href="/">ferlief.tech</a>
+        <a href="mailto:ferlief@gmail.com">ferlief@gmail.com</a>
+      </div>
+    </div>
+    <div class="envelope rodape-legal">
+      <span>Projeto, texto e código: ferlief.tech</span>
+      <span>Peça de demonstração · 2026</span>
+    </div>
+  </footer>
+
+  <!-- Barra fixa de conversão no celular: o agendamento acompanha a
+       rolagem sem cobrir o conteúdo no desktop. -->
+  <a class="cta-fixo" href="#agendar">Agendar consulta</a>
+
+  <script>
+    // Único script da peça: impede o envio de um formulário que não
+    // tem para onde enviar e deixa o aviso explícito na tela.
+    document.getElementById('form-agendamento').addEventListener('submit', (evento) => {
+      evento.preventDefault();
+      const aviso = document.getElementById('aviso-form');
+      aviso.textContent = 'Demonstração: numa entrega real, esta mensagem iria para a recepção da clínica.';
+      aviso.classList.add('aviso-form-ativo');
+    });
+  </script>
+</body>
+</html>

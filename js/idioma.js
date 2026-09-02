@@ -6,10 +6,9 @@
 // qualquer elemento com [data-i18n="chave"] recebe t(chave) como
 // textContent, e [data-i18n-aria-label="chave"] recebe t(chave) como
 // aria-label. Isso cobre nav, títulos e parágrafos fixos de qualquer
-// página sem precisar de um script dedicado por página — só o layout
-// da grade Million Dollar Homepage (conteúdo montado dinamicamente)
-// continua com sua própria reatividade em
-// js/layouts/million-dollar-homepage.js.
+// página sem precisar de script dedicado. Conteúdo montado em runtime
+// (js/projetos.js, js/atividade.js) escuta EVENTO_MUDANCA e cuida da
+// própria re-renderização.
 //
 // Roda em toda página que inclui este módulo, com ou sem #btn-idioma
 // no DOM (a home tem o botão; qualquer página com header compartilhado

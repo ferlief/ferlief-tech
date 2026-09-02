@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos de engenharia — ferlief.tech</title>
-  <meta name="description" content="Repositórios abertos: pipelines de dados, visão computacional e ferramentas que rodam na máquina de quem usa.">
-  <link rel="canonical" href="https://ferlief.tech/projetos/">
+  <title>Sites e landing pages — ferlief.tech</title>
+  <meta name="description" content="Landing pages e sites institucionais escritos à mão. Cada peça abre em tamanho real no navegador — não é captura de tela.">
+  <link rel="canonical" href="https://ferlief.tech/sites/">
   <script>
     try {
       const tema = localStorage.getItem('tema');
@@ -28,9 +28,9 @@
     <p class="logo"><a href="/">ferlief.tech</a></p>
     <nav class="site-nav" aria-label="Navegação do site" data-i18n-aria-label="nav.site">
       <a href="/" data-i18n="nav.inicio">Início</a>
-      <a href="/sites/" data-i18n="nav.sites">Sites</a>
+      <a href="/sites/" aria-current="page" data-i18n="nav.sites">Sites</a>
       <a href="/design/" data-i18n="nav.design">Design</a>
-      <a href="/projetos/" aria-current="page" data-i18n="nav.projetos">Projetos</a>
+      <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
       <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
       <a href="/blog/" data-i18n="nav.blog">Blog</a>
     </nav>
@@ -48,15 +48,56 @@
 
   <main class="pagina">
     <div class="container pagina-cabecalho">
-      <p class="eyebrow" data-i18n="nav.projetos">Projetos</p>
-      <h1 class="t-h2" data-i18n="proj.titulo">Projetos de engenharia</h1>
-      <p class="t-lead" data-i18n="proj.lead">Repositórios abertos, um projeto por pasta, com histórico público. É a parte do trabalho que não cabe numa landing page: pipelines de dados, visão computacional e ferramentas que rodam na máquina de quem usa.</p>
+      <p class="eyebrow" data-i18n="nav.sites">Sites</p>
+      <h1 class="t-h2" data-i18n="sites.titulo">Sites e landing pages</h1>
+      <p class="t-lead" data-i18n="sites.lead">Páginas escritas à mão, sem tema nem construtor visual. Cada peça abre aqui mesmo, no navegador, em tamanho real — não é captura de tela.</p>
     </div>
 
     <div class="container pagina-corpo">
-      <!-- montado em runtime por js/projetos.js a partir de
-           data/atividade.json, que o workflow do GitHub atualiza -->
-      <div id="projetos-lista" class="projetos-lista"></div>
+      <article class="trabalho trabalho-destaque">
+        <div class="miniatura" aria-hidden="true">
+          <div class="miniatura-barra"><span></span><span></span><span></span></div>
+          <div class="miniatura-tela mock-clinica">
+            <div class="mock-clinica-topo"><i></i><i></i><i></i><i></i></div>
+            <div class="mock-clinica-hero">
+              <div class="mock-clinica-texto"><i></i><i></i><i></i><i></i></div>
+              <div class="mock-clinica-imagem"></div>
+            </div>
+            <div class="mock-clinica-cards"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="trabalho-corpo">
+          <span class="selo-demo" data-i18n="trab.selo">Projeto-demonstração</span>
+          <h2 class="t-h3" data-i18n="trab1.titulo">Clínica Vitalis</h2>
+          <p class="eyebrow" data-i18n="trab1.tipo">Landing page de clínica médica</p>
+          <p data-i18n="trab1.texto">Página única de conversão para um consultório multiespecialidade: agendamento sempre à mão, especialidades, corpo clínico, convênios, horários e dúvidas frequentes.</p>
+
+          <dl class="ficha">
+            <div>
+              <dt data-i18n="sites.fichaObjetivo">Objetivo</dt>
+              <dd data-i18n="sites.fichaObjetivoTexto">Transformar visita em consulta agendada: o botão de agendamento acompanha a rolagem e reaparece ao fim de cada seção.</dd>
+            </div>
+            <div>
+              <dt data-i18n="sites.fichaDecisoes">Decisões</dt>
+              <dd data-i18n="sites.fichaDecisoesTexto">Nenhuma foto de banco de imagens. Corpo clínico com iniciais, especialidades em ícone desenhado à mão — a página carrega em qualquer conexão.</dd>
+            </div>
+            <div>
+              <dt data-i18n="sites.fichaEntrega">O que o cliente recebe</dt>
+              <dd data-i18n="sites.fichaEntregaTexto">HTML e CSS comentados, formulário pronto para conectar, texto revisado e instruções de publicação no domínio próprio.</dd>
+            </div>
+          </dl>
+
+          <div class="trabalho-meta">
+            <div class="etiquetas">
+              <span class="etiqueta">HTML</span>
+              <span class="etiqueta">CSS</span>
+              <span class="etiqueta">Responsivo</span>
+              <span class="etiqueta">Acessível</span>
+            </div>
+            <a class="btn btn-primario" href="/sites/clinica-vitalis/" data-i18n="trab1.link">Abrir a página</a>
+          </div>
+        </div>
+      </article>
     </div>
   </main>
 
@@ -95,7 +136,6 @@
 
   <script type="module" src="/js/tema.js"></script>
   <script type="module" src="/js/idioma.js"></script>
-  <script type="module" src="/js/projetos.js"></script>
   <script type="module" src="/js/atividade.js"></script>
 </body>
 </html>

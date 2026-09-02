@@ -1,55 +1,79 @@
 /* ---------------------------------------------------------------
-   atividade — feed de atividade verificável (rodapé fixo, fora do
-   catálogo de layouts). Lê data/atividade.json; se o arquivo ainda
-   não existir (cron não rodou), o rodapé fica vazio.
+   atividade.css — feed de atividade verificável no rodapé. Lê
+   data/atividade.json (gerado por .github/workflows/atividade.yml a
+   partir da API pública do GitHub); se o arquivo ainda não existir,
+   o bloco fica vazio e o rodapé continua íntegro.
+
+   Mora dentro de .footer-bloco: é evidência de trabalho em curso,
+   não decoração — por isso o commit real aparece, com data.
    --------------------------------------------------------------- */
 
 #atividade-root {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  border-top: 1px solid var(--color-border);
-  font-size: 0.75rem;
-  color: var(--color-fg-muted);
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+}
+
+#atividade-root:empty {
+  display: none;
 }
 
 .atividade-rotulo {
-  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
+  color: var(--fg-subtle);
 }
 
 .atividade-lista {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 0.5rem;
 }
 
-.atividade-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 0.6rem;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  color: inherit;
-  text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease;
+@media (min-width: 46rem) {
+  .atividade-lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.atividade-item:hover,
-.atividade-item:focus-visible {
-  border-color: var(--color-border-hover);
-  color: var(--color-fg);
+.atividade-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.atividade-item:hover {
+  border-color: var(--border-strong);
 }
 
 .atividade-repo {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--color-fg);
+  color: var(--fg);
+}
+
+.atividade-commit {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--fg-muted);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .atividade-resultado {
-  color: var(--color-success);
+  font-size: 0.76rem;
+  color: var(--success);
 }

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — ferlief.tech</title>
+  <meta name="description" content="Ensaios técnicos sobre arquitetura de dados, IA local e front-end sem framework.">
+  <link rel="canonical" href="https://ferlief.tech/blog/">
   <script>
     try {
       const tema = localStorage.getItem('tema');
@@ -18,36 +20,76 @@
     } catch {}
   </script>
   <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/atividade.css">
   <link rel="stylesheet" href="/css/paginas.css">
+  <link rel="stylesheet" href="/css/atividade.css">
 </head>
 <body>
-  <header>
-    <h1 class="logo"><a href="/">ferlief.tech</a></h1>
+  <header class="site-header">
+    <p class="logo"><a href="/">ferlief.tech</a></p>
     <nav class="site-nav" aria-label="Navegação do site" data-i18n-aria-label="nav.site">
       <a href="/" data-i18n="nav.inicio">Início</a>
-      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+      <a href="/sites/" data-i18n="nav.sites">Sites</a>
+      <a href="/design/" data-i18n="nav.design">Design</a>
       <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
       <a href="/blog/" aria-current="page" data-i18n="nav.blog">Blog</a>
     </nav>
-    <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
-      <span class="shape shape-lua" aria-hidden="true"></span>
-      <span id="btn-tema-label">Modo claro</span>
-    </button>
-    <button id="btn-idioma" class="btn-idioma" type="button" aria-pressed="false">
-      <span class="shape shape-bandeira-uk" aria-hidden="true"></span>
-      <span id="btn-idioma-label">English</span>
-    </button>
+    <div class="controles">
+      <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
+        <span class="shape shape-lua" aria-hidden="true"></span>
+        <span id="btn-tema-label">Modo escuro</span>
+      </button>
+      <button id="btn-idioma" class="btn-idioma" type="button" aria-pressed="false">
+        <span class="shape shape-bandeira-uk" aria-hidden="true"></span>
+        <span id="btn-idioma-label">English</span>
+      </button>
+    </div>
   </header>
 
   <main class="pagina">
-    <h2 class="pagina-titulo" data-i18n="blog.titulo">Blog</h2>
-    <p class="pagina-intro" data-i18n="blog.introTexto">Ensaios técnicos sobre arquitetura de dados, edge AI e engenharia.</p>
+    <div class="container pagina-cabecalho">
+      <p class="eyebrow" data-i18n="nav.blog">Blog</p>
+      <h1 class="t-h2" data-i18n="blog.titulo">Blog</h1>
+      <p class="t-lead" data-i18n="blog.lead">Ensaios técnicos sobre arquitetura de dados, IA local e engenharia de front-end sem framework.</p>
+    </div>
 
-    <p class="blog-vazio" data-i18n="blog.vazio">Nenhum ensaio publicado ainda.</p>
+    <div class="container pagina-corpo">
+      <p class="blog-vazio" data-i18n="blog.vazio">Nenhum ensaio publicado ainda.</p>
+    </div>
   </main>
 
-  <footer id="atividade-root"></footer>
+  <footer class="site-footer">
+    <div class="container footer-grade">
+      <div class="footer-bloco">
+        <h2>ferlief.tech</h2>
+        <p data-i18n="rodape.sobre">Site pessoal e portfólio. Escrito à mão, sem framework e sem etapa de build — o código-fonte deste site é público.</p>
+      </div>
+      <nav class="footer-bloco" aria-label="Navegação do rodapé">
+        <h2 data-i18n="rodape.navTitulo">Navegação</h2>
+        <a href="/sites/" data-i18n="nav.sites">Sites</a>
+        <a href="/design/" data-i18n="nav.design">Design</a>
+        <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+        <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+        <a href="/blog/" data-i18n="nav.blog">Blog</a>
+      </nav>
+      <div class="footer-bloco">
+        <h2 data-i18n="rodape.contatoTitulo">Contato</h2>
+        <a href="mailto:ferlief@gmail.com">ferlief@gmail.com</a>
+        <a href="https://github.com/ferlief" target="_blank" rel="noopener">github.com/ferlief</a>
+      </div>
+    </div>
+
+    <div class="footer-atividade">
+      <div class="container">
+        <div id="atividade-root"></div>
+      </div>
+    </div>
+
+    <div class="container footer-legal">
+      <span data-i18n="rodape.direitos">Conteúdo e código sob licença MIT.</span>
+      <span data-i18n="rodape.selo">Obsession Labs — método aberto.</span>
+    </div>
+  </footer>
 
   <script type="module" src="/js/tema.js"></script>
   <script type="module" src="/js/idioma.js"></script>

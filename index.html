@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ferlief.tech</title>
+  <title>ferlief.tech — sites, landing pages e design sob medida</title>
+  <meta name="description" content="Landing pages, sites institucionais e peças de publicidade escritos à mão, sem tema pronto nem construtor visual. Rio de Janeiro, atendimento remoto.">
+  <link rel="canonical" href="https://ferlief.tech/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ferlief.tech/">
+  <meta property="og:title" content="ferlief.tech — sites, landing pages e design sob medida">
+  <meta property="og:description" content="Landing pages, sites institucionais e peças de publicidade escritos à mão. Rio de Janeiro, atendimento remoto.">
   <script>
-    // Aplica tema e idioma salvos antes do primeiro paint. Tema: evita
-    // piscar o tema errado (sem escolha salva, não seta nada — a media
-    // query em css/base.css já resolve pela preferência de sistema).
-    // Idioma: garante <html lang> correto desde o início; o conteúdo
-    // textual em si só troca quando js/idioma.js e os módulos que
-    // escutam idioma:mudou rodarem, então uma escolha explícita
-    // diferente da preferência de sistema ainda pode piscar em PT por
-    // uma fração de segundo — limite aceito de um site sem SSR.
+    // Aplica tema e idioma salvos antes do primeiro paint. Tema:
+    // evita piscar o tema errado (sem escolha salva, não seta nada —
+    // a media query em css/base.css resolve pela preferência de
+    // sistema). Idioma: garante <html lang> correto desde o início.
     try {
       const tema = localStorage.getItem('tema');
       if (tema === 'light' || tema === 'dark') {
@@ -26,42 +28,256 @@
     } catch {}
   </script>
   <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/paginas.css">
   <link rel="stylesheet" href="/css/atividade.css">
 </head>
 <body>
-  <header>
-    <h1 class="logo"><a href="/">ferlief.tech</a></h1>
+  <header class="site-header">
+    <p class="logo"><a href="/">ferlief.tech</a></p>
     <nav class="site-nav" aria-label="Navegação do site" data-i18n-aria-label="nav.site">
       <a href="/" aria-current="page" data-i18n="nav.inicio">Início</a>
-      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+      <a href="/sites/" data-i18n="nav.sites">Sites</a>
+      <a href="/design/" data-i18n="nav.design">Design</a>
       <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
       <a href="/blog/" data-i18n="nav.blog">Blog</a>
     </nav>
-    <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
-      <span class="shape shape-lua" aria-hidden="true"></span>
-      <span id="btn-tema-label">Modo claro</span>
-    </button>
-    <button id="btn-idioma" class="btn-idioma" type="button" aria-pressed="false">
-      <span class="shape shape-bandeira-uk" aria-hidden="true"></span>
-      <span id="btn-idioma-label">English</span>
-    </button>
+    <div class="controles">
+      <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
+        <span class="shape shape-lua" aria-hidden="true"></span>
+        <span id="btn-tema-label">Modo escuro</span>
+      </button>
+      <button id="btn-idioma" class="btn-idioma" type="button" aria-pressed="false">
+        <span class="shape shape-bandeira-uk" aria-hidden="true"></span>
+        <span id="btn-idioma-label">English</span>
+      </button>
+    </div>
   </header>
 
-  <div class="demo-toolbar">
-    <nav id="menu-layouts" class="menu-layouts" aria-label="Layouts disponíveis" data-i18n-aria-label="nav.layouts"></nav>
-    <button id="btn-randomize" class="btn-randomize" type="button">
-      <span class="shape shape-triangulo" aria-hidden="true"></span>
-      Randomize
-    </button>
-  </div>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-conteudo">
+          <p class="eyebrow" data-i18n="home.eyebrow">Desenvolvimento e design — Rio de Janeiro, atendimento remoto</p>
+          <h1 class="t-display" data-i18n="home.titulo">Sites que abrem rápido, funcionam no celular e explicam o que você vende.</h1>
+          <p class="t-lead" data-i18n="home.lead">Landing pages, sites institucionais e peças de campanha. Tudo escrito à mão em HTML, CSS e JavaScript — sem tema comprado, sem construtor visual, sem plugin que quebra na próxima atualização. No fim, o código é seu.</p>
+          <div class="acoes">
+            <a class="btn btn-primario" href="/sites/" data-i18n="home.ctaSites">Ver landing pages</a>
+            <a class="btn btn-secundario" href="/design/" data-i18n="home.ctaDesign">Ver peças de design</a>
+            <a class="btn btn-secundario" href="#contato" data-i18n="home.ctaContato">Pedir um orçamento</a>
+          </div>
+        </div>
 
-  <main id="layout-root"></main>
+        <div class="fatos">
+          <div class="fato">
+            <span class="fato-valor" data-i18n="fato1.valor">Zero</span>
+            <span class="fato-rotulo" data-i18n="fato1.rotulo">dependências externas: nada de tema, framework ou plugin de terceiro</span>
+          </div>
+          <div class="fato">
+            <span class="fato-valor" data-i18n="fato2.valor">320 px</span>
+            <span class="fato-rotulo" data-i18n="fato2.rotulo">largura mínima verificada — o layout não quebra em celular antigo</span>
+          </div>
+          <div class="fato">
+            <span class="fato-valor" data-i18n="fato3.valor">PT / EN</span>
+            <span class="fato-rotulo" data-i18n="fato3.rotulo">site bilíngue sem plugin de tradução automática</span>
+          </div>
+          <div class="fato">
+            <span class="fato-valor" data-i18n="fato4.valor">Código seu</span>
+            <span class="fato-rotulo" data-i18n="fato4.rotulo">entrega com repositório e sem mensalidade de plataforma</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <footer id="atividade-root"></footer>
+    <section class="secao" id="servicos">
+      <div class="container">
+        <div class="secao-cabecalho">
+          <p class="eyebrow" data-i18n="serv.eyebrow">Serviços</p>
+          <h2 class="t-h2" data-i18n="serv.titulo">Três frentes, uma pessoa só do começo ao fim</h2>
+          <p class="t-lead" data-i18n="serv.lead">Quem escreve o texto, desenha a página e publica o código é a mesma pessoa. Menos intermediário, menos ruído entre o que foi combinado e o que sai no ar.</p>
+        </div>
+
+        <div class="grade grade-3">
+          <article class="cartao servico">
+            <span class="servico-numero" aria-hidden="true">01</span>
+            <h3 class="t-h3" data-i18n="serv1.titulo">Site e landing page</h3>
+            <p data-i18n="serv1.texto">Da página única de conversão ao site institucional de poucas páginas.</p>
+            <ul>
+              <li data-i18n="serv1.item1">Landing page de campanha ou de serviço</li>
+              <li data-i18n="serv1.item2">Site institucional de 3 a 8 páginas</li>
+              <li data-i18n="serv1.item3">Formulário, WhatsApp e agendamento</li>
+              <li data-i18n="serv1.item4">SEO técnico, metadados e performance</li>
+            </ul>
+          </article>
+
+          <article class="cartao servico">
+            <span class="servico-numero" aria-hidden="true">02</span>
+            <h3 class="t-h3" data-i18n="serv2.titulo">Design aplicado</h3>
+            <p data-i18n="serv2.texto">Identidade que sobrevive ao contato com a realidade: aplicada em peça, não só em manual.</p>
+            <ul>
+              <li data-i18n="serv2.item1">Anúncio para feed, story e display</li>
+              <li data-i18n="serv2.item2">Cartaz, rótulo e material de ponto de venda</li>
+              <li data-i18n="serv2.item3">Kit de marca: cor, tipografia e regras de uso</li>
+              <li data-i18n="serv2.item4">Adaptação da mesma peça para todos os formatos</li>
+            </ul>
+          </article>
+
+          <article class="cartao servico">
+            <span class="servico-numero" aria-hidden="true">03</span>
+            <h3 class="t-h3" data-i18n="serv3.titulo">Automação em Python</h3>
+            <p data-i18n="serv3.texto">A parte de engenharia: o trabalho repetitivo que uma pessoa faz hoje na mão.</p>
+            <ul>
+              <li data-i18n="serv3.item1">Planilha bagunçada virando relatório</li>
+              <li data-i18n="serv3.item2">Organização e deduplicação de arquivos</li>
+              <li data-i18n="serv3.item3">Visão computacional aplicada a imagem</li>
+              <li data-i18n="serv3.item4">Roda na máquina do cliente — sem enviar dado para nuvem</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="trabalho">
+      <div class="container">
+        <div class="secao-cabecalho">
+          <p class="eyebrow" data-i18n="trab.eyebrow">Trabalho</p>
+          <h2 class="t-h2" data-i18n="trab.titulo">Duas peças para você ver antes de contratar</h2>
+          <p class="t-lead" data-i18n="trab.lead">As duas são projetos de demonstração com marca fictícia — sem cliente real por trás, e nenhum nome emprestado. O que se avalia aqui é execução: estrutura, ritmo de leitura, acabamento e comportamento no celular.</p>
+        </div>
+
+        <div class="trabalho-grade">
+          <article class="trabalho">
+            <!-- miniatura desenhada em CSS: nenhuma captura de tela
+                 para envelhecer fora de sincronia com a peça real -->
+            <div class="miniatura" aria-hidden="true">
+              <div class="miniatura-barra"><span></span><span></span><span></span></div>
+              <div class="miniatura-tela mock-clinica">
+                <div class="mock-clinica-topo"><i></i><i></i><i></i><i></i></div>
+                <div class="mock-clinica-hero">
+                  <div class="mock-clinica-texto"><i></i><i></i><i></i><i></i></div>
+                  <div class="mock-clinica-imagem"></div>
+                </div>
+                <div class="mock-clinica-cards"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="trabalho-corpo">
+              <span class="selo-demo" data-i18n="trab.selo">Projeto-demonstração</span>
+              <h3 class="t-h3" data-i18n="trab1.titulo">Clínica Vitalis</h3>
+              <p class="eyebrow" data-i18n="trab1.tipo">Landing page de clínica médica</p>
+              <p data-i18n="trab1.texto">Página única de conversão para um consultório multiespecialidade: agendamento sempre à mão, especialidades, corpo clínico, convênios, horários e dúvidas frequentes.</p>
+              <div class="trabalho-meta">
+                <div class="etiquetas">
+                  <span class="etiqueta">HTML</span>
+                  <span class="etiqueta">CSS</span>
+                  <span class="etiqueta">Responsivo</span>
+                </div>
+                <a class="btn-linha" href="/sites/clinica-vitalis/" data-i18n="trab1.link">Abrir a página</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="trabalho">
+            <div class="miniatura" aria-hidden="true">
+              <div class="miniatura-barra"><span></span><span></span><span></span></div>
+              <div class="miniatura-tela mock-pecas"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="trabalho-corpo">
+              <span class="selo-demo" data-i18n="trab.selo">Projeto-demonstração</span>
+              <h3 class="t-h3" data-i18n="trab2.titulo">Serra Alta Café</h3>
+              <p class="eyebrow" data-i18n="trab2.tipo">Publicidade de produto</p>
+              <p data-i18n="trab2.texto">Campanha de lançamento de um café especial: key visual, cartaz, anúncios para feed e story, rótulo do pacote, banner display e o kit de marca que mantém tudo coerente.</p>
+              <div class="trabalho-meta">
+                <div class="etiquetas">
+                  <span class="etiqueta">Key visual</span>
+                  <span class="etiqueta">Social</span>
+                  <span class="etiqueta">Embalagem</span>
+                </div>
+                <a class="btn-linha" href="/design/serra-alta/" data-i18n="trab2.link">Abrir o portfólio</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="processo">
+      <div class="container">
+        <div class="secao-cabecalho">
+          <p class="eyebrow" data-i18n="proc.eyebrow">Como trabalho</p>
+          <h2 class="t-h2" data-i18n="proc.titulo">Quatro etapas, nenhuma surpresa no preço</h2>
+        </div>
+
+        <ol class="processo">
+          <li>
+            <h3 data-i18n="proc1.titulo">Conversa e escopo</h3>
+            <p data-i18n="proc1.texto">Meia hora para entender o que a página precisa fazer. Saio dela com escopo escrito, prazo e preço fechado.</p>
+          </li>
+          <li>
+            <h3 data-i18n="proc2.titulo">Estrutura e texto</h3>
+            <p data-i18n="proc2.texto">Antes do visual: o que a pessoa lê primeiro, o que ela clica e o que a faz voltar. Texto rascunhado junto com você.</p>
+          </li>
+          <li>
+            <h3 data-i18n="proc3.titulo">Implementação</h3>
+            <p data-i18n="proc3.texto">Código à mão, verificado no celular e no desktop, com contraste de cor e navegação por teclado testados.</p>
+          </li>
+          <li>
+            <h3 data-i18n="proc4.titulo">Entrega</h3>
+            <p data-i18n="proc4.texto">Publicação no seu domínio, repositório entregue no seu nome e uma explicação de como editar o conteúdo depois.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="secao" id="contato">
+      <div class="container">
+        <div class="contato">
+          <p class="eyebrow" data-i18n="contato.eyebrow">Contato</p>
+          <h2 class="t-h2" data-i18n="contato.titulo">Me diga o que sua página precisa fazer</h2>
+          <p data-i18n="contato.texto">Escopo, prazo e preço em até um dia útil. Se o seu projeto não for para mim, eu digo isso na primeira resposta em vez de aceitar e atrasar.</p>
+          <div class="acoes">
+            <a class="btn btn-primario" href="mailto:ferlief@gmail.com" data-i18n="contato.btnEmail">Escrever um e-mail</a>
+            <a class="btn btn-secundario" href="https://github.com/ferlief" target="_blank" rel="noopener" data-i18n="contato.btnGithub">Ver o código no GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grade">
+      <div class="footer-bloco">
+        <h2>ferlief.tech</h2>
+        <p data-i18n="rodape.sobre">Site pessoal e portfólio. Escrito à mão, sem framework e sem etapa de build — o código-fonte deste site é público.</p>
+      </div>
+      <nav class="footer-bloco" aria-label="Navegação do rodapé">
+        <h2 data-i18n="rodape.navTitulo">Navegação</h2>
+        <a href="/sites/" data-i18n="nav.sites">Sites</a>
+        <a href="/design/" data-i18n="nav.design">Design</a>
+        <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+        <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+        <a href="/blog/" data-i18n="nav.blog">Blog</a>
+      </nav>
+      <div class="footer-bloco">
+        <h2 data-i18n="rodape.contatoTitulo">Contato</h2>
+        <a href="mailto:ferlief@gmail.com">ferlief@gmail.com</a>
+        <a href="https://github.com/ferlief" target="_blank" rel="noopener">github.com/ferlief</a>
+      </div>
+    </div>
+
+    <div class="footer-atividade">
+      <div class="container">
+        <div id="atividade-root"></div>
+      </div>
+    </div>
+
+    <div class="container footer-legal">
+      <span data-i18n="rodape.direitos">Conteúdo e código sob licença MIT.</span>
+      <span data-i18n="rodape.selo">Obsession Labs — método aberto.</span>
+    </div>
+  </footer>
 
   <script type="module" src="/js/tema.js"></script>
   <script type="module" src="/js/idioma.js"></script>
-  <script type="module" src="/js/motor.js"></script>
   <script type="module" src="/js/atividade.js"></script>
 </body>
 </html>
