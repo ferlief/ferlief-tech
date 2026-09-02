@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+
+# dados/indice.json é COMMITADO de propósito: é o artefato que o
+# site serve, e versioná-lo torna visível no diff exatamente o que
+# passou a ser público a cada mudança. Ver AMEACAS.md, A-7.

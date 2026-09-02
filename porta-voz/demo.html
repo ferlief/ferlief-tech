@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>porta-voz — demonstração</title>
+  <link rel="stylesheet" href="css/porta-voz.css">
+  <style>
+    body { margin: 0; background: #fbfbf9; }
+    @media (prefers-color-scheme: dark) { body { background: #131316; } }
+  </style>
+</head>
+<body>
+  <!-- Roda o layout fora do motor de ferlief.tech, para
+       desenvolver e auditar sem depender do site. O container tem
+       o mesmo papel que #layout-root tem lá. -->
+  <main id="layout-root"></main>
+  <script type="module">
+    import portaVoz from './js/porta-voz.js';
+    portaVoz.mount(document.getElementById('layout-root'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+name: testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Testes do indexador
+        run: python3 indexador/teste_indexador.py
+
+      - name: O índice publicado corresponde ao corpus
+        # Sem esta trava, editar corpus/ e esquecer de reindexar
+        # publica um índice defasado — e o site continua respondendo
+        # com o texto antigo, sem erro nenhum.
+        run: |
+          python3 indexador/construir_indice.py
+          if ! git diff --quiet -- dados/indice.json; then
+            echo "::error::dados/indice.json está defasado em relação a corpus/."
+            echo "Rode: python3 indexador/construir_indice.py && git add dados/indice.json"
+            git diff --stat -- dados/indice.json
+            exit 1
+          fi
+
+      - name: O fixture corresponde ao normalizador Python
+        # O fixture é o contrato com o gêmeo em JS. Se ele estiver
+        # velho, o teste do lado JS valida contra a regra errada.
+        run: |
+          python3 indexador/gerar_fixture.py > /tmp/fixture.json
+          diff -u avaliacao/fixture-tokens.json /tmp/fixture.json \
+            || { echo "::error::fixture desatualizado — rode indexador/gerar_fixture.py"; exit 1; }
+
+      - name: Testes da busca (JS)
+        run: node js/teste_recuperacao.mjs
