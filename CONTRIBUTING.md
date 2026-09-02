@@ -1,17 +1,21 @@
 # Contribuindo com ferlief-tech
 
-## Idioma dos commits
+## Mensagens de commit
 
-**Inglês, a partir de agora.** Este é o único repositório do ecossistema cujo objetivo explícito é ser lido por recrutador (ver `CLAUDE.md`) — incluindo recrutador de mercado remoto internacional. O histórico de commit é a primeira coisa que alguém de fora vê ao abrir a aba "Activity" no GitHub; deixá-lo em inglês é parte da mesma legibilidade que o projeto já trata como requisito, não como extra.
+**Inglês, sempre — [Conventional Commits](https://www.conventionalcommits.org/), modo imperativo.** Este é o único repositório do ecossistema cujo objetivo explícito é ser lido por recrutador (ver `CLAUDE.md`), então o motivo é ainda mais direto aqui — mas a regra é a mesma do resto do ecossistema agora: padrão de quem programa de forma séria hoje, não algo específico deste repositório.
 
-Isto é uma orientação daqui pra frente, não uma reescrita de histórico — commits anteriores em português ficam como estão. Reescrever histórico público (`git rebase`, `filter-branch`) não é ação a se tomar por padronização de estilo.
+```
+<type>(<scope>): short imperative summary, ≤50 chars
 
-## Formato
+Body explaining WHY this change exists, not what changed — the diff
+already shows what. Wrap at ~72 columns.
+```
 
-- Modo imperativo (`add`, `fix`, não `added`/`fixed`).
-- Prefixo tipo `fix:`/`feat:` é bem-vindo mas não obrigatório — o histórico já mistura os dois estilos.
-- Foco no porquê da mudança, não só no quê.
-- Sem linha de atribuição a ferramenta de geração de código.
+Tipos comuns: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `build`, `ci`.
+
+Isto é orientação daqui pra frente, não reescrita de histórico — commits anteriores em português ficam como estão. Reescrever histórico público (`git rebase`, `filter-branch`) não é ação a se tomar por padronização de estilo.
+
+Referências: [conventionalcommits.org](https://www.conventionalcommits.org/) para o formato, as 7 regras de Chris Beams ("How to Write a Git Commit Message") para a prosa. Sem linha de atribuição a ferramenta de geração de código.
 
 ## Antes de abrir um PR
 
