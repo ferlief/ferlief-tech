@@ -1,0 +1,206 @@
+/* Copiado de ferlief/porta-voz (privado). Não editar aqui. */
+/* porta-voz.css — estilo do layout de conversa.
+   Prefixo pv- em tudo para não colidir com os outros layouts do
+   motor. Sem @import, sem fonte externa: nenhuma requisição sai
+   daqui além do próprio índice. */
+
+.pv-raiz {
+  --pv-tinta: #16161a;
+  --pv-papel: #fbfbf9;
+  --pv-fraco: #6b6b73;
+  --pv-linha: #d9d9d2;
+  --pv-destaque: #1f4bd8;
+  --pv-alerta: #8a5a00;
+
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  color: var(--pv-tinta);
+  font: 400 1rem/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.pv-titulo {
+  margin: 0 0 .35rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.pv-subtitulo {
+  margin: 0 0 1.75rem;
+  max-width: 34rem;
+  color: var(--pv-fraco);
+  font-size: .9rem;
+}
+
+.pv-form {
+  display: flex;
+  gap: .5rem;
+}
+
+.pv-campo {
+  flex: 1;
+  min-width: 0;
+  padding: .7rem .85rem;
+  border: 1px solid var(--pv-linha);
+  border-radius: 2px;
+  background: var(--pv-papel);
+  color: inherit;
+  font: inherit;
+}
+
+.pv-campo:focus-visible,
+.pv-enviar:focus-visible,
+.pv-sugestao:focus-visible,
+.pv-btn-gerar:focus-visible {
+  outline: 2px solid var(--pv-destaque);
+  outline-offset: 2px;
+}
+
+.pv-enviar,
+.pv-btn-gerar {
+  padding: .7rem 1.1rem;
+  border: 1px solid var(--pv-tinta);
+  border-radius: 2px;
+  background: var(--pv-tinta);
+  color: var(--pv-papel);
+  font: inherit;
+  cursor: pointer;
+}
+
+.pv-enviar[disabled] {
+  border-color: var(--pv-linha);
+  background: var(--pv-linha);
+  color: var(--pv-fraco);
+  cursor: progress;
+}
+
+.pv-sugestoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pv-sugestao {
+  padding: .3rem .6rem;
+  border: 1px solid var(--pv-linha);
+  border-radius: 2px;
+  background: none;
+  color: var(--pv-fraco);
+  font: inherit;
+  font-size: .82rem;
+  cursor: pointer;
+}
+
+.pv-sugestao:hover { color: var(--pv-tinta); border-color: var(--pv-fraco); }
+
+.pv-resposta { margin-top: 2rem; }
+
+.pv-pergunta-eco {
+  margin: 0 0 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--pv-linha);
+  font-size: 1.05rem;
+}
+
+.pv-rotulo {
+  display: block;
+  margin-bottom: .2rem;
+  color: var(--pv-fraco);
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.pv-cabecalho-trechos {
+  margin: 0 0 .8rem;
+  color: var(--pv-fraco);
+  font-size: .8rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.pv-passagem {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--pv-linha);
+}
+
+.pv-passagem-titulo {
+  margin: 0 0 .4rem;
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.pv-passagem-texto {
+  margin: 0 0 .6rem;
+  white-space: pre-wrap; /* o corpus é markdown: preserva a quebra da autora */
+}
+
+.pv-procedencia { font-size: .78rem; color: var(--pv-fraco); }
+
+.pv-arquivo {
+  display: inline-block;
+  margin-bottom: .3rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.pv-explicacao summary { cursor: pointer; }
+
+.pv-termos {
+  margin: .4rem 0 0;
+  padding-left: 1.1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.pv-ausentes { margin: .4rem 0 0; color: var(--pv-alerta); }
+
+.pv-abstencao {
+  padding: 1rem 1.1rem;
+  border: 1px dashed var(--pv-linha);
+  border-radius: 2px;
+}
+
+.pv-abstencao p { margin: 0; }
+.pv-abstencao-nota { margin-top: .5rem !important; color: var(--pv-fraco); font-size: .8rem; }
+
+.pv-oferta-geracao {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--pv-linha);
+}
+
+.pv-oferta-texto { margin: 0 0 .8rem; color: var(--pv-fraco); font-size: .85rem; }
+
+.pv-estado-geracao { margin: 0 0 .6rem; color: var(--pv-fraco); font-size: .85rem; }
+
+.pv-texto-gerado {
+  margin: 0;
+  padding: .9rem 1rem;
+  border-left: 2px solid var(--pv-destaque);
+  background: rgba(31, 75, 216, .04);
+  white-space: pre-wrap;
+}
+
+.pv-rodape {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--pv-linha);
+  color: var(--pv-fraco);
+  font-size: .75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pv-raiz {
+    --pv-tinta: #ececef;
+    --pv-papel: #131316;
+    --pv-fraco: #93939c;
+    --pv-linha: #33333a;
+    --pv-destaque: #7ea2ff;
+    --pv-alerta: #d9a441;
+  }
+  .pv-texto-gerado { background: rgba(126, 162, 255, .07); }
+}

@@ -11,10 +11,12 @@
 
 import mouseTracker from './layouts/mouse-tracker.js';
 import millionDollarHomepage from './layouts/million-dollar-homepage.js';
+import portaVoz from './layouts/porta-voz.js';
 
 export const catalogo = [
   mouseTracker,
   millionDollarHomepage,
+  portaVoz,
 ];
 
 export default catalogo;
