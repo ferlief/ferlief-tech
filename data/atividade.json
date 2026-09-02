@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-09-02T02:32:02Z",
+  "atualizado_em": "2026-09-02T13:00:33Z",
   "projetos": [
     {
       "repo": "anatomia",
@@ -25,9 +25,9 @@
       "repo": "ferlief-tech",
       "url": "https://github.com/ferlief/ferlief-tech",
       "ultimo_commit": {
-        "sha": "8c19330",
-        "mensagem": "chore(ci): use Conventional Commits message in activity feed workflow",
-        "data": "2026-09-02T01:57:13Z"
+        "sha": "ed893c4",
+        "mensagem": "feat: add PT/EN language toggle and Experience/Projects/Blog pages",
+        "data": "2026-09-02T04:05:05Z"
       },
       "resultado": null
     }
