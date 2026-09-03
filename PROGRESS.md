@@ -60,3 +60,30 @@ Se a tabela acima diz que as 5 peças e a integração estão prontas, **não
 refaça nada** — confirme neste arquivo com a hora e pare. Só entre em ação
 se algo aqui estiver incompleto ou se `sites/index.html` não tiver os 6
 artigos.
+
+## Confirmação da rotina de segurança (cloud)
+
+**2026-09-03, checkpoint da rede de segurança** — conferido no commit
+`6194eb7` de `work/portfolio-five-pieces`: as 5 peças e a integração já
+estavam prontas, como esta tabela já indicava. Nada foi refeito.
+
+Checagens rodadas nesta passagem (além de reler a tabela acima):
+- `sites/felipe-moreira/`, `sites/alexia/`, `sites/mariana/`, `sites/regua/`
+  e `sites/jessica-felipe/` existem com `index.html` + `estilo.css`
+  (`mariana` e `regua` também com `interacao.js`).
+- `sites/index.html` tem exatamente 6 `<article class="trabalho">`
+  (6 aberturas, 6 fechamentos) com `href` para os 6 diretórios reais.
+- `selo-demo` aparece só 2 vezes: Clínica Vitalis e Régua — as únicas
+  peças fictícias. As 4 peças de cliente real não levam selo.
+- `css/paginas.css` tem `.mock-felipe-moreira*`, `.mock-alexia*`,
+  `.mock-mariana*`, `.mock-regua*` (miniaturas CSS, sem screenshot).
+- `js/i18n.js` tem `trab3`–`trab7` completos (titulo/tipo/texto/link +
+  fichaObjetivoTexto/fichaDecisoesTexto/fichaEntregaTexto) em pt e chaves
+  correspondentes, e `trab1.ficha*Texto` já renomeado das chaves
+  genéricas `sites.ficha*Texto`; `node --check js/i18n.js` e os dois
+  `interacao.js` passam sem erro de sintaxe.
+- Branch segue só com commits em `work/portfolio-five-pieces`, nada em
+  `main`.
+
+Nenhum commit de código foi criado por esta passagem — só esta entrada de
+log.
