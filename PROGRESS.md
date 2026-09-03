@@ -11,7 +11,7 @@ Estado em 2026-09-03, sessão local (não a rotina de segurança). Branch
 | Felipe Moreira | `felipe-moreira` | cliente real | pronto, conteúdo genérico — falta briefing dele |
 | Raízes Haiir (Alexia) | `alexia` | cliente real | pronto, reposicionado após ver o perfil real (não é mídia kit de moda — é especialista em cachos/crespos/ondulados) |
 | Mariana Indica | `mariana` | cliente real | pronto, fase 1 (curadoria manual, sem automação) — nome da marca é provisório |
-| Régua | `regua` | fictícia | pronto, com barra de procedência e `noindex` |
+| Régua | `regua` | fictícia | pronto — **sem** barra de procedência nem `noindex`, ver política abaixo |
 
 Integração em `sites/index.html`, `css/paginas.css` (miniaturas `.mock-*`)
 e `js/i18n.js` (pt+en, chaves `trab3`–`trab7`, mais `trab1.ficha*Texto`
@@ -87,3 +87,29 @@ Checagens rodadas nesta passagem (além de reler a tabela acima):
 
 Nenhum commit de código foi criado por esta passagem — só esta entrada de
 log.
+
+## Mudança de política — 2026-09-03, depois do checkpoint acima
+
+Instrução direta da Fernanda: **nenhuma peça do site leva selo, barra de
+procedência ou `noindex` automático** — nem as fictícias. A tabela acima
+foi atualizada. Removido de:
+
+- `sites/clinica-vitalis/`, `sites/regua/`, `design/serra-alta/` — barra
+  `.barra-demo`, `<meta name="robots" content="noindex">`, título/legenda
+  "peça de demonstração", rodapé "marca fictícia usada em peça de
+  portfólio", CSS morto (`.barra-demo` nos três `estilo.css`, `.selo-demo`
+  em `css/base.css`).
+- `sites/index.html`, `design/index.html`, `index.html` (home) — os 5
+  `<span class="selo-demo">`.
+- `js/i18n.js` — `trab.selo` (chave removida, pt+en) e `trab.lead` (texto
+  que dizia "duas são projetos de demonstração... sem cliente real",
+  reescrito neutro).
+
+Isso é sobre **o que a própria página mostra**, não sobre o que se diz a
+terceiros: peça fictícia continua nunca sendo apresentada, fora do site,
+como trabalho entregue a um cliente real nomeado. Detalhe completo em
+`PROMPT-IDENTIDADE.md` seção 2 (fora deste repositório, em
+`dev/workspace/landingpages/`, não versionado aqui).
+
+A rotina de segurança (cloud) foi atualizada para não reintroduzir o
+padrão antigo em nenhuma peça que eventualmente precise tocar.

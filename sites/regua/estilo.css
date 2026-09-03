@@ -133,40 +133,6 @@ a {
 }
 
 /* ---------------------------------------------------------------
-   barra de procedência — a peça se identifica como demonstração
-   --------------------------------------------------------------- */
-
-.barra-demo {
-  background: var(--tinta-azul);
-  color: #d7dcea;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  padding: 0.6rem 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.25rem;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.barra-demo strong {
-  color: var(--branco);
-}
-
-.barra-demo a {
-  color: #9fc0e8;
-  text-decoration: none;
-  white-space: nowrap;
-  border-bottom: 1px solid rgba(159, 192, 232, 0.4);
-}
-
-.barra-demo a:hover {
-  color: var(--branco);
-  border-bottom-color: currentColor;
-}
-
-/* ---------------------------------------------------------------
    cabeçalho
    --------------------------------------------------------------- */
 

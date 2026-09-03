@@ -739,6 +739,58 @@
   background: #3f7d2e;
 }
 
+/* mock 8 — timeline de edição de vídeo (Marina & Thiago): a tela é o
+   plano final em grade de cor, a trilha embaixo é o corte — clipes de
+   tamanho desigual, como um projeto real de NLE, nunca segmentos
+   iguais. */
+
+.mock-casamento {
+  background: #0e0d0c;
+  padding: 7%;
+  gap: 7%;
+}
+
+.mock-casamento-tela {
+  flex: 1;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2f6f68 0%, #1c1a17 55%, #c97a3a 100%);
+  position: relative;
+}
+
+.mock-casamento-tela::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7% 0 7% 11%;
+  border-color: transparent transparent transparent rgba(244, 242, 238, 0.85);
+  transform: translate(-40%, -50%);
+}
+
+.mock-casamento-trilha {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  gap: 4%;
+  flex: none;
+}
+
+.mock-casamento-trilha i {
+  display: block;
+  height: 60%;
+  border-radius: 2px;
+  background: #3a3733;
+}
+
+.mock-casamento-trilha i:nth-child(1) { flex: 1.6; }
+.mock-casamento-trilha i:nth-child(2) { flex: 0.8; background: #c97a3a; height: 100%; }
+.mock-casamento-trilha i:nth-child(3) { flex: 2.4; }
+.mock-casamento-trilha i:nth-child(4) { flex: 1; background: #2f6f68; height: 80%; }
+.mock-casamento-trilha i:nth-child(5) { flex: 1.2; }
+
 /* Em /sites e /design há um projeto por página: o cartão vira duas
    colunas para a miniatura não ocupar a tela inteira sozinha. */
 
