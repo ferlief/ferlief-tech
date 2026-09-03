@@ -90,20 +90,19 @@ log.
 
 ## Mudança de política — 2026-09-03, depois do checkpoint acima
 
-Instrução direta da Fernanda: **nenhuma peça do site leva selo, barra de
-procedência ou `noindex` automático** — nem as fictícias. A tabela acima
-foi atualizada. Removido de:
+Instrução direta da Fernanda: **nenhuma peça de `/sites` leva selo, barra
+de procedência ou `noindex` automático** — nem as fictícias. A tabela
+acima foi atualizada. Removido de:
 
-- `sites/clinica-vitalis/`, `sites/regua/`, `design/serra-alta/` — barra
-  `.barra-demo`, `<meta name="robots" content="noindex">`, título/legenda
-  "peça de demonstração", rodapé "marca fictícia usada em peça de
-  portfólio", CSS morto (`.barra-demo` nos três `estilo.css`, `.selo-demo`
-  em `css/base.css`).
-- `sites/index.html`, `design/index.html`, `index.html` (home) — os 5
+- `sites/clinica-vitalis/`, `sites/regua/` — barra `.barra-demo`, `<meta
+  name="robots" content="noindex">`, título/legenda "peça de
+  demonstração", rodapé "marca fictícia usada em peça de portfólio", CSS
+  morto (`.barra-demo` nos dois `estilo.css`, `.selo-demo` em
+  `css/base.css`).
+- `sites/index.html`, `index.html` (home, só o card da Clínica Vitalis) —
   `<span class="selo-demo">`.
-- `js/i18n.js` — `trab.selo` (chave removida, pt+en) e `trab.lead` (texto
-  que dizia "duas são projetos de demonstração... sem cliente real",
-  reescrito neutro).
+- `js/i18n.js` — `trab.lead` reescrito neutro (não afirma mais "sem
+  cliente real por trás").
 
 Isso é sobre **o que a própria página mostra**, não sobre o que se diz a
 terceiros: peça fictícia continua nunca sendo apresentada, fora do site,
@@ -111,5 +110,29 @@ como trabalho entregue a um cliente real nomeado. Detalhe completo em
 `PROMPT-IDENTIDADE.md` seção 2 (fora deste repositório, em
 `dev/workspace/landingpages/`, não versionado aqui).
 
-A rotina de segurança (cloud) foi atualizada para não reintroduzir o
-padrão antigo em nenhuma peça que eventualmente precise tocar.
+**`design/` está fora de escopo — instrução explícita dela.** Uma primeira
+passagem tinha aplicado essa mesma remoção a `design/serra-alta/` e
+`design/index.html` por engano (estendendo a lógica de "o site inteiro"
+além do que ela quis dizer). Foi revertido por completo: os dois arquivos
+voltaram a bater byte a byte com o commit `33bfdc5` (antes de qualquer
+mudança), `trab.selo` voltou ao dicionário (pt+en, `css/base.css` recuperou
+`.selo-demo`), e o card da Serra Alta na home voltou a ter o selo. Só o
+card da Clínica Vitalis na home ficou sem selo, porque ela é peça de
+`/sites`. **Escopo de trabalho de portfólio de landing page é `/sites`,
+ponto — `design/` só se toca com pedido explícito, projeto por projeto.**
+
+A rotina de segurança (cloud) foi atualizada com esse escopo e para não
+reintroduzir o padrão antigo em nenhuma peça de `/sites` que eventualmente
+precise tocar.
+
+## Atribuição em commit — corrigido 2026-09-03
+
+O commit `077c260` (feito pela própria rotina de segurança) saiu com
+`Co-Authored-By: Claude Sonnet 5` e `Claude-Session:` no corpo, e autor
+"Claude" em vez da Fernanda. Instrução dela: nenhum commit leva atribuição
+a Claude/Anthropic, nunca. A branch `work/portfolio-five-pieces` foi
+reescrita (3 commits recriados com o mesmo conteúdo, autor correto, sem
+trailer) e republicada com `--force-with-lease`. A rotina foi atualizada
+para sempre commitar com `--author="Fernanda C Ribeiro
+<4214435+ferlief@users.noreply.github.com>"` e mensagem sem qualquer menção
+à ferramenta.

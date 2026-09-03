@@ -353,6 +353,19 @@ h4 {
   background: var(--surface-alt);
 }
 
+.selo-demo {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+}
+
 /* ---------------------------------------------------------------
    header — barra fixa com navegação e os toggles de tema e idioma.
    Abaixo de 60rem os controles quebram para a segunda linha.
