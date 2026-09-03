@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raízes Haiir — Alexia | Especialista em Cachos e Crespos</title>
+  <meta name="description" content="Especialista em cabelo cacheado, crespo e ondulado. Atendimento presencial e consultoria capilar online, tratamentos sem química.">
+  <link rel="stylesheet" href="estilo.css">
+
+  <!-- ===================================================================
+       Reposicionada a partir do perfil público dela (Instagram
+       @raizeshaiir, consultado com autorização dela em 2026-09-03): ela
+       não é criadora de conteúdo de moda em geral — é especialista em
+       cabelo cacheado, crespo e ondulado, com tratamento sem química,
+       consultoria capilar online e atendimento presencial. Marca:
+       "Raízes Haiir"; "Alexia" é quem está por trás. A versão anterior
+       desta página, focada em mídia kit para marca patrocinadora, não
+       encaixava: 475 seguidores é escala de negócio local, não de
+       parceria publicitária, e a bio dela não menciona publicidade —
+       menciona serviço. Seções de "colab com marca" seguem existindo,
+       menores, porque o negócio pode querer os dois.
+
+       Confirmado do perfil: nome da marca "Raízes Haiir", nicho (cachos,
+       crespos, ondulados), tratamento sem química, consultoria online,
+       "cronograma capilar" (a bio corta em "Cronograma..."), e as
+       categorias de destaque do perfil (Atendimentos, Lugares, Dicas,
+       Espaço, Clientes, Day Afters) — usadas para orientar as seções de
+       serviço e resultado abaixo.
+
+       Ainda falta confirmar com a Alexia antes de publicar de vez:
+       - nome dela por extenso e como quer aparecer
+       - lista real de serviços e preço de cada um (os 5 cartões de
+         "Serviços" são minha melhor estimativa a partir do perfil, não
+         a oferta exata dela)
+       - se atende só cachos/crespos/ondulados ou também cabelo liso
+       - endereço do espaço físico, se atende presencial
+       - handle real do Instagram (usei "@raizeshaiir") e se tem TikTok
+       - 10 a 15 imagens reais (antes/depois, espaço, atendimento) — a
+         marcação de <picture> já está pronta em comentário
+       - texto de bio definitivo, nas palavras dela
+       - se quer manter a seção de parceria com marca, e quais marcas
+         (nenhuma marca real aparece nesta versão)
+       - canal de destino do formulário (WhatsApp e/ou e-mail) para
+         ligar o envio de verdade
+       - domínio próprio, se já tiver
+
+       O que NÃO entra nesta página, mesmo depois do briefing completo:
+       publicidade paga sem identificação como parceria (CONAR e política
+       do Instagram), logo de marca real sem autorização por escrito, e
+       qualquer número de alcance/engajamento apresentado como atual sem
+       vir do Insights dela.
+       =================================================================== -->
+</head>
+<body>
+
+  <header class="cabecalho">
+    <div class="envelope cabecalho-linha">
+      <a class="marca" href="#topo">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <circle cx="16" cy="16" r="4" fill="currentColor"/>
+          <path d="M16 1.5v4M16 26.5v4M1.5 16h4M26.5 16h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span class="marca-texto">
+          <strong>Raízes Haiir</strong>
+          <em>Alexia · cachos, crespos e ondulados</em>
+        </span>
+      </a>
+
+      <nav class="menu" aria-label="Seções da página">
+        <a href="#numeros">Especialidade</a>
+        <a href="#entregas">Serviços</a>
+        <a href="#parcerias">Parcerias</a>
+        <a href="#conteudo">Resultados</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+
+      <a class="botao botao-primario" href="#contato">Agendar avaliação</a>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <section class="hero">
+      <div class="envelope hero-grade">
+        <div class="hero-texto">
+          <p class="sobretitulo">Especialista em cachos, crespos e ondulados</p>
+          <h1>Cada cacho tem um padrão — o tratamento certo começa por entender qual é o seu.</h1>
+          <p class="chamada">
+            Atendimento presencial e consultoria capilar online para cabelo cacheado, crespo e
+            ondulado: tratamento sem química, cronograma capilar personalizado e acompanhamento
+            de como o cabelo responde a cada etapa — não uma rotina genérica copiada de vídeo.
+          </p>
+
+          <div class="hero-acoes">
+            <a class="botao botao-primario botao-grande" href="#contato">Agendar avaliação</a>
+            <a class="botao botao-fantasma botao-grande" href="#entregas">Ver serviços</a>
+          </div>
+
+          <ul class="reforcos">
+            <li>Atendimento presencial e consultoria online</li>
+            <li>Tratamentos sem química</li>
+            <li>Cronograma capilar personalizado</li>
+          </ul>
+        </div>
+
+        <!-- Artefato do hero: o cartão de mídia kit em si — não é
+             ilustração, é o formato que uma marca de fato recebe.
+             A capa de foto usa o padrão geométrico no lugar de imagem
+             real (ver estrutura de <picture> comentada logo abaixo), e o
+             bloco de engajamento reaproveita o MESMO componente
+             .cartao-metrica da seção "Números" — a prova visual de que
+             ele se adapta ao contêiner: aqui, dentro de um cartão
+             estreito, ele empilha; lá embaixo, dentro da grade larga,
+             ele fica em linha. Nenhuma classe extra, nenhum media query
+             de viewport — só a largura do próprio contêiner muda. -->
+        <aside class="cartao-mediakit" aria-label="Resumo do perfil">
+          <!-- Foto real substitui este bloco quando chegar. Estrutura já
+               pronta para receber — trocar a <div class="moldura-foto">
+               abaixo por este <picture>, mantendo width/height/loading:
+
+          <picture>
+            <source type="image/avif" srcset="fotos/capa-800.avif 800w, fotos/capa-480.avif 480w" sizes="(min-width: 60rem) 22rem, 100vw">
+            <source type="image/webp" srcset="fotos/capa-800.webp 800w, fotos/capa-480.webp 480w" sizes="(min-width: 60rem) 22rem, 100vw">
+            <img src="fotos/capa-800.jpg" srcset="fotos/capa-800.jpg 800w, fotos/capa-480.jpg 480w"
+                 sizes="(min-width: 60rem) 22rem, 100vw" width="800" height="600" loading="lazy"
+                 alt="Alexia, especialista em cachos, crespos e ondulados">
+          </picture>
+          -->
+          <div class="moldura-foto moldura-foto-capa" role="img" aria-label="Espaço reservado para foto de capa real"></div>
+
+          <div class="mediakit-corpo">
+            <p class="mediakit-identidade">
+              <span class="mediakit-nome">Raízes Haiir</span>
+              <span class="mediakit-handle">@raizeshaiir</span>
+            </p>
+            <p class="mediakit-categoria">Cachos, crespos e ondulados</p>
+
+            <div class="cartao-metrica">
+              <span class="cartao-metrica-icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.5-7 9-7 9z"/><path d="M4 12h3l1.5-2.2 2 4.4 1.5-2.2h8"/></svg>
+              </span>
+              <span class="cartao-metrica-texto">
+                <strong class="cartao-metrica-valor">Sem química</strong>
+                <span class="cartao-metrica-rotulo">tratamento e definição sem alisante nem formol</span>
+              </span>
+            </div>
+
+            <a class="botao botao-primario botao-bloco" href="#contato">Agendar avaliação</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------------------
+         Números — a seção que decide se a marca continua lendo.
+         Técnica: cada .cartao-metrica é seu próprio contêiner de
+         dimensionamento (container-type: inline-size), então o layout
+         interno reage à largura da CAIXA, não à largura da janela. É o
+         que permite o mesmo cartão, sem classe extra, funcionar na
+         grade de três colunas do desktop, empilhado no celular, e
+         também comprimido dentro do cartão de mídia kit do hero — três
+         contextos, um componente. Detalhe técnico completo no CSS.
+         --------------------------------------------------------------- -->
+    <section class="secao" id="numeros" aria-label="Números do perfil">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Especialidade</p>
+          <h2>Por que cabelo cacheado, crespo e ondulado precisa de olhar especializado</h2>
+          <p class="secao-chamada">
+            Cada tipo de fio responde diferente a hidratação, nutrição e reconstrução. Um
+            cronograma copiado de vídeo genérico ignora isso — o diagnóstico individual não.
+          </p>
+        </header>
+
+        <div class="grade-metricas">
+          <div class="cartao-metrica">
+            <span class="cartao-metrica-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8.3 8.3a5.2 5.2 0 0 0 0 7.4"/><path d="M15.7 8.3a5.2 5.2 0 0 1 0 7.4"/><path d="M5 5a10 10 0 0 0 0 14"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+            </span>
+            <span class="cartao-metrica-texto">
+              <strong class="cartao-metrica-valor">Crespos, cacheados e ondulados</strong>
+              <span class="cartao-metrica-rotulo">é o foco de atendimento — não cabelo em geral</span>
+            </span>
+          </div>
+
+          <div class="cartao-metrica">
+            <span class="cartao-metrica-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M4 19c0-3 2.3-5.3 5-5.3s5 2.3 5 5.3"/><circle cx="17.5" cy="9" r="2.3"/><path d="M15 19c.2-2.2 1.7-3.9 3.5-4.4"/></svg>
+            </span>
+            <span class="cartao-metrica-texto">
+              <strong class="cartao-metrica-valor">Diagnóstico individual</strong>
+              <span class="cartao-metrica-rotulo">antes de montar qualquer cronograma capilar</span>
+            </span>
+          </div>
+
+          <div class="cartao-metrica">
+            <span class="cartao-metrica-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.5-7 9-7 9z"/><path d="M4 12h3l1.5-2.2 2 4.4 1.5-2.2h8"/></svg>
+            </span>
+            <span class="cartao-metrica-texto">
+              <strong class="cartao-metrica-valor">Sem química</strong>
+              <span class="cartao-metrica-rotulo">nenhum procedimento com alisante ou selante de formol</span>
+            </span>
+          </div>
+
+          <div class="cartao-metrica">
+            <span class="cartao-metrica-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v8M21 20H3"/></svg>
+            </span>
+            <span class="cartao-metrica-texto">
+              <strong class="cartao-metrica-valor">Presencial e online</strong>
+              <span class="cartao-metrica-rotulo">atendimento no espaço ou consultoria por videochamada</span>
+            </span>
+          </div>
+        </div>
+
+        <p class="nota-secao">Preço, disponibilidade de horário e se um caso específico é atendido só presencial saem na conversa de agendamento.</p>
+      </div>
+    </section>
+
+    <section class="secao secao-clara" id="entregas">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Serviços</p>
+          <h2>O que está incluso em cada atendimento</h2>
+          <p class="secao-chamada">O cronograma é revisado conforme o cabelo responde — a etapa 2 não é decidida no mesmo dia que a etapa 1.</p>
+        </header>
+
+        <ul class="cartoes grade-entregas">
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M10 9l6 3-6 3z"/></svg>
+            </span>
+            <h3>Consultoria capilar online</h3>
+            <p>Diagnóstico do tipo de cacho, avaliação da rotina atual de produtos e montagem de um cronograma capilar personalizado, por videochamada.</p>
+            <p class="prazo"><strong>Como funciona:</strong> uma sessão de avaliação, com plano por escrito ao final.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="13" rx="2.4" opacity=".45"/><rect x="8" y="3" width="13" height="13" rx="2.4"/></svg>
+            </span>
+            <h3>Cronograma capilar</h3>
+            <p>Plano de hidratação, nutrição e reconstrução ajustado ao que o fio pede em cada etapa — não uma sequência genérica igual para todo mundo.</p>
+            <p class="prazo"><strong>Como funciona:</strong> revisado a cada retorno, conforme o cabelo responde.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="8" stroke-dasharray="3.2 3.4"/></svg>
+            </span>
+            <h3>Tratamento sem química</h3>
+            <p>Procedimento de tratamento e definição de cacho sem alisante nem selante com formol — para quem quer trabalhar o fio como ele é.</p>
+            <p class="prazo"><strong>Como funciona:</strong> presencial, no espaço.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5"/><path d="M4 19h16"/></svg>
+            </span>
+            <h3>Atendimento presencial</h3>
+            <p>Corte, finalização e definição de cacho no espaço, com produto e técnica adequados ao tipo de fio identificado na avaliação.</p>
+            <p class="prazo"><strong>Como funciona:</strong> agendamento por horário, presencial.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.4"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>
+            </span>
+            <h3>Acompanhamento</h3>
+            <p>Repactuação do cronograma a cada etapa, com registro de antes e depois — o "day after" que mostra o que de fato mudou.</p>
+            <p class="prazo"><strong>Como funciona:</strong> incluso em pacote de cronograma completo.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao" id="parcerias">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Trabalhos anteriores</p>
+          <h2>Tipo de campanha, não nome de marca</h2>
+          <p class="secao-chamada">
+            Colabs com marca de produto capilar entram na agenda ao lado do atendimento — não no
+            lugar dele. Nome de marca sai deste site até que cada uma autorize por escrito ser
+            citada. Toda entrega paga é identificada como parceria, conforme CONAR e política do
+            Instagram.
+          </p>
+        </header>
+
+        <ul class="grade-parcerias">
+          <li class="cartao cartao-parceria">
+            <span class="etiqueta-parceria">Parceria paga</span>
+            <h3>Lançamento de linha de cuidados capilares</h3>
+            <p><strong>Objetivo:</strong> gerar tráfego qualificado para o link de pré-venda de um produto novo.</p>
+            <p><strong>Formato:</strong> Reels demonstrando o uso real, mais stories com contagem regressiva até a abertura das vendas.</p>
+          </li>
+          <li class="cartao cartao-parceria">
+            <span class="etiqueta-parceria">Parceria paga</span>
+            <h3>Creme de pentear sem sulfato</h3>
+            <p><strong>Objetivo:</strong> validação de produto novo com uso real, antes do lançamento nacional.</p>
+            <p><strong>Formato:</strong> carrossel de antes e depois usando o produto no cronograma de uma cliente real, com autorização dela.</p>
+          </li>
+          <li class="cartao cartao-parceria">
+            <span class="etiqueta-parceria">Parceria paga</span>
+            <h3>Ativação em evento de beleza</h3>
+            <p><strong>Objetivo:</strong> cobertura para quem não pôde comparecer ao evento, com alcance além do público presente.</p>
+            <p><strong>Formato:</strong> sequência de stories em tempo real durante o evento, mais Reels de resumo publicado em até 48 horas.</p>
+          </li>
+          <li class="cartao cartao-parceria">
+            <span class="etiqueta-parceria">Parceria paga</span>
+            <h3>Manutenção de rotina capilar</h3>
+            <p><strong>Objetivo:</strong> lembrete de recompra para um produto de uso contínuo, em base mensal recorrente.</p>
+            <p><strong>Formato:</strong> carrossel mensal mostrando a rotina de uso — relato de experiência pessoal, sem promessa de resultado.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------------------
+         Conteúdo em destaque: os cartões usam o mesmo padrão geométrico
+         do cartão de mídia kit do hero, no lugar de imagem real. Quando
+         as fotos chegarem, cada .post-imagem vira um <picture> igual ao
+         comentado na seção do hero — mesma estrutura, srcset, lazy load
+         e width/height, um por post. --------------------------------- -->
+    <section class="secao secao-clara" id="conteudo">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Resultados</p>
+          <h2>Antes e depois, dicas e bastidores do espaço</h2>
+        </header>
+
+        <ul class="grade-conteudo">
+          <li class="post-destaque">
+            <div class="post-imagem post-padrao-1" role="img" aria-label="Espaço reservado para imagem real do post"></div>
+            <p class="post-legenda"><span class="post-formato">Day after</span>Antes e depois: cronograma capilar em 3 meses</p>
+          </li>
+          <li class="post-destaque">
+            <div class="post-imagem post-padrao-2" role="img" aria-label="Espaço reservado para imagem real do post"></div>
+            <p class="post-legenda"><span class="post-formato">Dica</span>Como identificar seu tipo de cacho em casa</p>
+          </li>
+          <li class="post-destaque">
+            <div class="post-imagem post-padrao-3" role="img" aria-label="Espaço reservado para imagem real do post"></div>
+            <p class="post-legenda"><span class="post-formato">Espaço</span>Bastidores do atendimento presencial</p>
+          </li>
+          <li class="post-destaque">
+            <div class="post-imagem post-padrao-4" role="img" aria-label="Espaço reservado para imagem real do post"></div>
+            <p class="post-legenda"><span class="post-formato">Cliente</span>Resultado de tratamento sem química, 6 semanas depois</p>
+          </li>
+          <li class="post-destaque">
+            <div class="post-imagem post-padrao-5" role="img" aria-label="Espaço reservado para imagem real do post"></div>
+            <p class="post-legenda"><span class="post-formato">Dica</span>O que funciona — e o que não funciona — em produto pra cabelo cacheado</p>
+          </li>
+          <li class="post-destaque">
+            <div class="post-imagem post-padrao-6" role="img" aria-label="Espaço reservado para imagem real do post"></div>
+            <p class="post-legenda"><span class="post-formato">Atendimento</span>Consultoria online: como funciona a primeira sessão</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao" id="sobre">
+      <div class="envelope sobre-grade">
+        <div>
+          <p class="sobretitulo">Sobre</p>
+          <h2>Quem cuida do seu cacho</h2>
+          <p>
+            Alexia é especialista em cabelo cacheado, crespo e ondulado, com atendimento presencial
+            e consultoria capilar online. O trabalho começa sempre pelo diagnóstico — entender o
+            tipo de fio, o que a rotina atual já acerta e o que está atrapalhando — antes de montar
+            qualquer cronograma ou indicar qualquer produto.
+          </p>
+          <p>
+            Trabalha sem química: nada de alisante ou selante com formol. Quando entra parceria com
+            marca de produto capilar, ela é sempre identificada como tal, e o produto só é indicado
+            depois de testado de verdade — não porque pagaram pelo espaço.
+          </p>
+        </div>
+
+        <aside class="cartao-citacao">
+          <p>Não indico produto que eu não usaria no cronograma de uma cliente de verdade. Isso vale
+          mais do que qualquer parceria paga.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="secao secao-clara" id="duvidas">
+      <div class="envelope envelope-estreito">
+        <header class="secao-topo">
+          <p class="sobretitulo">Dúvidas</p>
+          <h2>O que quem procura atendimento costuma perguntar</h2>
+        </header>
+
+        <div class="duvidas">
+          <details>
+            <summary>O que é um cronograma capilar?</summary>
+            <p>Um plano alternando hidratação, nutrição e reconstrução, na ordem e frequência que o seu cabelo pede — não a mesma sequência genérica pra todo mundo. Ele é revisado conforme o cabelo responde.</p>
+          </details>
+          <details>
+            <summary>A consultoria online funciona pra qualquer tipo de cacho?</summary>
+            <p>Sim — o diagnóstico é feito por videochamada, olhando o fio, o couro cabeludo e a rotina atual. O que muda é que ajuste fino de corte e definição em salão só dá pra fazer presencial.</p>
+          </details>
+          <details>
+            <summary>Em quanto tempo aparece resultado?</summary>
+            <p>Varia por tipo de fio e histórico de química anterior — o próprio cronograma inclui pontos de revisão pra acompanhar isso, em vez de prometer um prazo fechado igual pra todo mundo.</p>
+          </details>
+          <details>
+            <summary>Atende cabelo com química ou só natural?</summary>
+            <p>Atende os dois — o tratamento em si é sempre sem química nova, mas cabelo que já tem histórico de alisamento ou coloração entra na avaliação normalmente.</p>
+          </details>
+          <details>
+            <summary>Como funciona o agendamento presencial?</summary>
+            <p>Pelo formulário desta página ou WhatsApp, com confirmação de horário e o que levar (cabelo lavado ou não, conforme o procedimento).</p>
+          </details>
+          <details>
+            <summary>Vocês fazem parceria com marca de produto?</summary>
+            <p>Às vezes, sempre identificada como tal. Isso não muda a indicação: produto só entra no cronograma de uma cliente se fizer sentido pro cabelo dela, parceria ou não.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao secao-escura" id="contato">
+      <div class="envelope contato-grade">
+        <div class="contato-texto">
+          <p class="sobretitulo">Agendamento</p>
+          <h2>Conte sobre o seu cabelo</h2>
+          <p>
+            Presencial ou consultoria online, o primeiro passo é o mesmo: contar o tipo de cacho,
+            o histórico de química (se houver) e o que está incomodando na rotina atual.
+          </p>
+          <ul class="reforcos reforcos-escuros">
+            <li>Resposta em até 48 horas úteis</li>
+            <li>Confirmação de horário e modalidade por escrito</li>
+            <li>Nenhum dado é repassado a terceiros</li>
+          </ul>
+        </div>
+
+        <!-- Formulário sem destino definido ainda — falta decidir WhatsApp
+             e/ou e-mail com a Alexia. O envio é interceptado no fim da
+             página, e o aviso diz isso, em vez de dar a impressão de que a
+             mensagem partiu. -->
+        <form class="formulario" id="form-contato" novalidate>
+          <p class="campo">
+            <label for="marca">Seu nome</label>
+            <input id="marca" name="nome" type="text" autocomplete="name" required>
+          </p>
+          <p class="campo">
+            <label for="email-contato">E-mail ou telefone para resposta</label>
+            <input id="email-contato" name="email-contato" type="text" inputmode="email" autocomplete="email" required>
+          </p>
+          <p class="campo campo-largo">
+            <label for="produto">Tipo de cacho</label>
+            <select id="produto" name="tipo-cacho" required>
+              <option value="">Selecione</option>
+              <option>Crespo</option>
+              <option>Cacheado</option>
+              <option>Ondulado</option>
+              <option>Não sei — quero avaliação</option>
+            </select>
+          </p>
+          <p class="campo">
+            <label for="orcamento">Já fez química no cabelo?</label>
+            <select id="orcamento" name="quimica">
+              <option>Não, nunca</option>
+              <option>Já fiz, mas faz tempo</option>
+              <option>Faço regularmente</option>
+            </select>
+          </p>
+          <p class="campo">
+            <label for="formato">Modalidade desejada</label>
+            <select id="formato" name="modalidade">
+              <option>Ainda não sei — quero sugestão</option>
+              <option>Consultoria online</option>
+              <option>Atendimento presencial</option>
+              <option>Cronograma capilar completo</option>
+              <option>Tratamento sem química</option>
+            </select>
+          </p>
+          <p class="campo campo-largo">
+            <label for="prazo">Horário de preferência</label>
+            <input id="prazo" name="horario" type="text" placeholder="Ex.: terças à tarde">
+          </p>
+          <p class="campo campo-largo">
+            <label for="mensagem">Mais detalhes <span class="opcional">(opcional)</span></label>
+            <textarea id="mensagem" name="mensagem" rows="3"></textarea>
+          </p>
+          <p class="campo campo-largo">
+            <button class="botao botao-primario botao-bloco botao-grande" type="submit">Enviar pedido</button>
+            <span class="aviso-form" id="aviso-form" role="status">Formulário ainda não conectado: falta definir o canal de destino.</span>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="envelope rodape-grade">
+      <div>
+        <p class="marca marca-rodape"><span><strong>Raízes Haiir</strong></span></p>
+        <p>Alexia · cachos, crespos e ondulados</p>
+        <p class="rodape-nota">Toda parceria paga é identificada, conforme CONAR e política do Instagram.</p>
+      </div>
+      <div>
+        <h2>Seções</h2>
+        <a href="#numeros">Especialidade</a>
+        <a href="#entregas">Serviços</a>
+        <a href="#parcerias">Parcerias</a>
+        <a href="#conteudo">Resultados</a>
+        <a href="#sobre">Sobre</a>
+      </div>
+      <div>
+        <h2>Contato</h2>
+        <a href="#contato">Agendar avaliação</a>
+        <a href="#">Instagram · @raizeshaiir</a>
+      </div>
+    </div>
+    <div class="envelope rodape-legal">
+      <span>Especialidade e serviços descritos aqui a partir do perfil público. Confirmação final com a Alexia.</span>
+      <span>Site por <a href="https://ferlief.tech">ferlief.tech</a></span>
+    </div>
+  </footer>
+
+  <a class="cta-fixo" href="#contato">Agendar avaliação</a>
+
+  <script>
+    // Único script da página: sem canal de destino definido ainda, o
+    // formulário não tem para onde ir. Impede o envio e diz isso, em vez
+    // de dar a impressão de que a mensagem partiu. Trocar por um action
+    // real quando o WhatsApp ou e-mail da Alexia for definido.
+    document.getElementById('form-contato').addEventListener('submit', (evento) => {
+      evento.preventDefault();
+      const aviso = document.getElementById('aviso-form');
+      aviso.textContent = 'Demonstração: numa versão publicada, este pedido iria direto para o contato da Alexia.';
+      aviso.classList.add('aviso-form-ativo');
+    });
+  </script>
+</body>
+</html>

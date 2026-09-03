@@ -1,0 +1,1250 @@
+/* ---------------------------------------------------------------
+   Felipe Moreira — Revisão, redação e fotografia.
+
+   CSS isolado de propósito: esta página não carrega /css/base.css.
+   O site é do cliente, não do portfólio, e precisa continuar de pé
+   se ferlief.tech mudar de cara.
+
+   Sem framework, sem CDN, sem arquivo de imagem: ícone é SVG inline,
+   "foto" da galeria é gradiente CSS até chegar a foto real dele.
+
+   Paleta editorial de tinta e papel — deliberadamente distinta do
+   verde-petróleo da clínica e do terroso da Jéssica. Título grande
+   em serifa e medida de linha curta são o argumento de venda desta
+   peça: site de escritor julgado pela própria tipografia.
+   --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --tinta-forte: #1c2430;
+  --tinta-media: #52504a;
+  --papel: #f7f3ea;
+  --papel-linha: #e6ddc9;
+  --vermelho-tinta: #8c3a2b;
+  --vermelho-tinta-escuro: #6f2c20;
+  --branco: #ffffff;
+  --fundo: #fbf8f2;
+
+  --texto: var(--tinta-media);
+  --texto-suave: #83806a;
+
+  --raio: 10px;
+  --raio-g: 18px;
+  --sombra: 0 1px 2px rgba(28, 36, 48, 0.08), 0 14px 30px -18px rgba(28, 36, 48, 0.35);
+  --sombra-suave: 0 1px 2px rgba(28, 36, 48, 0.06), 0 6px 16px -12px rgba(28, 36, 48, 0.3);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--fundo);
+  padding-bottom: 4.5rem; /* espaço do CTA fixo no celular */
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--tinta-forte);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2rem, 1.3rem + 3vw, 3.1rem); }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.05rem); }
+h3 { font-size: 1.08rem; }
+
+/* Medida de linha entre 60 e 75 caracteres no corpo: é o ponto de
+   venda tipográfico da peça, então todo parágrafo de leitura longa
+   recebe um max-width em `ch`, não só o hero. */
+p { text-wrap: pretty; }
+svg { display: block; }
+
+a { color: var(--vermelho-tinta); }
+
+img { max-width: 100%; height: auto; }
+
+/* Foco visível em tudo que recebe teclado. Contorno na cor de acento,
+   com afastamento para não colar na borda do componente. */
+:focus-visible {
+  outline: 2px solid var(--vermelho-tinta);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.envelope {
+  width: min(100% - 2.5rem, 68rem);
+  margin-inline: auto;
+}
+
+.envelope-estreito {
+  width: min(100% - 2.5rem, 46rem);
+}
+
+.sobretitulo {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--vermelho-tinta);
+  margin-bottom: 0.6rem;
+}
+
+.chamada {
+  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.18rem);
+  color: var(--texto);
+  margin-top: 1rem;
+  max-width: 62ch;
+}
+
+/* ---------------------------------------------------------------
+   botão
+   --------------------------------------------------------------- */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* Alvo de toque mínimo de 44px: exigência de acessibilidade, não
+     preferência estética. */
+  min-height: 44px;
+  padding: 0.6rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: var(--raio);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.94rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.botao-primario {
+  background: var(--vermelho-tinta);
+  color: var(--branco);
+}
+
+.botao-primario:hover {
+  background: var(--vermelho-tinta-escuro);
+}
+
+.botao-fantasma {
+  background: transparent;
+  border-color: var(--papel-linha);
+  color: var(--tinta-forte);
+}
+
+.botao-fantasma:hover {
+  border-color: var(--vermelho-tinta);
+  background: var(--papel);
+}
+
+.botao-grande {
+  min-height: 52px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+}
+
+.botao-bloco {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------
+   cabeçalho
+   --------------------------------------------------------------- */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(251, 248, 242, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--papel-linha);
+}
+
+.cabecalho-linha {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 4.5rem;
+  padding-block: 0.6rem;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--tinta-forte);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.marca svg {
+  width: 30px;
+  height: 30px;
+  color: var(--vermelho-tinta);
+  flex-shrink: 0;
+}
+
+.marca-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.marca-texto strong {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.marca-texto em {
+  font-style: normal;
+  font-size: 0.74rem;
+  color: var(--texto-suave);
+  letter-spacing: 0.02em;
+}
+
+.menu {
+  display: flex;
+  gap: 1.25rem;
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+.menu a {
+  color: var(--texto);
+  text-decoration: none;
+  padding-block: 0.3rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.menu a:hover {
+  color: var(--vermelho-tinta);
+  border-bottom-color: var(--vermelho-tinta);
+}
+
+.cabecalho .botao-primario {
+  flex-shrink: 0;
+}
+
+@media (max-width: 62rem) {
+  .menu { display: none; }
+  .cabecalho .botao-primario { margin-left: auto; }
+}
+
+/* ---------------------------------------------------------------
+   hero
+   --------------------------------------------------------------- */
+
+.hero {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  /* "Foto" sem arquivo de imagem: manchas de luz em gradiente radial
+     sobre o papel. Pesa zero e não desfoca em tela retina. */
+  background:
+    radial-gradient(60ch 40ch at 84% 6%, rgba(140, 58, 43, 0.09), transparent 70%),
+    radial-gradient(50ch 34ch at 4% 94%, rgba(28, 36, 48, 0.07), transparent 70%),
+    var(--fundo);
+}
+
+.hero-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .hero-grade {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+  }
+}
+
+/* min-width: 0 porque item de grid tem largura mínima automática igual
+   ao conteúdo: sem isso, uma palavra longa no h1 empurra a coluna e
+   estoura a grade no celular. */
+.hero-texto {
+  min-width: 0;
+}
+
+.hero h1 {
+  margin-top: 0.3rem;
+  max-width: 19ch;
+}
+
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.reforcos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  list-style: none;
+  margin-top: 1.6rem;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.reforcos li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.reforcos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--vermelho-tinta);
+}
+
+.reforcos-escuros {
+  color: rgba(247, 243, 234, 0.82);
+}
+
+.reforcos-escuros li::before {
+  background: rgba(247, 243, 234, 0.6);
+}
+
+/* ---------------------------------------------------------------
+   cartão "Nota de revisão" — o artefato do hero
+
+   Não é ilustração: é o formato real de comentário que o cliente
+   recebe de volta, com marcação de troca (del/ins) e a razão dela.
+   --------------------------------------------------------------- */
+
+.cartao-revisao {
+  background: var(--branco);
+  border: 1px solid var(--papel-linha);
+  border-radius: var(--raio-g);
+  box-shadow: var(--sombra);
+  padding: 1.6rem;
+}
+
+.cartao-revisao-topo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vermelho-tinta);
+  box-shadow: 0 0 0 4px rgba(140, 58, 43, 0.14);
+}
+
+.revisao-trecho {
+  margin: 1.2rem 0 1rem;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--tinta-forte);
+}
+
+.revisao-trecho del {
+  color: var(--texto-suave);
+  text-decoration: line-through;
+  text-decoration-color: var(--texto-suave);
+  text-decoration-thickness: 1.5px;
+}
+
+.revisao-trecho ins {
+  color: var(--vermelho-tinta-escuro);
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(140, 58, 43, 0.08);
+  border-radius: 3px;
+  padding: 0 0.15em;
+}
+
+.revisao-comentario {
+  font-size: 0.86rem;
+  color: var(--texto-suave);
+  padding: 0.8rem 0.9rem;
+  background: var(--papel);
+  border-left: 3px solid var(--vermelho-tinta);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  margin-bottom: 1.2rem;
+}
+
+.revisao-comentario strong {
+  color: var(--tinta-forte);
+}
+
+.cartao-revisao-nota {
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------
+   faixa de números
+   --------------------------------------------------------------- */
+
+.faixa {
+  background: var(--tinta-forte);
+  color: var(--papel);
+  padding-block: 2rem;
+}
+
+.faixa-grade {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  text-align: center;
+}
+
+.faixa-grade div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.faixa-grade strong {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.8rem);
+  color: var(--branco);
+  line-height: 1.1;
+}
+
+.faixa-grade span {
+  font-size: 0.86rem;
+  color: rgba(247, 243, 234, 0.78);
+  text-wrap: balance;
+}
+
+/* ---------------------------------------------------------------
+   seções
+   --------------------------------------------------------------- */
+
+.secao {
+  padding-block: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+
+.secao-clara {
+  background: var(--papel);
+}
+
+.secao-topo {
+  max-width: 58ch;
+  margin-bottom: 2.5rem;
+}
+
+.secao-chamada {
+  margin-top: 0.9rem;
+  color: var(--texto-suave);
+  font-size: 1.02rem;
+  max-width: 68ch;
+}
+
+/* ---------------------------------------------------------------
+   cartões e serviços
+   --------------------------------------------------------------- */
+
+.cartoes {
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.cartoes-quatro {
+  grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
+}
+
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--papel-linha);
+  border-radius: var(--raio-g);
+  padding: 1.5rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.secao-clara .cartao {
+  border-color: rgba(140, 58, 43, 0.16);
+}
+
+.cartao h3 {
+  margin-bottom: 0.5rem;
+}
+
+.cartao p {
+  font-size: 0.94rem;
+  color: var(--texto-suave);
+}
+
+.icone {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: var(--papel);
+  color: var(--vermelho-tinta);
+}
+
+.icone svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cartao-servico {
+  display: flex;
+  flex-direction: column;
+}
+
+.servico-info {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--papel-linha);
+}
+
+.servico-info dt {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.servico-info dd {
+  font-size: 0.92rem;
+  color: var(--tinta-forte);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------
+   amostras antes/depois — componente central da página
+   --------------------------------------------------------------- */
+
+.antes-depois {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.comparativo {
+  background: var(--branco);
+  border: 1px solid var(--papel-linha);
+  border-radius: var(--raio-g);
+  padding: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+  box-shadow: var(--sombra-suave);
+}
+
+.comparativo-etiqueta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--texto-suave);
+  margin-bottom: 1.1rem;
+}
+
+.comparativo-grade {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 46rem) {
+  .comparativo-grade {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.comparativo-coluna {
+  padding: 1rem 1.1rem;
+  border-radius: var(--raio);
+  background: var(--papel);
+}
+
+/* Diferenciação por estilo de borda, não só por cor: tracejado no
+   original, sólido no revisado — continua legível em preto e branco,
+   inclusive na versão impressa da página. */
+.comparativo-original {
+  border-left: 3px dashed var(--texto-suave);
+}
+
+.comparativo-revisado {
+  border-left: 3px solid var(--vermelho-tinta);
+  background: rgba(140, 58, 43, 0.05);
+}
+
+.comparativo-rotulo {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 0.5rem;
+}
+
+.comparativo-revisado .comparativo-rotulo {
+  color: var(--vermelho-tinta-escuro);
+}
+
+.comparativo-coluna p:not(.comparativo-rotulo) {
+  font-family: var(--serif);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--tinta-forte);
+  max-width: 42ch;
+}
+
+.comparativo-nota {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--papel-linha);
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  max-width: 68ch;
+}
+
+.comparativo-nota strong {
+  color: var(--tinta-forte);
+}
+
+/* ---------------------------------------------------------------
+   textos publicados
+   --------------------------------------------------------------- */
+
+.lista-textos {
+  list-style: none;
+  display: grid;
+  gap: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.lista-textos li {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--papel-linha);
+}
+
+.lista-textos li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lista-textos h3 {
+  margin-bottom: 0.3rem;
+}
+
+.lista-textos-veiculo {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--vermelho-tinta);
+  margin-bottom: 0.4rem;
+}
+
+.lista-textos p:not(.lista-textos-veiculo) {
+  font-size: 0.94rem;
+  color: var(--texto-suave);
+  max-width: 62ch;
+}
+
+/* ---------------------------------------------------------------
+   fotografia — galeria em scroll-snap horizontal
+
+   Técnica: contêiner focável (tabindex) com overflow-x, para que
+   Tab pare uma vez na galeria e as setas do teclado rolem o
+   conteúdo — comportamento nativo de região com overflow, sem
+   precisar de JavaScript.
+   --------------------------------------------------------------- */
+
+.galeria-scroll {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.5rem;
+  border-radius: var(--raio-g);
+  -webkit-overflow-scrolling: touch;
+}
+
+.galeria-scroll:focus-visible {
+  outline-offset: 6px;
+}
+
+.galeria-lista {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  width: max-content;
+}
+
+.foto {
+  position: relative;
+  width: clamp(13rem, 11rem + 8vw, 17rem);
+  height: clamp(16rem, 14rem + 6vw, 20rem);
+  border-radius: var(--raio-g);
+  box-shadow: var(--sombra-suave);
+  scroll-snap-align: center;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.foto-legenda {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--branco);
+  background: linear-gradient(to top, rgba(28, 20, 16, 0.75), transparent);
+}
+
+/* Sete padrões geométricos distintos, feitos só de gradiente CSS —
+   substituem fotografias reais até a seleção dele chegar. Cada um
+   mantém contraste de luminância suficiente para funcionar também
+   em preto e branco (relevante para a versão impressa da página). */
+.foto-1 {
+  background: repeating-linear-gradient(45deg, var(--tinta-forte) 0 10px, var(--papel-linha) 10px 20px);
+}
+
+.foto-2 {
+  background: radial-gradient(circle at 30% 30%, var(--vermelho-tinta), var(--tinta-forte) 72%);
+}
+
+.foto-3 {
+  background: repeating-radial-gradient(circle at 50% 45%, var(--papel) 0 6px, var(--tinta-media) 6px 13px);
+}
+
+.foto-4 {
+  background: linear-gradient(135deg, var(--tinta-forte), var(--vermelho-tinta-escuro));
+}
+
+.foto-5 {
+  background: repeating-linear-gradient(90deg, var(--tinta-media) 0 4px, var(--papel) 4px 26px);
+}
+
+.foto-6 {
+  background: conic-gradient(var(--vermelho-tinta), var(--tinta-forte), var(--papel-linha), var(--vermelho-tinta));
+}
+
+.foto-7 {
+  background: repeating-linear-gradient(-45deg, var(--papel) 0 12px, var(--tinta-forte) 12px 14px);
+}
+
+/* ---------------------------------------------------------------
+   como funciono
+   --------------------------------------------------------------- */
+
+.como-funciono-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 3vw, 3rem);
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .como-funciono-grade {
+    grid-template-columns: 1.3fr 0.7fr;
+  }
+}
+
+.como-funciono-grade > div > p {
+  margin-top: 1rem;
+  max-width: 58ch;
+}
+
+.passos {
+  list-style: none;
+  margin: 1.8rem 0 0;
+  display: grid;
+  gap: 1.3rem;
+}
+
+.passos li {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.passo-numero {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--papel);
+  color: var(--vermelho-tinta-escuro);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.passo-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.passo-corpo strong {
+  color: var(--tinta-forte);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.passo-corpo em {
+  font-style: normal;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  line-height: 1.5;
+}
+
+.cartao-citacao {
+  padding: 1.8rem;
+  border-radius: var(--raio-g);
+  background: var(--papel);
+  border: 1px solid var(--papel-linha);
+}
+
+.cartao-citacao p {
+  font-family: var(--serif);
+  font-size: 1.14rem;
+  line-height: 1.5;
+  color: var(--vermelho-tinta-escuro);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------
+   dúvidas — <details> nativo, sem JavaScript
+   --------------------------------------------------------------- */
+
+.duvidas {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.duvidas details {
+  background: var(--branco);
+  border: 1px solid rgba(140, 58, 43, 0.16);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.duvidas summary {
+  padding: 1rem 3rem 1rem 1.15rem;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--tinta-forte);
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+
+.duvidas summary::-webkit-details-marker { display: none; }
+
+.duvidas summary::after {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--vermelho-tinta);
+  border-bottom: 2px solid var(--vermelho-tinta);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform .2s ease;
+}
+
+.duvidas details[open] summary::after {
+  transform: translateY(-25%) rotate(225deg);
+}
+
+.duvidas summary:hover {
+  background: var(--papel);
+}
+
+.duvidas p {
+  padding: 0 1.15rem 1.15rem;
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  max-width: 65ch;
+}
+
+/* ---------------------------------------------------------------
+   contato
+   --------------------------------------------------------------- */
+
+.secao-escura {
+  background: var(--tinta-forte);
+  color: var(--papel);
+}
+
+.secao-escura h2 {
+  color: var(--branco);
+}
+
+.secao-escura .sobretitulo {
+  color: rgba(140, 58, 43, 0.75);
+}
+
+.secao-escura p {
+  color: rgba(247, 243, 234, 0.86);
+}
+
+.contato-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .contato-grade {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.contato-texto p {
+  margin-top: 1rem;
+  max-width: 42ch;
+}
+
+.formulario {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  background: var(--branco);
+  border-radius: var(--raio-g);
+  padding: clamp(1.4rem, 1rem + 1.5vw, 2rem);
+  box-shadow: var(--sombra);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo-largo {
+  grid-column: 1 / -1;
+}
+
+.campo label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--tinta-forte);
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo select,
+.campo textarea {
+  min-height: 44px;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--papel-linha);
+  border-radius: var(--raio);
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+.campo textarea {
+  min-height: 6.5rem;
+  resize: vertical;
+}
+
+.campo input[type="text"]:focus-visible,
+.campo input[type="email"]:focus-visible,
+.campo select:focus-visible,
+.campo textarea:focus-visible {
+  border-color: var(--vermelho-tinta);
+  background: var(--branco);
+}
+
+.aviso-form {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.83rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------
+   rodapé
+   --------------------------------------------------------------- */
+
+.rodape {
+  background: var(--tinta-forte);
+  color: rgba(247, 243, 234, 0.72);
+  padding-top: 3rem;
+  font-size: 0.92rem;
+}
+
+.rodape-grade {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  padding-bottom: 2.5rem;
+}
+
+.rodape h2 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 234, 0.5);
+  margin-bottom: 0.8rem;
+}
+
+.rodape a {
+  display: block;
+  color: rgba(247, 243, 234, 0.82);
+  text-decoration: none;
+  padding-block: 0.28rem;
+}
+
+.rodape a:hover {
+  color: var(--branco);
+  text-decoration: underline;
+}
+
+.marca-rodape {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--branco);
+  margin-bottom: 0.4rem;
+}
+
+.rodape-nota {
+  margin-top: 0.4rem;
+  font-size: 0.86rem;
+}
+
+.rodape-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem 1.5rem;
+  padding-block: 1.2rem;
+  border-top: 1px solid rgba(247, 243, 234, 0.14);
+  font-size: 0.82rem;
+  color: rgba(247, 243, 234, 0.55);
+}
+
+.rodape-legal a {
+  display: inline;
+  color: rgba(247, 243, 234, 0.75);
+}
+
+/* ---------------------------------------------------------------
+   CTA fixo — só no celular
+   --------------------------------------------------------------- */
+
+.cta-fixo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  background: var(--vermelho-tinta);
+  color: var(--branco);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 -6px 20px -10px rgba(28, 36, 48, 0.5);
+}
+
+@media (min-width: 48rem) {
+  .cta-fixo { display: none; }
+  body { padding-bottom: 0; }
+}
+
+/* ---------------------------------------------------------------
+   movimento reduzido
+   --------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===================================================================
+   Impressão — técnica não usada nas outras peças do conjunto.
+
+   Um redator manda clipping impresso ou PDF gerado do navegador com
+   frequência maior que a maioria dos clientes de portfólio: vale a
+   pena a página se comportar bem no Ctrl+P. Regras: esconder o que só
+   faz sentido na tela (navegação, CTA fixo, formulário, galeria em
+   scroll), passar para fundo branco e garantir que a marcação de
+   antes/depois e as "fotos" continuem legíveis sem cor.
+   =================================================================== */
+
+@media print {
+  /* Fundo branco, sem gradiente de tela — impressora não deveria
+     gastar tinta cobrindo página inteira, e sem isso o texto escuro
+     sobre fundo escuro (rodapé, faixa) ficaria ilegível em P&B. */
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--tinta-forte) !important;
+  }
+
+  html, body {
+    background: var(--branco) !important;
+    color: var(--tinta-forte) !important;
+    padding-bottom: 0;
+  }
+
+  a {
+    color: var(--tinta-forte) !important;
+    text-decoration: underline;
+  }
+
+  /* Elementos que só servem à navegação em tela — inúteis, ou
+     enganosos (link não clicável), no papel. */
+  .cabecalho,
+  .cta-fixo,
+  .hero-acoes,
+  .menu,
+  #fotografia .secao-chamada,
+  .formulario,
+  .aviso-form,
+  .contato-texto .reforcos {
+    display: none !important;
+  }
+
+  /* A galeria fica — só troca de "faixa com scroll" para grade
+     estática, ver abaixo. Sem isso o pai com overflow:auto some
+     junto com o filho e a seção de fotografia imprime vazia. */
+  .galeria-scroll {
+    overflow: visible !important;
+  }
+
+  .hero-grade,
+  .como-funciono-grade,
+  .contato-grade {
+    display: block !important;
+  }
+
+  .cartao-revisao,
+  .cartao-citacao,
+  .cartao,
+  .comparativo,
+  .comparativo-coluna {
+    border: 1px solid #999 !important;
+  }
+
+  /* O antes/depois é o argumento central da página: precisa continuar
+     em duas colunas legíveis mesmo impresso, com o rótulo de cada
+     lado reforçado por texto, não só por cor. */
+  .comparativo-grade {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem;
+  }
+
+  .comparativo-original {
+    border-left: 3px dashed #666 !important;
+  }
+
+  .comparativo-revisado {
+    border-left: 3px solid #000 !important;
+  }
+
+  .revisao-trecho ins {
+    background: transparent !important;
+    text-decoration: underline !important;
+  }
+
+  .comparativo,
+  .cartao,
+  .lista-textos li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .secao {
+    padding-block: 1.2rem;
+  }
+
+  .envelope,
+  .envelope-estreito {
+    width: 100%;
+  }
+
+  h1 { font-size: 22pt; }
+  h2 { font-size: 15pt; }
+
+  /* Substitui a galeria de scroll (inútil no papel) por uma grade
+     estática das mesmas 7 "fotos", em preto e branco: os padrões
+     geométricos usam contraste de luminância, não só matiz de cor,
+     então continuam distinguíveis um do outro sem tinta colorida. */
+  .galeria-lista {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    width: 100% !important;
+    gap: 0.5rem;
+  }
+
+  .foto {
+    width: 100% !important;
+    height: 6rem !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .foto-legenda {
+    color: #000 !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    font-size: 8pt;
+  }
+}

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Régua — peça de demonstração | ferlief.tech</title>
+  <meta name="description" content="Landing page de demonstração para SaaS fictício de régua de cobrança recorrente, organizada em torno de um cadastro em quatro etapas com validação real de CNPJ. Marca fictícia, criada como peça de portfólio por ferlief.tech.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <!-- Barra de procedência: a peça é de demonstração e diz isso antes
+       de qualquer outra coisa na página. Marca fictícia, sem cliente
+       real por trás. -->
+  <div class="barra-demo">
+    <p><strong>Peça de demonstração.</strong> Régua é uma marca fictícia — nenhum dado, empresa ou pessoa desta página existe.</p>
+    <a href="/sites/">← voltar ao portfólio</a>
+  </div>
+
+  <header class="cabecalho">
+    <div class="envelope cabecalho-linha">
+      <a class="marca" href="#topo">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect x="4" y="12" width="24" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M9.5 12v3M14.5 12v5M19.5 12v3M24.5 12v5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span>Régua</span>
+      </a>
+
+      <nav class="menu" aria-label="Seções da página">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#cadastro">Cadastro</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <div class="envelope envelope-estreito hero-conteudo">
+        <p class="sobretitulo">Régua de cobrança recorrente</p>
+        <h1>Cadastro em quatro etapas. Nenhuma delas pede cartão.</h1>
+        <p class="chamada">A Régua emite, lembra, cobra e concilia a mensalidade do seu cliente automaticamente. O cadastro abaixo é o produto de verdade — não uma tela ilustrativa — e leva menos de três minutos, sem trava de teclado e sem CNPJ de mentira passando por válido.</p>
+
+        <ul class="reforcos">
+          <li>Implantação em 5 dias, sem setup</li>
+          <li>Sem pré-pagamento</li>
+          <li>Cancelamento pelo painel, sem ligação</li>
+        </ul>
+
+        <div class="hero-acoes">
+          <a class="botao botao-primario botao-grande" href="#cadastro">Começar cadastro</a>
+          <a class="botao botao-fantasma botao-grande" href="#como-funciona">Como funciona</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faixa" aria-label="A Régua em números">
+      <div class="envelope faixa-grade">
+        <div><strong>0</strong><span>taxas escondidas no contrato</span></div>
+        <div><strong>5 dias</strong><span>prazo médio de implantação</span></div>
+        <div><strong>3</strong><span>formas de recebimento: Pix, boleto e cartão</span></div>
+        <div><strong>24 h</strong><span>para avisar CNPJ irregular na Receita</span></div>
+      </div>
+    </section>
+
+    <section class="secao" id="como-funciona">
+      <div class="envelope envelope-estreito">
+        <header class="secao-topo">
+          <p class="sobretitulo">Como funciona</p>
+          <h2>Da conta criada à primeira cobrança</h2>
+          <p class="secao-chamada">Três movimentos, sem integração obrigatória no primeiro dia.</p>
+        </header>
+
+        <ol class="passos">
+          <li>
+            <span class="passo-numero">1</span>
+            <h3>Você cadastra a empresa</h3>
+            <p>CNPJ, responsável e forma de recebimento — o formulário logo abaixo, que já valida os dados enquanto você digita.</p>
+          </li>
+          <li>
+            <span class="passo-numero">2</span>
+            <h3>A régua monta o calendário</h3>
+            <p>Emissão, lembrete três dias antes do vencimento e cobrança no dia — ajustável por cliente, sem planilha paralela.</p>
+          </li>
+          <li>
+            <span class="passo-numero">3</span>
+            <h3>Você concilia em um lugar só</h3>
+            <p>Pix, boleto e cartão caem no mesmo painel. A cobrança só começa a valer quando a primeira fatura sua for paga.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------------------
+         Cadastro em quatro etapas — o corpo principal da página.
+         `<fieldset>` por etapa, `inert` nas etapas que não são a atual,
+         foco movido para a `<legend>` a cada avanço, progresso anunciado
+         por `aria-live`. Toda a lógica está em interacao.js.
+         --------------------------------------------------------------- -->
+    <section class="secao secao-clara" id="cadastro">
+      <div class="envelope envelope-cadastro">
+        <header class="secao-topo">
+          <p class="sobretitulo">Cadastro</p>
+          <h2>Crie a conta da sua empresa</h2>
+          <p class="secao-chamada">Se o CNPJ estiver irregular na Receita, o cadastro segue normalmente e avisamos em até 24&nbsp;horas — a etapa 1 não trava por isso.</p>
+        </header>
+
+        <div class="progresso" role="group" aria-label="Progresso do cadastro">
+          <ol class="progresso-lista" id="progresso-lista">
+            <li data-passo="1" aria-current="step"><span class="progresso-bolha">1</span><span class="progresso-rotulo">Empresa</span></li>
+            <li data-passo="2"><span class="progresso-bolha">2</span><span class="progresso-rotulo">Responsável</span></li>
+            <li data-passo="3"><span class="progresso-bolha">3</span><span class="progresso-rotulo">Recebimento</span></li>
+            <li data-passo="4"><span class="progresso-bolha">4</span><span class="progresso-rotulo">Senha e revisão</span></li>
+          </ol>
+          <p class="progresso-status" id="progresso-status" aria-live="polite">Etapa 1 de 4 — Empresa</p>
+        </div>
+
+        <!-- Formulário de demonstração: não tem action, não envia nem
+             armazena nada. O envio final é interceptado em interacao.js. -->
+        <form class="formulario-cadastro" id="form-cadastro" novalidate>
+
+          <fieldset class="etapa" data-etapa="1" id="etapa-1">
+            <legend tabindex="-1">Etapa 1 de 4 — Empresa</legend>
+
+            <p class="campo">
+              <label for="cnpj">CNPJ</label>
+              <input id="cnpj" name="cnpj" type="text" inputmode="numeric" autocomplete="off" placeholder="00.000.000/0000-00" maxlength="18" aria-describedby="cnpj-status" required>
+              <span class="campo-status" id="cnpj-status" role="status"></span>
+            </p>
+            <p class="campo">
+              <label for="razao-social">Razão social</label>
+              <input id="razao-social" name="razaoSocial" type="text" autocomplete="organization" required>
+            </p>
+            <p class="campo">
+              <label for="porte">Porte da empresa</label>
+              <select id="porte" name="porte" required>
+                <option value="">Selecione</option>
+                <option value="mei">MEI</option>
+                <option value="micro">Microempresa</option>
+                <option value="pequena">Pequena empresa</option>
+                <option value="media">Média empresa</option>
+              </select>
+            </p>
+          </fieldset>
+
+          <fieldset class="etapa" data-etapa="2" id="etapa-2" inert>
+            <legend tabindex="-1">Etapa 2 de 4 — Responsável</legend>
+
+            <p class="campo">
+              <label for="nome-responsavel">Nome completo</label>
+              <input id="nome-responsavel" name="nome" type="text" autocomplete="name" required>
+            </p>
+            <p class="campo">
+              <label for="email-responsavel">E-mail</label>
+              <input id="email-responsavel" name="email" type="email" inputmode="email" autocomplete="email" required>
+            </p>
+            <p class="campo">
+              <label for="celular-responsavel">Celular</label>
+              <input id="celular-responsavel" name="celular" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" maxlength="15" required>
+            </p>
+          </fieldset>
+
+          <fieldset class="etapa" data-etapa="3" id="etapa-3" inert>
+            <legend tabindex="-1">Etapa 3 de 4 — Recebimento</legend>
+            <p class="campo-ajuda">Marque todas as formas que a sua empresa vai aceitar. Dá para mudar depois, pelo painel.</p>
+
+            <fieldset class="grupo-checkbox">
+              <legend class="sr">Formas de recebimento aceitas</legend>
+              <p class="opcao-checkbox">
+                <input id="recebimento-pix" name="recebimento" type="checkbox" value="pix">
+                <label for="recebimento-pix">Pix</label>
+              </p>
+              <p class="opcao-checkbox">
+                <input id="recebimento-boleto" name="recebimento" type="checkbox" value="boleto">
+                <label for="recebimento-boleto">Boleto</label>
+              </p>
+              <p class="opcao-checkbox">
+                <input id="recebimento-cartao" name="recebimento" type="checkbox" value="cartao">
+                <label for="recebimento-cartao">Cartão de crédito</label>
+              </p>
+            </fieldset>
+            <span class="campo-status" id="recebimento-status" role="status"></span>
+          </fieldset>
+
+          <fieldset class="etapa" data-etapa="4" id="etapa-4" inert>
+            <legend tabindex="-1">Etapa 4 de 4 — Senha e revisão</legend>
+
+            <p class="campo">
+              <label for="senha">Senha</label>
+              <input id="senha" name="senha" type="password" autocomplete="new-password" aria-describedby="senha-forca-texto" required>
+            </p>
+            <div class="forca-senha">
+              <div class="forca-senha-barra">
+                <span id="forca-senha-preenchimento" class="forca-senha-preenchimento" data-nivel="vazio"></span>
+              </div>
+              <p class="forca-senha-texto" id="senha-forca-texto" role="status">Digite uma senha para ver a força estimada.</p>
+            </div>
+
+            <div class="resumo" id="resumo-cadastro" aria-label="Resumo do cadastro">
+              <h3>Confira antes de enviar</h3>
+              <dl class="resumo-lista" id="resumo-lista">
+                <!-- Preenchido por interacao.js ao entrar nesta etapa. -->
+              </dl>
+            </div>
+
+            <p class="campo campo-largo">
+              <button class="botao botao-primario botao-bloco botao-grande" type="submit">Criar minha conta</button>
+              <span class="aviso-form" id="aviso-form" role="status">Formulário de demonstração: nada é enviado nem armazenado.</span>
+            </p>
+          </fieldset>
+
+          <div class="formulario-navegacao">
+            <button type="button" class="botao botao-fantasma" id="btn-voltar" hidden>Voltar</button>
+            <button type="button" class="botao botao-primario" id="btn-avancar">Avançar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="secao" id="por-que-importa">
+      <div class="envelope envelope-estreito">
+        <header class="secao-topo">
+          <p class="sobretitulo">Por que isso importa</p>
+          <h2>Cadastro acessível não é detalhe de acabamento</h2>
+        </header>
+
+        <ul class="cartoes cartoes-duas">
+          <li class="cartao">
+            <h3>CNPJ validado de verdade</h3>
+            <p>A maioria dos formulários brasileiros aceita <code>11.111.111/1111-11</code> como CNPJ válido, porque só confere o formato com uma expressão regular. Aqui o cálculo é o dos dois dígitos verificadores reais — módulo 11, pesos corretos — então um número de teste feito às pressas é recusado antes de virar cliente cadastrado errado no banco.</p>
+          </li>
+          <li class="cartao">
+            <h3>Percorrível só de teclado</h3>
+            <p>Cada etapa usa <code>inert</code> nas seções que não estão ativas, então o Tab nunca cai numa etapa escondida. O foco é movido para o título da etapa nova a cada avanço, e o progresso é anunciado por leitor de tela — sem isso, quem navega por teclado ou leitor de tela perde o ponto onde estava.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao secao-clara" id="duvidas">
+      <div class="envelope envelope-estreito">
+        <header class="secao-topo">
+          <p class="sobretitulo">Dúvidas frequentes</p>
+          <h2>O que perguntam antes de cadastrar</h2>
+        </header>
+
+        <div class="faq">
+          <details>
+            <summary>Preciso de cartão de crédito para me cadastrar?</summary>
+            <p>Não. O cadastro pede a forma de recebimento que a sua empresa vai oferecer ao cliente dela — não um cartão seu. A cobrança da Régua só começa quando a sua primeira fatura for paga.</p>
+          </details>
+          <details>
+            <summary>E se meu CNPJ estiver com pendência na Receita?</summary>
+            <p>O cadastro continua normalmente. Se houver irregularidade, avisamos por e-mail em até 24 horas, sem travar a etapa 1 nem impedir o uso do painel enquanto isso.</p>
+          </details>
+          <details>
+            <summary>Como funciona a cobrança da própria Régua?</summary>
+            <p>Mensalidade fixa por faixa de porte, sem taxa por transação recebida do seu cliente. O valor aparece na etapa de revisão do cadastro, antes de qualquer confirmação.</p>
+          </details>
+          <details>
+            <summary>Dá para integrar com o sistema que já uso?</summary>
+            <p>Sim, por webhook e exportação em CSV. Não há obrigação de integrar no primeiro dia — o painel funciona sozinho desde o cadastro.</p>
+          </details>
+          <details>
+            <summary>Como cancelo, se precisar?</summary>
+            <p>Pelo próprio painel, sem ligação nem formulário de retenção. Todos os dados da conta saem junto, exportados em CSV.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="envelope rodape-grade">
+      <div>
+        <p class="marca marca-rodape">Régua</p>
+        <p>Marca fictícia usada em peça de portfólio. Nenhum serviço de cobrança é oferecido nesta página.</p>
+      </div>
+      <div>
+        <h2>Seções</h2>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#cadastro">Cadastro</a>
+        <a href="#duvidas">Dúvidas</a>
+      </div>
+      <div>
+        <h2>Projeto</h2>
+        <a href="/sites/">Voltar ao portfólio</a>
+        <a href="/">ferlief.tech</a>
+        <a href="mailto:ferlief@gmail.com">ferlief@gmail.com</a>
+      </div>
+    </div>
+    <div class="envelope rodape-legal">
+      <span>Projeto, texto e código: ferlief.tech</span>
+      <span>Peça de demonstração · 2026</span>
+    </div>
+  </footer>
+
+  <a class="cta-fixo" href="#cadastro">Ir para o cadastro</a>
+
+  <script type="module" src="interacao.js"></script>
+</body>
+</html>

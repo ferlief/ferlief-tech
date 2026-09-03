@@ -1,0 +1,1047 @@
+/* ---------------------------------------------------------------
+   Mariana Indica — canal de vendas por afiliação.
+
+   CSS isolado de propósito: esta página não carrega /css/base.css.
+   O site é da cliente, não do portfólio, e precisa continuar de pé
+   se ferlief.tech mudar de cara.
+
+   Sem framework, sem CDN, sem arquivo de imagem: ícone é SVG inline,
+   textura é gradiente. A página inteira são três arquivos (o terceiro
+   é interacao.js, porque o catálogo tem estado real — filtro e
+   diálogo — que HTML e CSS sozinhos não resolvem).
+
+   Paleta esmeralda + coral, escolhida para não repetir o verde-petróleo
+   da clínica nem o terroso da Jéssica — o registro aqui é de vitrine
+   pessoal, não de consultório. Esmeralda carrega a marca; coral é o
+   único acento quente, usado só onde há preço, oferta ou aviso.
+   --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --esmeralda: #0d7a5f;
+  --esmeralda-escuro: #085a46;
+  --esmeralda-fundo: #e8f5f0;
+  --esmeralda-linha: #cbe6dc;
+  --coral: #e0562f;
+  --coral-fundo: #fbe9e2;
+  --tinta: #14211c;
+  --texto: #2c3b35;
+  --texto-suave: #5c6b64;
+  --branco: #ffffff;
+  --fundo: #fbfdfc;
+
+  --raio: 10px;
+  --raio-g: 18px;
+  --sombra: 0 1px 2px rgba(8, 90, 70, 0.07), 0 14px 30px -18px rgba(8, 90, 70, 0.38);
+  --sombra-suave: 0 1px 2px rgba(8, 90, 70, 0.05), 0 6px 16px -12px rgba(8, 90, 70, 0.32);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--fundo);
+  padding-bottom: 4.5rem; /* espaço do CTA fixo no celular */
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--tinta);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2rem, 1.3rem + 3vw, 3.1rem); }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.05rem); }
+h3 { font-size: 1.08rem; }
+
+p { text-wrap: pretty; }
+svg { display: block; }
+
+a { color: var(--esmeralda); }
+
+img { max-width: 100%; height: auto; }
+
+/* Foco visível em tudo que recebe teclado. Contorno na cor da marca,
+   com afastamento para não colar na borda do componente. */
+:focus-visible {
+  outline: 2px solid var(--esmeralda);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.envelope {
+  width: min(100% - 2.5rem, 68rem);
+  margin-inline: auto;
+}
+
+.envelope-estreito {
+  width: min(100% - 2.5rem, 46rem);
+}
+
+.sobretitulo {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--esmeralda);
+  margin-bottom: 0.6rem;
+}
+
+.chamada {
+  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.18rem);
+  color: var(--texto);
+  margin-top: 1rem;
+  max-width: 46ch;
+}
+
+/* ---------------------------------------------------------------
+   botão
+   --------------------------------------------------------------- */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* Alvo de toque mínimo de 44px: exigência de acessibilidade, não
+     preferência estética. */
+  min-height: 44px;
+  padding: 0.6rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: var(--raio);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.94rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.botao-primario {
+  background: var(--esmeralda);
+  color: var(--branco);
+}
+
+.botao-primario:hover {
+  background: var(--esmeralda-escuro);
+}
+
+.botao-fantasma {
+  background: transparent;
+  border-color: var(--esmeralda-linha);
+  color: var(--esmeralda-escuro);
+}
+
+.botao-fantasma:hover {
+  border-color: var(--esmeralda);
+  background: var(--esmeralda-fundo);
+}
+
+.botao-grande {
+  min-height: 52px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+}
+
+.botao-bloco {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------
+   cabeçalho
+   --------------------------------------------------------------- */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(251, 253, 252, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--esmeralda-linha);
+}
+
+.cabecalho-linha {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 4.5rem;
+  padding-block: 0.6rem;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--tinta);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.marca svg {
+  width: 30px;
+  height: 30px;
+  color: var(--esmeralda);
+  flex-shrink: 0;
+}
+
+.marca-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.marca-texto strong {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.marca-texto em {
+  font-style: normal;
+  font-size: 0.74rem;
+  color: var(--texto-suave);
+  letter-spacing: 0.02em;
+}
+
+.menu {
+  display: flex;
+  gap: 1.25rem;
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+.menu a {
+  color: var(--texto);
+  text-decoration: none;
+  padding-block: 0.3rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.menu a:hover {
+  color: var(--esmeralda);
+  border-bottom-color: var(--esmeralda);
+}
+
+.cabecalho .botao-primario {
+  flex-shrink: 0;
+}
+
+@media (max-width: 62rem) {
+  .menu { display: none; }
+  .cabecalho .botao-primario { margin-left: auto; }
+}
+
+/* ---------------------------------------------------------------
+   hero
+   --------------------------------------------------------------- */
+
+.hero {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  /* "Foto" sem arquivo de imagem: duas manchas de luz em gradiente
+     radial sobre o fundo. Pesa zero e não desfoca em tela retina. */
+  background:
+    radial-gradient(60ch 40ch at 84% 6%, rgba(13, 122, 95, 0.10), transparent 70%),
+    radial-gradient(50ch 34ch at 4% 94%, rgba(224, 86, 47, 0.07), transparent 70%),
+    var(--fundo);
+}
+
+.hero-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .hero-grade {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+  }
+}
+
+.hero-texto {
+  min-width: 0;
+}
+
+.hero h1 {
+  margin-top: 0.3rem;
+  max-width: 19ch;
+}
+
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.reforcos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  list-style: none;
+  margin-top: 1.6rem;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.reforcos li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.reforcos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--esmeralda);
+}
+
+.reforcos-escuros {
+  color: rgba(232, 245, 240, 0.82);
+}
+
+.reforcos-escuros li::before {
+  background: rgba(232, 245, 240, 0.6);
+}
+
+/* ---------------------------------------------------------------
+   cartão "vitrine" — o artefato do hero
+
+   Não é ilustração: é o próprio componente de oferta do catálogo,
+   em miniatura. Prova que a página tem um produto de verdade por
+   trás, não só uma promessa de landing page.
+   --------------------------------------------------------------- */
+
+.cartao-vitrine {
+  background: var(--branco);
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: var(--raio-g);
+  box-shadow: var(--sombra);
+  padding: 1.6rem;
+}
+
+.cartao-vitrine-topo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 1.1rem;
+}
+
+.ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 4px rgba(224, 86, 47, 0.16);
+}
+
+.cartao-vitrine-corpo h3 {
+  margin-top: 0.6rem;
+}
+
+.cartao-vitrine-preco {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.cartao-vitrine-nota {
+  margin-top: 0.8rem;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.cartao-vitrine-rodape {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--esmeralda-linha);
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------
+   etiqueta de categoria e preço — reutilizados no cartão do hero,
+   no catálogo e no diálogo de detalhe
+   --------------------------------------------------------------- */
+
+.etiqueta-categoria {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--esmeralda-fundo);
+  color: var(--esmeralda-escuro);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.preco-valor {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--coral);
+}
+
+.preco-nota {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+/* ---------------------------------------------------------------
+   seções
+   --------------------------------------------------------------- */
+
+.secao {
+  padding-block: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+
+.secao-clara {
+  background: var(--esmeralda-fundo);
+}
+
+.secao-topo {
+  max-width: 52ch;
+  margin-bottom: 2.5rem;
+}
+
+.secao-chamada {
+  margin-top: 0.9rem;
+  color: var(--texto-suave);
+  font-size: 1.02rem;
+}
+
+/* ---------------------------------------------------------------
+   passos-etapas — "como funciona", numerado
+   --------------------------------------------------------------- */
+
+.passos-etapas {
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.passos-etapas li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--branco);
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: var(--raio-g);
+  padding: 1.5rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.passo-numero {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--esmeralda-fundo);
+  color: var(--esmeralda-escuro);
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.passo-corpo h3 {
+  margin-bottom: 0.4rem;
+}
+
+.passo-corpo p {
+  font-size: 0.93rem;
+  color: var(--texto-suave);
+}
+
+/* ---------------------------------------------------------------
+   filtro de categoria — estado guardado na URL via interacao.js
+   --------------------------------------------------------------- */
+
+.filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.filtro-botao {
+  min-height: 40px;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: 999px;
+  background: var(--branco);
+  color: var(--texto);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease;
+}
+
+.filtro-botao:hover {
+  border-color: var(--esmeralda);
+}
+
+.filtro-botao[aria-pressed="true"] {
+  background: var(--esmeralda);
+  border-color: var(--esmeralda);
+  color: var(--branco);
+}
+
+.contagem-ofertas {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  margin-bottom: 1.5rem;
+}
+
+/* ---------------------------------------------------------------
+   catálogo de ofertas
+   --------------------------------------------------------------- */
+
+.cartoes-ofertas {
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+}
+
+.cartao-oferta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--branco);
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: var(--raio-g);
+  padding: 1.4rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.cartao-oferta h3 {
+  margin-top: 0.7rem;
+  font-size: 1rem;
+}
+
+.cartao-oferta-preco {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+}
+
+.cartao-oferta-resumo {
+  margin-top: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  flex-grow: 1;
+}
+
+.cartao-oferta-abrir {
+  margin-top: 1.1rem;
+}
+
+/* ---------------------------------------------------------------
+   diálogo de detalhe (quick view) — <dialog> nativo
+   --------------------------------------------------------------- */
+
+.dialogo-oferta {
+  /* margin: auto é o que centraliza um <dialog> nativo em tela — o
+     reset universal (* { margin: 0 }) no topo deste arquivo zera essa
+     margem, então ela precisa ser reafirmada aqui. Sem isso o diálogo
+     abre grudado no canto superior esquerdo. */
+  margin: auto;
+  border: none;
+  border-radius: var(--raio-g);
+  padding: 0;
+  width: min(90vw, 30rem);
+  max-height: min(85vh, 40rem);
+  overflow-y: auto;
+  box-shadow: var(--sombra);
+  background: var(--branco);
+  color: var(--texto);
+}
+
+.dialogo-oferta::backdrop {
+  background: rgba(20, 33, 28, 0.55);
+}
+
+.dialogo-miolo {
+  position: relative;
+  padding: 1.8rem;
+}
+
+.dialogo-fechar {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: 50%;
+  background: var(--branco);
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.dialogo-fechar:hover {
+  border-color: var(--esmeralda);
+  color: var(--esmeralda-escuro);
+}
+
+.dialogo-fechar svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dialogo-oferta h3 {
+  margin-top: 0.8rem;
+  max-width: 24ch;
+}
+
+.dialogo-preco {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+.dialogo-oferta #dialogo-descricao {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--texto);
+}
+
+.dialogo-nota {
+  margin-top: 0.8rem;
+  padding: 0.8rem 1rem;
+  background: var(--esmeralda-fundo);
+  border-radius: var(--raio);
+  font-size: 0.86rem;
+  color: var(--esmeralda-escuro);
+}
+
+.dialogo-oferta .botao {
+  margin-top: 1.3rem;
+}
+
+.dialogo-aviso {
+  margin-top: 0.7rem;
+  font-size: 0.76rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------
+   cartões (reforço genérico — usado na seção de afiliação)
+   --------------------------------------------------------------- */
+
+.cartoes {
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.cartoes-tres {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: var(--raio-g);
+  padding: 1.5rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.cartao h3 {
+  margin-bottom: 0.5rem;
+}
+
+.cartao p {
+  font-size: 0.94rem;
+  color: var(--texto-suave);
+}
+
+.icone {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: var(--esmeralda-fundo);
+  color: var(--esmeralda);
+}
+
+.icone svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------------------------------------------------------------
+   seção de afiliação — leva o coral, único uso fora de preço
+   --------------------------------------------------------------- */
+
+.secao-afiliacao {
+  background: var(--fundo);
+  border-top: 1px solid var(--esmeralda-linha);
+  border-bottom: 1px solid var(--esmeralda-linha);
+}
+
+.secao-afiliacao .sobretitulo {
+  color: var(--coral);
+}
+
+/* ---------------------------------------------------------------
+   dúvidas — <details> nativo, sem JavaScript
+   --------------------------------------------------------------- */
+
+.duvidas {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.duvidas details {
+  background: var(--branco);
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.duvidas summary {
+  padding: 1rem 3rem 1rem 1.15rem;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--tinta);
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+
+.duvidas summary::-webkit-details-marker { display: none; }
+
+.duvidas summary::after {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--esmeralda);
+  border-bottom: 2px solid var(--esmeralda);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform .2s ease;
+}
+
+.duvidas details[open] summary::after {
+  transform: translateY(-25%) rotate(225deg);
+}
+
+.duvidas summary:hover {
+  background: var(--esmeralda-fundo);
+}
+
+.duvidas p {
+  padding: 0 1.15rem 1.15rem;
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  max-width: 62ch;
+}
+
+/* Nota de roadmap — mesma linguagem visual da nota de encaminhamento
+   da Jéssica: separada do resto porque é a informação que quem lê
+   rápido precisa achar sem garimpar o texto. */
+.nota-secao {
+  margin-top: 2rem;
+  padding: 1.1rem 1.3rem;
+  border-left: 3px solid var(--coral);
+  background: var(--coral-fundo);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  font-size: 0.92rem;
+  color: var(--texto);
+}
+
+/* ---------------------------------------------------------------
+   novidades (captura de contato)
+   --------------------------------------------------------------- */
+
+.secao-escura {
+  background: var(--esmeralda-escuro);
+  color: var(--esmeralda-fundo);
+}
+
+.secao-escura h2 {
+  color: var(--branco);
+}
+
+.secao-escura .sobretitulo {
+  color: rgba(232, 245, 240, 0.72);
+}
+
+.secao-escura p {
+  color: rgba(232, 245, 240, 0.86);
+}
+
+.contato-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .contato-grade {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.contato-texto p {
+  margin-top: 1rem;
+  max-width: 42ch;
+}
+
+.formulario {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  background: var(--branco);
+  border-radius: var(--raio-g);
+  padding: clamp(1.4rem, 1rem + 1.5vw, 2rem);
+  box-shadow: var(--sombra);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo-largo {
+  grid-column: 1 / -1;
+}
+
+.campo label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.campo input[type="text"],
+.campo input[type="email"] {
+  min-height: 44px;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--esmeralda-linha);
+  border-radius: var(--raio);
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+.campo input[type="text"]:focus-visible,
+.campo input[type="email"]:focus-visible {
+  border-color: var(--esmeralda);
+  background: var(--branco);
+}
+
+/* Consentimento: caixa nunca pré-marcada, alinhada ao topo da linha
+   para o rótulo poder quebrar em várias linhas sem desalinhar. */
+.campo-consentimento {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.9rem;
+  background: var(--esmeralda-fundo);
+  border-radius: var(--raio);
+}
+
+.campo-consentimento input {
+  width: 20px;
+  height: 20px;
+  margin-top: 0.15rem;
+  accent-color: var(--esmeralda);
+  flex-shrink: 0;
+}
+
+.campo-consentimento label {
+  font-weight: 400;
+  font-size: 0.86rem;
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.aviso-form {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.83rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+.aviso-form-ativo {
+  color: var(--coral);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------
+   rodapé
+   --------------------------------------------------------------- */
+
+.rodape {
+  background: var(--tinta);
+  color: rgba(232, 245, 240, 0.72);
+  padding-top: 3rem;
+  font-size: 0.92rem;
+}
+
+.rodape-grade {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  padding-bottom: 2.5rem;
+}
+
+.rodape h2 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(232, 245, 240, 0.5);
+  margin-bottom: 0.8rem;
+}
+
+.rodape a {
+  display: block;
+  color: rgba(232, 245, 240, 0.82);
+  text-decoration: none;
+  padding-block: 0.28rem;
+}
+
+.rodape a:hover {
+  color: var(--branco);
+  text-decoration: underline;
+}
+
+.marca-rodape {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--branco);
+  margin-bottom: 0.4rem;
+}
+
+/* Repetição curta do aviso de afiliação, presente em toda página via
+   rodapé — a política da própria Amazon Associates pede isso perto
+   de qualquer ponto de venda, não só na seção dedicada. */
+.rodape-afiliacao {
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(232, 245, 240, 0.22);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  font-size: 0.88rem;
+  color: rgba(232, 245, 240, 0.88);
+}
+
+.rodape-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem 1.5rem;
+  padding-block: 1.2rem;
+  border-top: 1px solid rgba(232, 245, 240, 0.14);
+  font-size: 0.82rem;
+  color: rgba(232, 245, 240, 0.55);
+}
+
+.rodape-legal a {
+  display: inline;
+  color: rgba(232, 245, 240, 0.75);
+}
+
+/* ---------------------------------------------------------------
+   CTA fixo — só no celular
+   --------------------------------------------------------------- */
+
+.cta-fixo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  background: var(--esmeralda);
+  color: var(--branco);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 -6px 20px -10px rgba(20, 33, 28, 0.5);
+}
+
+@media (min-width: 48rem) {
+  .cta-fixo { display: none; }
+  body { padding-bottom: 0; }
+}
+
+/* ---------------------------------------------------------------
+   movimento reduzido
+   --------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
