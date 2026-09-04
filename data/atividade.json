@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-09-03T13:02:50Z",
+  "atualizado_em": "2026-09-04T12:57:58Z",
   "projetos": [
     {
       "repo": "anatomia",
@@ -25,9 +25,9 @@
       "repo": "ferlief-tech",
       "url": "https://github.com/ferlief/ferlief-tech",
       "ultimo_commit": {
-        "sha": "33bfdc5",
-        "mensagem": "feat: rebuild as commercial portfolio with /sites and /design showcases",
-        "data": "2026-09-02T23:49:21Z"
+        "sha": "a8b57f8",
+        "mensagem": "chore: update activity feed",
+        "data": "2026-09-03T13:02:50Z"
       },
       "resultado": null
     }
