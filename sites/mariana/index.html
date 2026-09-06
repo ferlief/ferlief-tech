@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariana Indica — Ofertas selecionadas</title>
+  <meta name="description" content="Curadoria pessoal de ofertas de afiliada, com aviso de comissão visível e catálogo filtrável por categoria.">
+  <link rel="stylesheet" href="estilo.css">
+
+  <!-- ===================================================================
+       Conteúdo genérico e plausível, pronto para revisão com a Mariana —
+       não é ficção, é a melhor estimativa profissional enquanto o
+       briefing dela não chega por inteiro. Nada aparece como
+       "placeholder" na tela: a lista de pendência fica só aqui.
+
+       Checado o perfil público dela (Instagram @mulekamateira, consultado
+       com autorização em 2026-09-03): nome real "Mariana Costa"; é conta
+       pessoal — família (mãe do Pedro), trilha, natureza, vida no Rio —
+       sem rastro do canal de afiliados ainda. Confirma que é projeto
+       novo, não migração de uma base existente: os números de seguidor
+       dessa conta pessoal (3,8 mil) não servem de proxy para o alcance do
+       canal de afiliados, que começa do zero. O ângulo "trilheira,
+       família, vida prática no Rio" pode ser um fio condutor de nicho
+       (produto para trilha, casa, família) — mas é sugestão a confirmar
+       com ela, não decisão tomada aqui; não misturei o perfil pessoal com
+       a marca comercial sem ela pedir isso.
+
+       Personalizar com a Mariana antes de publicar de vez:
+       - nome definitivo da marca ("Mariana Indica" é provisório, escolhido
+         por ser fácil de trocar sem reescrever a identidade visual)
+       - de quais programas de afiliados ela participa hoje (Amazon
+         Associates, Mercado Livre, outro) e se as contas estão ativas
+       - categorias de produto reais que ela quer indicar — usei quatro
+         genéricas (casa, tecnologia, beleza, cozinha) como exemplo
+       - os 12 itens do catálogo são exemplos plausíveis, sem marca real;
+         trocar por curadoria dela, com nome de categoria genérica também
+       - link de afiliado real de cada oferta — todos os href="#" desta
+         página são propositais, nunca um link fabricado
+       - preços de referência reais dos itens que ela quiser destacar
+       - canal de destino do formulário de contato (e-mail próprio,
+         WhatsApp Business, ou serviço de captura com contrato)
+       - domínio próprio, se já tiver
+       - confirmação do texto de roadmap da fase 2 (cupom automático via
+         PA-API/API do Mercado Livre, envio por WhatsApp Cloud API) — a
+         página só promete isso como plano condicionado a volume de vendas,
+         nunca como recurso já disponível
+
+       O que NÃO entra nesta página, por decisão de risco de conta, mesmo
+       depois do briefing completo: link de afiliado em e-mail ou
+       WhatsApp, scraping de cupom, disparo de WhatsApp fora da API oficial
+       ou de lista de transmissão manual com opt-in — ver CLIENTES.md,
+       seção 4, para o raciocínio completo.
+       =================================================================== -->
+</head>
+<body>
+
+  <header class="cabecalho">
+    <div class="envelope cabecalho-linha">
+      <a class="marca" href="#topo">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M8 13.5 16 8l8 5.5v10a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 8 23.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M13 24v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="23.5" cy="10" r="3.2" fill="currentColor" opacity=".92"/>
+          <path d="M22.2 10.1 23.2 11l1.7-2" stroke="var(--branco)" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="marca-texto">
+          <strong>Mariana Indica</strong>
+          <em>Curadoria pessoal · link de afiliada</em>
+        </span>
+      </a>
+
+      <nav class="menu" aria-label="Seções da página">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#afiliacao">Sobre a afiliação</a>
+        <a href="#novidades">Novidades</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+
+      <a class="botao botao-primario" href="#ofertas">Ver ofertas</a>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <section class="hero">
+      <div class="envelope hero-grade">
+        <div class="hero-texto">
+          <p class="sobretitulo">Curadoria pessoal · Sem robô escolhendo por você</p>
+          <h1>Antes de comprar, dá uma olhada no que eu já separei e testei.</h1>
+          <p class="chamada">
+            Eu procuro, comparo e uso antes de publicar. Você compra pelo link de sempre,
+            na loja de sempre, sem pagar nada a mais — e uma parte vira comissão pra mim.
+          </p>
+
+          <div class="hero-acoes">
+            <a class="botao botao-primario botao-grande" href="#ofertas">Ver as ofertas de hoje</a>
+            <a class="botao botao-fantasma botao-grande" href="#como-funciona">Como funciona</a>
+          </div>
+
+          <ul class="reforcos">
+            <li>Curadoria manual, item por item</li>
+            <li>Preço sempre a confirmar na loja</li>
+            <li>Zero custo extra pra quem compra</li>
+          </ul>
+        </div>
+
+        <!-- Artefato do hero: um cartão de oferta real, igual ao que
+             aparece na vitrine completa — não é ilustração decorativa,
+             é o próprio componente do catálogo em miniatura. -->
+        <aside class="cartao-vitrine" aria-label="Exemplo de oferta selecionada">
+          <p class="cartao-vitrine-topo"><span class="ponto" aria-hidden="true"></span> Oferta em destaque</p>
+          <div class="cartao-vitrine-corpo">
+            <span class="etiqueta-categoria">Tecnologia</span>
+            <h3>Fone de ouvido bluetooth intra-auricular</h3>
+            <p class="cartao-vitrine-preco">
+              <span class="preco-valor">R$ 129</span>
+              <span class="preco-nota">valor de referência</span>
+            </p>
+            <p class="cartao-vitrine-nota">Por que separei: bateria dura o dia inteiro de uso, testei por duas semanas antes de publicar.</p>
+          </div>
+          <p class="cartao-vitrine-rodape">É assim que cada oferta aparece na vitrine completa, com o link de afiliada.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="secao" id="como-funciona">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Como funciona</p>
+          <h2>Três passos, sem letra miúda</h2>
+          <p class="secao-chamada">
+            Não existe cadastro, assinatura nem etapa escondida. O dinheiro sai da loja,
+            não do seu bolso.
+          </p>
+        </header>
+
+        <ol class="passos-etapas">
+          <li>
+            <span class="passo-numero" aria-hidden="true">1</span>
+            <div class="passo-corpo">
+              <h3>Eu seleciono</h3>
+              <p>Vejo o item, confiro preço e avaliação, e às vezes uso antes de publicar. Nada entra na lista por parceria paga ou por sistema automático — é escolha minha, uma por uma.</p>
+            </div>
+          </li>
+          <li>
+            <span class="passo-numero" aria-hidden="true">2</span>
+            <div class="passo-corpo">
+              <h3>Você compra pelo link</h3>
+              <p>O link leva direto para a loja oficial — Mercado Livre, Amazon ou o programa de origem. Você compra do jeito que já compra sempre, com a mesma garantia e o mesmo prazo de entrega.</p>
+            </div>
+          </li>
+          <li>
+            <span class="passo-numero" aria-hidden="true">3</span>
+            <div class="passo-corpo">
+              <h3>Você não paga nada a mais</h3>
+              <p>O preço que aparece na loja é o preço que você paga. A comissão vem de um acordo entre a loja e o programa de afiliados — nunca do valor que sai do seu cartão.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Catálogo — grade com filtro de categoria. O filtro guarda estado
+         na URL (?categoria=) via interacao.js: recarregar a página com o
+         parâmetro já abre filtrada. Clique no cartão abre o <dialog>
+         nativo de detalhe. -->
+    <section class="secao secao-clara" id="ofertas">
+      <div class="envelope">
+        <header class="secao-topo">
+          <p class="sobretitulo">Catálogo</p>
+          <h2>O que eu separei essa semana</h2>
+          <p class="secao-chamada">
+            Preço marcado como valor de referência: confirme sempre na loja antes de comprar,
+            porque promoção muda de um dia para o outro e eu não atualizo esta página em tempo real.
+          </p>
+        </header>
+
+        <div class="filtro" role="group" aria-label="Filtrar ofertas por categoria">
+          <button class="filtro-botao" type="button" data-categoria="todas" aria-pressed="true">Todas</button>
+          <button class="filtro-botao" type="button" data-categoria="casa" aria-pressed="false">Casa</button>
+          <button class="filtro-botao" type="button" data-categoria="tecnologia" aria-pressed="false">Tecnologia</button>
+          <button class="filtro-botao" type="button" data-categoria="beleza" aria-pressed="false">Beleza</button>
+          <button class="filtro-botao" type="button" data-categoria="cozinha" aria-pressed="false">Cozinha</button>
+        </div>
+
+        <p class="contagem-ofertas" id="contagem-ofertas" role="status">12 ofertas encontradas</p>
+
+        <ul class="cartoes-ofertas" id="lista-ofertas">
+
+          <li class="cartao-oferta" data-categoria="casa"
+              data-nome="Kit organizador de armário (6 peças)"
+              data-categoria-label="Casa"
+              data-preco="R$ 89"
+              data-descricao="Divisórias empilháveis para dobrar e separar roupa sem comprar gaveteiro novo. Encaixam em armário e em cômoda."
+              data-nota="Por que separei: usei para organizar blusa dobrada, ainda não amassou depois de um mês.">
+            <span class="etiqueta-categoria">Casa</span>
+            <h3>Kit organizador de armário (6 peças)</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 89</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Divisórias empilháveis, sem comprar gaveteiro novo.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="casa"
+              data-nome="Luminária de mesa com toque e três temperaturas de luz"
+              data-categoria-label="Casa"
+              data-preco="R$ 74"
+              data-descricao="Regula a intensidade tocando na base, com três temperaturas de luz para leitura, trabalho ou ambiente."
+              data-nota="Por que separei: testei em home office por três semanas, não esquenta o suficiente pra incomodar.">
+            <span class="etiqueta-categoria">Casa</span>
+            <h3>Luminária de mesa com toque</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 74</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Três temperaturas de luz, boa pra quem trabalha à noite.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="casa"
+              data-nome="Difusor de aromas ultrassônico 300 ml"
+              data-categoria-label="Casa"
+              data-preco="R$ 96"
+              data-descricao="Desliga sozinho quando a água acaba. Tem opção de luz noturna e timer de até oito horas."
+              data-nota="Por que separei: rodou a noite inteira no meu quarto sem me acordar.">
+            <span class="etiqueta-categoria">Casa</span>
+            <h3>Difusor de aromas ultrassônico</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 96</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Desliga sozinho, sem exagerar no barulho.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="tecnologia"
+              data-nome="Fone de ouvido bluetooth intra-auricular"
+              data-categoria-label="Tecnologia"
+              data-preco="R$ 129"
+              data-descricao="Bateria de um dia inteiro de uso com o estojo carregando junto, cancelamento de ruído básico e resistência a respingo."
+              data-nota="Por que separei: é o fone que uso pra reunião, aguenta o dia sem recarregar.">
+            <span class="etiqueta-categoria">Tecnologia</span>
+            <h3>Fone de ouvido bluetooth intra-auricular</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 129</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Bateria de um dia inteiro, com o estojo carregando junto.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="tecnologia"
+              data-nome="Carregador portátil 10.000 mAh com duas saídas"
+              data-categoria-label="Tecnologia"
+              data-preco="R$ 79"
+              data-descricao="Duas saídas USB para carregar dois aparelhos ao mesmo tempo, com indicador de carga restante e tamanho de bolso."
+              data-nota="Por que separei: levei numa viagem de fim de semana e sobrou bateria pro segundo dia.">
+            <span class="etiqueta-categoria">Tecnologia</span>
+            <h3>Carregador portátil 10.000 mAh</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 79</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Duas saídas, cabe na bolsa pequena.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="tecnologia"
+              data-nome="Suporte ajustável de notebook em alumínio"
+              data-categoria-label="Tecnologia"
+              data-preco="R$ 109"
+              data-descricao="Eleva a tela até a altura dos olhos, com seis níveis de ajuste, e dobra até 3 cm de espessura para guardar na mochila."
+              data-nota="Por que separei: uso desde que comecei a trabalhar de casa, resolveu a dor no pescoço.">
+            <span class="etiqueta-categoria">Tecnologia</span>
+            <h3>Suporte ajustável de notebook</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 109</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Eleva a tela e dobra fino pra guardar na mochila.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="beleza"
+              data-nome="Batom líquido matte de longa duração"
+              data-categoria-label="Beleza"
+              data-preco="R$ 39"
+              data-descricao="Acabamento matte que não resseca, com aplicador em ponta fina. Disponível em várias cores na loja."
+              data-nota="Por que separei: testei em três tons diferentes, o acabamento se manteve igual nos três.">
+            <span class="etiqueta-categoria">Beleza</span>
+            <h3>Batom líquido matte</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 39</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Não resseca, aguenta o dia sem retoque no almoço.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="beleza"
+              data-nome="Escova secadora modeladora 2 em 1"
+              data-categoria-label="Beleza"
+              data-preco="R$ 168"
+              data-descricao="Seca e modela ao mesmo tempo, com duas temperaturas e escova rotativa removível para limpeza."
+              data-nota="Por que separei: uso duas vezes por semana, o cabelo não frizou depois.">
+            <span class="etiqueta-categoria">Beleza</span>
+            <h3>Escova secadora modeladora</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 168</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Seca e modela junto, corta o tempo de escova pela metade.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="beleza"
+              data-nome="Kit de pincéis de maquiagem (8 peças) com estojo"
+              data-categoria-label="Beleza"
+              data-preco="R$ 67"
+              data-descricao="Oito formatos diferentes para base, pó, sombra e contorno, com estojo de viagem incluso."
+              data-nota="Por que separei: lavei cinco vezes seguidas e não perdeu pelo.">
+            <span class="etiqueta-categoria">Beleza</span>
+            <h3>Kit de pincéis de maquiagem</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 67</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Cerdas macias o bastante pra base e sombra sem puxar a pele.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="cozinha"
+              data-nome="Air fryer compacta 4 litros"
+              data-categoria-label="Cozinha"
+              data-preco="R$ 249"
+              data-descricao="Capacidade de 4 litros, painel digital com temperatura ajustável e cesta antiaderente removível."
+              data-nota="Por que separei: uso quase todo dia, a cesta lava fácil na pia mesmo.">
+            <span class="etiqueta-categoria">Cozinha</span>
+            <h3>Air fryer compacta 4 litros</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 249</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Tamanho certo pra uma ou duas pessoas.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="cozinha"
+              data-nome="Conjunto de potes herméticos empilháveis (10 peças)"
+              data-categoria-label="Cozinha"
+              data-preco="R$ 92"
+              data-descricao="Trava nos quatro cantos, empilha na geladeira e vai ao micro-ondas sem a tampa."
+              data-nota="Por que separei: testei virando de ponta cabeça com molho de tomate dentro — não vazou.">
+            <span class="etiqueta-categoria">Cozinha</span>
+            <h3>Conjunto de potes herméticos</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 92</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Trava nos quatro cantos, não vaza nem de cabeça pra baixo.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+          <li class="cartao-oferta" data-categoria="cozinha"
+              data-nome="Faca multiuso com bainha e afiação lateral"
+              data-categoria-label="Cozinha"
+              data-preco="R$ 58"
+              data-descricao="Lâmina de aço inoxidável, vem afiada de fábrica, com bainha protetora para guardar na gaveta."
+              data-nota="Por que separei: é a faca que virou a única que uso pra cortar legume.">
+            <span class="etiqueta-categoria">Cozinha</span>
+            <h3>Faca multiuso com bainha</h3>
+            <p class="cartao-oferta-preco"><span class="preco-valor">R$ 58</span><span class="preco-nota">valor de referência</span></p>
+            <p class="cartao-oferta-resumo">Vem afiada de fábrica, bainha evita acidente na gaveta.</p>
+            <button class="botao botao-fantasma botao-bloco cartao-oferta-abrir" type="button">Ver detalhes</button>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- Diálogo de detalhe (quick view) — <dialog> nativo, populado por
+         interacao.js a partir dos data-* do cartão clicado. showModal()
+         cuida de Esc e de prender o foco dentro do diálogo: nada disso é
+         reimplementado à mão. -->
+    <dialog id="dialogo-oferta" class="dialogo-oferta" aria-labelledby="dialogo-titulo">
+      <div class="dialogo-miolo">
+        <button class="dialogo-fechar" id="dialogo-fechar" type="button" aria-label="Fechar detalhe da oferta">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <span class="etiqueta-categoria" id="dialogo-categoria">Categoria</span>
+        <h3 id="dialogo-titulo">Nome do item</h3>
+        <p class="dialogo-preco">
+          <span id="dialogo-preco">R$ 0</span>
+          <span class="preco-nota">valor de referência, confirme na loja</span>
+        </p>
+        <p id="dialogo-descricao">Descrição da oferta.</p>
+        <p class="dialogo-nota" id="dialogo-nota">Nota da curadoria.</p>
+        <!-- Link de afiliado real entra aqui depois de confirmado com a
+             Mariana. Por enquanto, href="#" — nunca um link fabricado. -->
+        <a class="botao botao-primario botao-bloco" id="dialogo-link" href="#">Ver oferta na loja</a>
+        <p class="dialogo-aviso">Link de afiliada — comprar por aqui pode gerar comissão pra Mariana, sem custo extra pra você.</p>
+      </div>
+    </dialog>
+
+    <!-- Aviso de afiliação — seção própria, não nota de rodapé. Exigência
+         da política da Amazon Associates e recomendação do CONAR para
+         publicidade digital: divulgação clara, visível, perto da oferta. -->
+    <section class="secao secao-afiliacao" id="afiliacao">
+      <div class="envelope envelope-estreito">
+        <header class="secao-topo">
+          <p class="sobretitulo">Transparência</p>
+          <h2>Esta página participa de programas de afiliados</h2>
+          <p class="secao-chamada">
+            Os links de compra desta página são links de afiliada. Quando você compra por eles,
+            a loja paga uma comissão pra mim — sem mudar o preço que você vê na tela nem o que
+            sai do seu cartão.
+          </p>
+        </header>
+
+        <ul class="cartoes cartoes-tres">
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3.5" y="6.5" width="17" height="12" rx="2"/><path d="M3.5 10.5h17"/></svg>
+            </span>
+            <h3>Preço nunca muda pra você</h3>
+            <p>A comissão vem de um acordo entre a loja e o programa de afiliados — não de uma taxa somada ao seu pedido.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 6.5h16v11H4z"/><path d="M4 7l8 6 8-6"/></svg>
+            </span>
+            <h3>Nada é publieditorial pago</h3>
+            <p>Nenhuma marca paga pra aparecer nesta lista. Cada item entra pelo que eu pesquisei ou testei, não por patrocínio.</p>
+          </li>
+          <li class="cartao">
+            <span class="icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="9.5" rx="2"/><path d="M8 10.5V7.6a4 4 0 0 1 8 0v2.9"/></svg>
+            </span>
+            <h3>Seus dados seguem a LGPD</h3>
+            <p>Opt-in nunca pré-marcado, descadastro em um clique, e nenhuma lista é vendida ou repassada a terceiros.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao secao-escura" id="novidades">
+      <div class="envelope contato-grade">
+        <div class="contato-texto">
+          <p class="sobretitulo">Novidades</p>
+          <h2>Receba as ofertas antes de todo mundo</h2>
+          <p>
+            Aviso por e-mail quando eu publico oferta nova — não é lista de transmissão de
+            WhatsApp, porque envio em massa fora do canal oficial derruba número, e eu não
+            arrisco isso pela sua caixa de entrada.
+          </p>
+          <ul class="reforcos reforcos-escuros">
+            <li>Nunca mais de duas mensagens por semana</li>
+            <li>Nenhum dado repassado a terceiros</li>
+            <li>Descadastro em um clique, a qualquer momento</li>
+          </ul>
+        </div>
+
+        <!-- FALTA: destino real do envio (e-mail profissional dela ou
+             serviço de captura com contrato de proteção de dados). Até
+             lá, o formulário impede o envio e avisa isso, em vez de dar
+             a impressão de que a inscrição foi concluída. -->
+        <form class="formulario" id="form-novidades" novalidate>
+          <p class="campo">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="given-name" required>
+          </p>
+          <p class="campo">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
+          </p>
+
+          <p class="campo campo-largo campo-consentimento">
+            <!-- Opt-in explícito, nunca pré-marcado — exigência de LGPD e
+                 de item central do briefing dela. -->
+            <input id="opt-in" name="opt-in" type="checkbox" required>
+            <label for="opt-in">Quero receber ofertas por e-mail, e sei que posso cancelar quando quiser.</label>
+          </p>
+
+          <p class="campo campo-largo">
+            <button class="botao botao-primario botao-bloco botao-grande" type="submit">Quero receber</button>
+            <span class="aviso-form" id="aviso-form" role="status">Nada além do que está acima é coletado.</span>
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="secao secao-clara" id="duvidas">
+      <div class="envelope envelope-estreito">
+        <header class="secao-topo">
+          <p class="sobretitulo">Dúvidas</p>
+          <h2>Perguntas frequentes</h2>
+        </header>
+
+        <div class="duvidas">
+          <details>
+            <summary>Como funciona a comissão pra quem compra?</summary>
+            <p>Ela não existe pra quem compra — existe entre a loja e o programa de afiliados. O preço final é o mesmo que você encontraria comprando direto na loja, sem passar por este link.</p>
+          </details>
+          <details>
+            <summary>Por que confiar na curadoria?</summary>
+            <p>Porque cada item passa por mim antes de entrar na lista: pesquiso preço e avaliação, e quando dá, uso antes de publicar. Não é lista gerada automaticamente nem ordenada por quem paga mais.</p>
+          </details>
+          <details>
+            <summary>Como cancelo o recebimento de novidades?</summary>
+            <p>Todo e-mail enviado tem um link de descadastro no fim. Um clique e você sai da lista — não preciso de motivo nem de confirmação por outro canal.</p>
+          </details>
+          <details>
+            <summary>Com que frequência aparecem ofertas novas?</summary>
+            <p>A cada duas semanas, mais ou menos — no ritmo que dá pra manter a curadoria de verdade, sem virar feed automático de produto.</p>
+          </details>
+          <details>
+            <summary>Tem algum custo pro comprador?</summary>
+            <p>Não. O preço que você paga é o mesmo que a loja cobra de qualquer comprador. A única diferença é que uma parte vira comissão pra mim, sem sair do seu bolso.</p>
+          </details>
+        </div>
+
+        <!-- Nota de roadmap: honesta sobre o que ainda não existe, em vez
+             de prometer automação que esbarra em política de plataforma
+             (ver CLIENTES.md, seção 4). -->
+        <p class="nota-secao">
+          Cupom automático e envio por WhatsApp fazem parte de uma fase 2, que entra em operação
+          quando o volume de vendas justificar o custo da API oficial. Por enquanto, cada oferta
+          é escolhida e publicada à mão.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="envelope rodape-grade">
+      <div>
+        <p class="marca marca-rodape">
+          <span><strong>Mariana Indica</strong></span>
+        </p>
+        <p>Curadoria pessoal de ofertas · link de afiliada</p>
+      </div>
+      <div>
+        <h2>Seções</h2>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#afiliacao">Sobre a afiliação</a>
+        <a href="#novidades">Novidades</a>
+        <a href="#duvidas">Dúvidas</a>
+      </div>
+      <div>
+        <h2>Contato</h2>
+        <a href="#novidades">Receber novidades</a>
+        <a href="mailto:contato@marianaindica.com.br">contato@marianaindica.com.br</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+
+    <!-- Repetição curta do aviso de afiliação: a seção própria acima é o
+         texto completo, este é o lembrete que acompanha o rodapé em toda
+         página, como manda a política dos programas. -->
+    <div class="envelope rodape-afiliacao">
+      <p>
+        Esta página participa de programas de afiliados e pode receber comissão por compras
+        feitas pelos links, sem custo extra pra você.
+      </p>
+    </div>
+
+    <div class="envelope rodape-legal">
+      <span>Dados de contato usados só para enviar novidades. Descadastro em um clique.</span>
+      <span>Site por <a href="https://ferlief.tech">ferlief.tech</a></span>
+    </div>
+  </footer>
+
+  <a class="cta-fixo" href="#ofertas">Ver ofertas</a>
+
+  <script type="module" src="interacao.js"></script>
+</body>
+</html>

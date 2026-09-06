@@ -1,0 +1,987 @@
+/* ---------------------------------------------------------------
+   Régua — CSS da peça de demonstração.
+
+   Isolado de propósito: esta página não carrega /css/base.css. Uma
+   peça de portfólio precisa ter a identidade do cliente fictício,
+   não a do portfólio, e precisa continuar de pé se o site em volta
+   mudar de cara.
+
+   Sem framework, sem CDN, sem arquivo de imagem: ícone é SVG inline,
+   avatar não existe aqui (não há depoimento assinado nesta peça). A
+   página inteira são três arquivos, o terceiro por causa do estado
+   real do cadastro em etapas.
+   --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --tinta-azul: #16233d;
+  --azul: #2b4d8c;
+  --azul-escuro: #1c3564;
+  --azul-fundo: #eef2f9;
+  --azul-linha: #d7e0ef;
+  --limao: #3f7d2e;
+  --limao-escuro: #2f5f22;
+  --limao-fundo: #eaf3e6;
+  --vermelho: #ab2c22;
+  --vermelho-fundo: #fbeae8;
+  --texto: #3c4658;
+  --texto-suave: #66708a;
+  --branco: #ffffff;
+  --fundo: #f8f9fc;
+
+  --raio: 10px;
+  --raio-g: 18px;
+  --sombra: 0 1px 2px rgba(22, 35, 61, 0.07), 0 14px 30px -18px rgba(22, 35, 61, 0.4);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--fundo);
+  padding-bottom: 4.5rem; /* espaço do CTA fixo no celular */
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--tinta-azul);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.3rem + 3vw, 3.1rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.05rem);
+}
+
+h3 {
+  font-size: 1.08rem;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+code {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+  background: var(--azul-fundo);
+  color: var(--azul-escuro);
+  padding: 0.08em 0.35em;
+  border-radius: 5px;
+}
+
+svg {
+  display: block;
+}
+
+a {
+  color: var(--azul);
+}
+
+:focus-visible {
+  outline: 2px solid var(--limao);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.envelope {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.envelope-estreito {
+  max-width: 46rem;
+}
+
+.envelope-cadastro {
+  max-width: 42rem;
+}
+
+/* ---------------------------------------------------------------
+   cabeçalho
+   --------------------------------------------------------------- */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--azul-linha);
+}
+
+.cabecalho-linha {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4.25rem;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.marca svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--azul);
+  flex: none;
+}
+
+.menu {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+.menu a {
+  font-size: 0.88rem;
+  color: var(--texto);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.menu a:hover {
+  color: var(--azul-escuro);
+  background: var(--azul-fundo);
+}
+
+/* ---------------------------------------------------------------
+   botões
+   --------------------------------------------------------------- */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.botao-primario {
+  background: var(--azul);
+  color: var(--branco);
+}
+
+.botao-primario:hover {
+  background: var(--azul-escuro);
+}
+
+.botao-primario:disabled {
+  background: var(--azul-linha);
+  color: var(--texto-suave);
+  cursor: not-allowed;
+}
+
+.botao-fantasma {
+  border-color: var(--azul-linha);
+  color: var(--azul-escuro);
+  background: var(--branco);
+}
+
+.botao-fantasma:hover {
+  border-color: var(--azul);
+}
+
+.botao-grande {
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+}
+
+.botao-bloco {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------
+   hero — curto de propósito: o cadastro logo abaixo é o corpo
+   principal da página, não um card ilustrativo no hero.
+   --------------------------------------------------------------- */
+
+.hero {
+  background:
+    radial-gradient(70rem 36rem at 85% -15%, #ffffff 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(180deg, var(--azul-fundo), var(--fundo));
+  padding-block: clamp(2.75rem, 1.8rem + 5vw, 4.75rem);
+  text-align: center;
+}
+
+.hero-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sobretitulo {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--azul);
+  margin-bottom: 0.75rem;
+}
+
+.chamada {
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.2rem);
+  margin-top: 1rem;
+  max-width: 38rem;
+}
+
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.reforcos {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--texto);
+}
+
+.reforcos li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.reforcos li::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--limao);
+  flex: none;
+}
+
+/* ---------------------------------------------------------------
+   faixa de números
+   --------------------------------------------------------------- */
+
+.faixa {
+  background: var(--tinta-azul);
+  color: #d3dcee;
+  padding-block: 1.75rem;
+}
+
+.faixa-grade {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 52rem) {
+  .faixa-grade {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.faixa-grade div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.faixa-grade strong {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  color: var(--branco);
+  line-height: 1.1;
+}
+
+.faixa-grade span {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------------
+   seções
+   --------------------------------------------------------------- */
+
+.secao {
+  padding-block: clamp(3rem, 2rem + 4vw, 5rem);
+}
+
+.secao-clara {
+  background: var(--azul-fundo);
+}
+
+.secao-topo {
+  max-width: 42rem;
+  margin-bottom: 2.5rem;
+}
+
+.secao-chamada {
+  margin-top: 0.75rem;
+}
+
+/* passos — "como funciona" */
+
+.passos {
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+  counter-reset: passo;
+}
+
+@media (min-width: 52rem) {
+  .passos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.passos li {
+  background: var(--branco);
+  border-radius: var(--raio-g);
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--azul-linha);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.passo-numero {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: var(--limao);
+  color: var(--branco);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.passos p {
+  font-size: 0.94rem;
+}
+
+/* cartões — "por que isso importa" */
+
+.cartoes {
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.cartoes-duas {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--azul-linha);
+  border-radius: var(--raio-g);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cartao p {
+  font-size: 0.94rem;
+}
+
+/* faq */
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.faq details {
+  background: var(--branco);
+  border: 1px solid var(--azul-linha);
+  border-radius: var(--raio);
+  padding: 0.9rem 1.15rem;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--tinta-azul);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--azul);
+  flex: none;
+}
+
+.faq details[open] summary::after {
+  content: "–";
+}
+
+.faq details p {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  border-top: 1px solid var(--azul-linha);
+  padding-top: 0.75rem;
+}
+
+/* ---------------------------------------------------------------
+   cadastro em quatro etapas — o corpo principal da página
+   --------------------------------------------------------------- */
+
+.progresso {
+  margin-bottom: 2rem;
+}
+
+.progresso-lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  counter-reset: etapa;
+}
+
+.progresso-lista li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  position: relative;
+}
+
+.progresso-lista li::before {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  left: -50%;
+  width: 100%;
+  height: 2px;
+  background: var(--azul-linha);
+  z-index: 0;
+}
+
+.progresso-lista li:first-child::before {
+  content: none;
+}
+
+.progresso-bolha {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--branco);
+  border: 2px solid var(--azul-linha);
+  color: var(--texto-suave);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.progresso-lista li[aria-current="step"] .progresso-bolha {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: var(--branco);
+}
+
+.progresso-lista li[data-concluida] .progresso-bolha {
+  background: var(--limao);
+  border-color: var(--limao);
+  color: var(--branco);
+}
+
+.progresso-lista li[data-concluida]::before {
+  background: var(--limao);
+}
+
+.progresso-lista li[aria-current="step"] .progresso-rotulo {
+  color: var(--tinta-azul);
+  font-weight: 600;
+}
+
+.progresso-status {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--azul-escuro);
+}
+
+.formulario-cadastro {
+  background: var(--branco);
+  border-radius: var(--raio-g);
+  padding: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+  box-shadow: var(--sombra);
+}
+
+.etapa {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.etapa[inert] {
+  display: none;
+}
+
+.etapa legend {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--tinta-azul);
+  margin-bottom: 0.4rem;
+  padding: 0;
+}
+
+.etapa legend:focus-visible {
+  outline: 2px solid var(--limao);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--tinta-azul);
+}
+
+.campo-ajuda {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  margin-top: -0.4rem;
+}
+
+.campo input,
+.campo select {
+  font: inherit;
+  font-size: 0.97rem;
+  color: var(--tinta-azul);
+  background: var(--fundo);
+  border: 1px solid var(--azul-linha);
+  border-radius: var(--raio);
+  padding: 0.7rem 0.85rem;
+  min-height: 44px;
+  width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--azul);
+  outline: 2px solid rgba(43, 77, 140, 0.25);
+  outline-offset: 0;
+}
+
+.campo input[aria-invalid="true"] {
+  border-color: var(--vermelho);
+}
+
+.campo-status {
+  display: block;
+  min-height: 1.1em;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.campo-status[data-estado="valido"] {
+  color: var(--limao-escuro);
+}
+
+.campo-status[data-estado="invalido"] {
+  color: var(--vermelho);
+}
+
+/* grupo de checkbox — recebimento */
+
+.grupo-checkbox {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.opcao-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--fundo);
+  border: 1px solid var(--azul-linha);
+  border-radius: var(--raio);
+  padding: 0.75rem 0.9rem;
+}
+
+.opcao-checkbox input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--azul);
+  flex: none;
+}
+
+.opcao-checkbox label {
+  font-size: 0.95rem;
+  color: var(--texto);
+}
+
+/* medidor de força de senha por entropia */
+
+.forca-senha {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: -0.4rem;
+}
+
+.forca-senha-barra {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--azul-linha);
+  overflow: hidden;
+}
+
+.forca-senha-preenchimento {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  transition: width 0.2s ease, background-color 0.2s ease;
+  background: var(--vermelho);
+}
+
+.forca-senha-preenchimento[data-nivel="vazio"] {
+  width: 0%;
+}
+
+.forca-senha-preenchimento[data-nivel="muito-fraca"] {
+  background: var(--vermelho);
+}
+
+.forca-senha-preenchimento[data-nivel="fraca"] {
+  background: #8a8fa8;
+}
+
+.forca-senha-preenchimento[data-nivel="razoavel"] {
+  background: var(--azul);
+}
+
+.forca-senha-preenchimento[data-nivel="forte"] {
+  background: var(--limao);
+}
+
+.forca-senha-texto {
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+/* resumo editável — etapa 4 */
+
+.resumo {
+  background: var(--azul-fundo);
+  border: 1px solid var(--azul-linha);
+  border-radius: var(--raio-g);
+  padding: 1.25rem 1.35rem;
+}
+
+.resumo h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.resumo-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.resumo-linha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid var(--azul-linha);
+  flex-wrap: wrap;
+}
+
+.resumo-linha:last-child {
+  border-bottom: none;
+}
+
+.resumo-linha dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  flex: 1 1 9rem;
+}
+
+.resumo-linha dd {
+  font-size: 0.94rem;
+  color: var(--tinta-azul);
+  flex: 2 1 12rem;
+}
+
+.resumo-linha .botao-editar {
+  flex: none;
+  background: none;
+  border: none;
+  color: var(--azul);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.3rem 0.2rem;
+  min-height: 44px;
+}
+
+.resumo-linha .botao-editar:hover {
+  color: var(--azul-escuro);
+}
+
+.campo-largo {
+  margin-top: 0.4rem;
+}
+
+.aviso-form {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+.aviso-form-ativo {
+  color: var(--limao-escuro);
+  font-weight: 600;
+}
+
+.formulario-navegacao {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--azul-linha);
+}
+
+.formulario-navegacao .botao {
+  min-width: 8rem;
+}
+
+#btn-avancar {
+  margin-left: auto;
+}
+
+/* ---------------------------------------------------------------
+   rodapé
+   --------------------------------------------------------------- */
+
+.rodape {
+  background: var(--tinta-azul);
+  color: #b7c0d6;
+  font-size: 0.9rem;
+}
+
+.rodape-grade {
+  display: grid;
+  gap: 2rem;
+  padding-block: 2.5rem;
+}
+
+@media (min-width: 46rem) {
+  .rodape-grade {
+    grid-template-columns: 1.6fr 1fr 1fr;
+  }
+}
+
+.rodape-grade div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rodape h2 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7c88a8;
+  margin-bottom: 0.3rem;
+}
+
+.rodape a {
+  color: #dde3f1;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.rodape a:hover {
+  color: var(--branco);
+  text-decoration: underline;
+}
+
+.marca-rodape {
+  color: var(--branco);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.rodape-legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #7c88a8;
+}
+
+/* ---------------------------------------------------------------
+   CTA fixo — só no celular, onde o cabeçalho não cabe inteiro
+   --------------------------------------------------------------- */
+
+.cta-fixo {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1rem;
+  border-radius: 999px;
+  background: var(--limao);
+  color: var(--branco);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -8px rgba(63, 125, 46, 0.6);
+}
+
+@media (min-width: 60rem) {
+  .cta-fixo {
+    display: none;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   telas estreitas — formulário e progresso em coluna
+   --------------------------------------------------------------- */
+
+@media (max-width: 30rem) {
+  .progresso-rotulo {
+    font-size: 0.7rem;
+  }
+
+  .formulario-navegacao {
+    flex-direction: column-reverse;
+  }
+
+  .formulario-navegacao .botao {
+    width: 100%;
+  }
+
+  #btn-avancar {
+    margin-left: 0;
+  }
+}
