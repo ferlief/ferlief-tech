@@ -1,13 +1,13 @@
 {
-  "atualizado_em": "2026-09-05T12:09:51Z",
+  "atualizado_em": "2026-09-06T12:24:36Z",
   "projetos": [
     {
       "repo": "anatomia",
       "url": "https://github.com/ferlief/anatomia",
       "ultimo_commit": {
-        "sha": "fec82d7",
-        "mensagem": "docs: standardize commit convention to English + Conventional Commits",
-        "data": "2026-09-02T01:37:47Z"
+        "sha": "2c27f82",
+        "mensagem": "docs: translate detector rationale comment to English",
+        "data": "2026-09-06T02:59:25Z"
       },
       "resultado": null
     },
@@ -25,9 +25,9 @@
       "repo": "ferlief-tech",
       "url": "https://github.com/ferlief/ferlief-tech",
       "ultimo_commit": {
-        "sha": "6ba3a1b",
+        "sha": "050299d",
         "mensagem": "chore: update activity feed",
-        "data": "2026-09-04T12:57:58Z"
+        "data": "2026-09-05T12:09:51Z"
       },
       "resultado": null
     }
