@@ -1,13 +1,13 @@
 {
- "versao": 1,
- "gerado_em": "2026-09-02",
+ "version": 1,
+ "builtFrom": "2026-09-02",
  "bm25": {
   "k1": 1.5,
   "b": 0.75
  },
- "n": 6,
- "avgdl": 46.833333333333336,
- "df": {
+ "count": 6,
+ "averageLength": 46.833333333333336,
+ "documentFrequency": {
   "aba": 1,
   "abuso": 1,
   "acha": 1,
@@ -231,15 +231,15 @@
   "voz": 1,
   "webgpu": 1
  },
- "passagens": [
+ "passages": [
   {
    "id": "010-este-projeto#0",
-   "titulo": "O que é o porta-voz",
-   "texto": "O porta-voz é um chatbot que responde sobre o meu trabalho usando\napenas texto que eu escrevi e revisei. Ele não é uma IA treinada em\nmim, não tem memória e não improvisa: procura no corpus, mostra a\npassagem que encontrou e cita o arquivo de origem. Quando não acha\nbase suficiente, diz que não sabe em vez de inventar.\n\nRoda inteiro no navegador de quem visita. Não existe servidor, não\nexiste chave de API e a pergunta digitada não sai da aba.",
-   "origem": {
-    "arquivo": "corpus/010-este-projeto.md",
-    "fonte": "https://github.com/ferlief/porta-voz",
-    "data": "2026-09-02"
+   "title": "O que é o porta-voz",
+   "text": "O porta-voz é um chatbot que responde sobre o meu trabalho usando\napenas texto que eu escrevi e revisei. Ele não é uma IA treinada em\nmim, não tem memória e não improvisa: procura no corpus, mostra a\npassagem que encontrou e cita o arquivo de origem. Quando não acha\nbase suficiente, diz que não sabe em vez de inventar.\n\nRoda inteiro no navegador de quem visita. Não existe servidor, não\nexiste chave de API e a pergunta digitada não sai da aba.",
+   "source": {
+    "file": "corpus/010-este-projeto.md",
+    "origin": "https://github.com/ferlief/porta-voz",
+    "date": "2026-09-02"
    },
    "tf": {
     "porta": 2,
@@ -289,16 +289,16 @@
     "sai": 1,
     "aba": 1
    },
-   "dl": 56
+   "length": 56
   },
   {
    "id": "010-este-projeto#1",
-   "titulo": "Por que ele não custa nada",
-   "texto": "A camada de busca é BM25 sobre um índice estático — JavaScript puro,\nsem modelo, sem chamada de rede além do próprio índice. A camada de\ngeração em linguagem natural é opcional e roda via WebGPU na placa\nde vídeo do visitante, quando ele escolhe baixar o modelo.\n\nA consequência importante não é o preço: é que o abuso deixa de ser\npossível. Não há chave para vazar, endpoint para inundar nem fatura\npara estourar. O custo de um visitante mal-intencionado é pago pela\nmáquina dele.",
-   "origem": {
-    "arquivo": "corpus/010-este-projeto.md",
-    "fonte": "https://github.com/ferlief/porta-voz",
-    "data": "2026-09-02"
+   "title": "Por que ele não custa nada",
+   "text": "A camada de busca é BM25 sobre um índice estático — JavaScript puro,\nsem modelo, sem chamada de rede além do próprio índice. A camada de\ngeração em linguagem natural é opcional e roda via WebGPU na placa\nde vídeo do visitante, quando ele escolhe baixar o modelo.\n\nA consequência importante não é o preço: é que o abuso deixa de ser\npossível. Não há chave para vazar, endpoint para inundar nem fatura\npara estourar. O custo de um visitante mal-intencionado é pago pela\nmáquina dele.",
+   "source": {
+    "file": "corpus/010-este-projeto.md",
+    "origin": "https://github.com/ferlief/porta-voz",
+    "date": "2026-09-02"
    },
    "tf": {
     "nao": 3,
@@ -350,16 +350,16 @@
     "maquina": 1,
     "dele": 1
    },
-   "dl": 54
+   "length": 54
   },
   {
    "id": "010-este-projeto#2",
-   "titulo": "Por que BM25 e não embeddings",
-   "texto": "BM25 é auditável termo a termo: dá para mostrar quais palavras\ncasaram e quanto cada uma pesou no score. Embedding daria recall\nmelhor e um índice de dezenas de megabytes que ninguém consegue\nconferir a olho.\n\nNum projeto cuja tese é procedência verificável, a busca opaca\ncontradiz o produto. Embedding fica registrado como possível v2,\ncom a medição que justifique a troca.",
-   "origem": {
-    "arquivo": "corpus/010-este-projeto.md",
-    "fonte": "https://github.com/ferlief/porta-voz",
-    "data": "2026-09-02"
+   "title": "Por que BM25 e não embeddings",
+   "text": "BM25 é auditável termo a termo: dá para mostrar quais palavras\ncasaram e quanto cada uma pesou no score. Embedding daria recall\nmelhor e um índice de dezenas de megabytes que ninguém consegue\nconferir a olho.\n\nNum projeto cuja tese é procedência verificável, a busca opaca\ncontradiz o produto. Embedding fica registrado como possível v2,\ncom a medição que justifique a troca.",
+   "source": {
+    "file": "corpus/010-este-projeto.md",
+    "origin": "https://github.com/ferlief/porta-voz",
+    "date": "2026-09-02"
    },
    "tf": {
     "bm25": 2,
@@ -404,16 +404,16 @@
     "justifique": 1,
     "troca": 1
    },
-   "dl": 44
+   "length": 44
   },
   {
    "id": "010-este-projeto#3",
-   "titulo": "O que ele não faz",
-   "texto": "Não fala por mim em decisão nenhuma. Não responde sobre assunto fora\ndo corpus. Não guarda conversa. Não aprende com o que perguntam.\n\nO limiar que decide entre \"tenho base\" e \"não sei\" ainda não foi\ncalibrado — é um chute conservador declarado como chute no código.\nCalibrar depende do conjunto de perguntas de avaliação estar\nrespondido e medido.",
-   "origem": {
-    "arquivo": "corpus/010-este-projeto.md",
-    "fonte": "https://github.com/ferlief/porta-voz",
-    "data": "2026-09-02"
+   "title": "O que ele não faz",
+   "text": "Não fala por mim em decisão nenhuma. Não responde sobre assunto fora\ndo corpus. Não guarda conversa. Não aprende com o que perguntam.\n\nO limiar que decide entre \"tenho base\" e \"não sei\" ainda não foi\ncalibrado — é um chute conservador declarado como chute no código.\nCalibrar depende do conjunto de perguntas de avaliação estar\nrespondido e medido.",
+   "source": {
+    "file": "corpus/010-este-projeto.md",
+    "origin": "https://github.com/ferlief/porta-voz",
+    "date": "2026-09-02"
    },
    "tf": {
     "nao": 7,
@@ -452,16 +452,16 @@
     "respondido": 1,
     "medido": 1
    },
-   "dl": 42
+   "length": 42
   },
   {
    "id": "020-ferlief-tech#0",
-   "titulo": "O site ferlief.tech",
-   "texto": "Site pessoal e vitrine de front-end, construído como um motor de\nlayouts intercambiáveis: um menu de blocos geométricos troca o\nlayout inteiro, e um botão Randomize sorteia um do catálogo sem\nrepetir o atual.\n\nVanilla JavaScript e CSS. Sem framework, sem dependência externa,\nsem build step. Licença MIT.",
-   "origem": {
-    "arquivo": "corpus/020-ferlief-tech.md",
-    "fonte": "https://github.com/ferlief/ferlief-tech",
-    "data": "2026-09-02"
+   "title": "O site ferlief.tech",
+   "text": "Site pessoal e vitrine de front-end, construído como um motor de\nlayouts intercambiáveis: um menu de blocos geométricos troca o\nlayout inteiro, e um botão Randomize sorteia um do catálogo sem\nrepetir o atual.\n\nVanilla JavaScript e CSS. Sem framework, sem dependência externa,\nsem build step. Licença MIT.",
+   "source": {
+    "file": "corpus/020-ferlief-tech.md",
+    "origin": "https://github.com/ferlief/ferlief-tech",
+    "date": "2026-09-02"
    },
    "tf": {
     "site": 2,
@@ -498,16 +498,16 @@
     "licenca": 1,
     "mit": 1
    },
-   "dl": 34
+   "length": 34
   },
   {
    "id": "020-ferlief-tech#1",
-   "titulo": "Os layouts do site",
-   "texto": "Mouse Tracker é uma grade de elementos que calculam o ângulo até o\ncursor com Math.atan2 e apontam para ele.\n\nMillion Dollar Homepage é uma grade de pixels interativos mapeando\ntecnologias.\n\nCada layout é um módulo que implementa um contrato de quatro campos\n— id, nome, mount e unmount — e o motor mantém no máximo um montado\npor vez. O layout é responsável por limpar o próprio DOM e remover\nos próprios listeners no unmount; o motor não limpa como rede de\nsegurança.",
-   "origem": {
-    "arquivo": "corpus/020-ferlief-tech.md",
-    "fonte": "https://github.com/ferlief/ferlief-tech",
-    "data": "2026-09-02"
+   "title": "Os layouts do site",
+   "text": "Mouse Tracker é uma grade de elementos que calculam o ângulo até o\ncursor com Math.atan2 e apontam para ele.\n\nMillion Dollar Homepage é uma grade de pixels interativos mapeando\ntecnologias.\n\nCada layout é um módulo que implementa um contrato de quatro campos\n— id, nome, mount e unmount — e o motor mantém no máximo um montado\npor vez. O layout é responsável por limpar o próprio DOM e remover\nos próprios listeners no unmount; o motor não limpa como rede de\nsegurança.",
+   "source": {
+    "file": "corpus/020-ferlief-tech.md",
+    "origin": "https://github.com/ferlief/ferlief-tech",
+    "date": "2026-09-02"
    },
    "tf": {
     "layouts": 1,
@@ -558,7 +558,7 @@
     "rede": 1,
     "seguranca": 1
    },
-   "dl": 51
+   "length": 51
   }
  ]
 }

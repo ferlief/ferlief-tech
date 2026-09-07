@@ -29,7 +29,7 @@ Some directory names are Portuguese (`projetos/`, `experiencia/`, `porta-voz/`, 
 
 There is no server and no API key — the spend ceiling is zero by construction, and the typed question never leaves the tab.
 
-The source, tests, evaluation set and threat model live in `ferlief/porta-voz` (private). Only the copies the site serves are here: `js/porta-voz/`, `css/porta-voz.css` and `data/porta-voz-indice.json`. Do not edit those copies — the next sync overwrites them.
+The source, tests, evaluation set and threat model live in `ferlief/porta-voz` (private). Only the copies the site serves are here: `js/porta-voz/` (`porta-voz.js`, `retrieval.js`, `generation.js`), `css/porta-voz.css` and `data/porta-voz-indice.json`. Do not edit those copies — the next sync overwrites them.
 
 The published index holds the full text of every passage and is public by construction: only what passed the review gate in the other repository is in it.
 

@@ -56,9 +56,9 @@
         Quando não encontra base, diz que não sabe em vez de inventar. Roda inteiro no
         seu navegador — sem servidor, sem chave de API, e a pergunta não sai desta aba.
       </p>
-      <!-- O corpus é só em português. Sem tradução, uma pergunta em
-           inglês recuperaria passagem errada ou nada; dizer isso é
-           mais honesto que fingir bilinguismo. -->
+      <!-- The corpus is Portuguese only. Without translation, an
+           English question would retrieve the wrong passage or none;
+           saying so is more honest than faking bilingual answers. -->
       <p class="t-lead"><em data-i18n="pv.somentePt">As respostas saem em português — o corpus revisado por trás delas está em português.</em></p>
     </div>
 
@@ -74,11 +74,10 @@
   <script type="module" src="/js/idioma.js"></script>
   <script type="module" src="/js/atividade.js"></script>
   <script type="module">
-    // O módulo do porta-voz nasceu como layout do antigo motor
-    // (contrato mount/unmount) e continua com essa forma no
-    // repositório ferlief/porta-voz, onde é desenvolvido e testado.
-    // Aqui só existe uma tela, então basta montar uma vez — não há
-    // troca de layout para desfazer.
+    // The module keeps a mount/unmount shape from the layout engine
+    // this site no longer has; it survives because that is how it is
+    // developed and tested in ferlief/porta-voz. This page has a
+    // single view, so one mount is all it needs.
     import portaVoz from '/js/porta-voz/porta-voz.js';
     portaVoz.mount(document.getElementById('porta-voz-raiz'));
   </script>
