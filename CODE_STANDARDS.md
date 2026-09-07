@@ -12,8 +12,8 @@ portfolio pieces. This file covers the code itself.
 **Everything is written in English.** Identifiers, file and directory
 names, comments, commit messages, branch names, test names, log
 output, error messages — and the repository's documentation:
-`README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, design notes, threat
-models, evaluation protocols.
+`README.md`, `CONTRIBUTING.md`, design notes, threat models,
+evaluation protocols.
 
 This holds regardless of the language spoken while the code is being
 written. Conversation language and code language are independent
@@ -191,7 +191,7 @@ Stating a standard is not meeting it. As of 2026-09-07:
 
 | Area | State |
 |---|---|
-| `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `CODE_STANDARDS.md` | English |
+| `README.md`, `CONTRIBUTING.md`, `CODE_STANDARDS.md` | English |
 | `js/*.js` (`atividade`, `idioma`, `tema`, `projetos`, `i18n`) | Portuguese identifiers and comments |
 | `js/porta-voz/*` | Portuguese identifiers and comments |
 | `scripts/atualiza_atividade.py` | Portuguese |

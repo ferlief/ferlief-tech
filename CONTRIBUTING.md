@@ -14,8 +14,8 @@ when translated. `CODE_STANDARDS.md` has the full rule.
 
 **[Conventional Commits](https://www.conventionalcommits.org/),
 imperative mood.** This is the one repository in the ecosystem whose
-explicit purpose is to be read by people hiring (see `CLAUDE.md`), so
-the reason is sharper here — but the rule is the same everywhere now:
+explicit purpose is to be read by people hiring, so the reason is
+sharper here — but the rule is the same everywhere now:
 the standard of people who write software seriously, not something
 specific to this repository.
 
