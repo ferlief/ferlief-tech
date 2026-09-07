@@ -1,8 +1,23 @@
-# Contribuindo com ferlief-tech
+# Contributing to ferlief-tech
 
-## Mensagens de commit
+## Language
 
-**Inglês, sempre — [Conventional Commits](https://www.conventionalcommits.org/), modo imperativo.** Este é o único repositório do ecossistema cujo objetivo explícito é ser lido por recrutador (ver `CLAUDE.md`), então o motivo é ainda mais direto aqui — mas a regra é a mesma do resto do ecossistema agora: padrão de quem programa de forma séria hoje, não algo específico deste repositório.
+**English, everywhere.** Code, comments, commit messages, branch
+names, and the documentation in this repository.
+
+Two narrow exceptions: the copy the site's visitors read — which lives
+in the PT/EN dictionary (`js/i18n.js`) and in the demonstration pieces
+under `sites/` and `design/` — and domain terms that change meaning
+when translated. `CODE_STANDARDS.md` has the full rule.
+
+## Commit messages
+
+**[Conventional Commits](https://www.conventionalcommits.org/),
+imperative mood.** This is the one repository in the ecosystem whose
+explicit purpose is to be read by people hiring, so the reason is
+sharper here — but the rule is the same everywhere now:
+the standard of people who write software seriously, not something
+specific to this repository.
 
 ```
 <type>(<scope>): short imperative summary, ≤50 chars
@@ -11,14 +26,36 @@ Body explaining WHY this change exists, not what changed — the diff
 already shows what. Wrap at ~72 columns.
 ```
 
-Tipos comuns: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `build`, `ci`.
+Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`,
+`build`, `ci`.
 
-Isto é orientação daqui pra frente, não reescrita de histórico — commits anteriores em português ficam como estão. Reescrever histórico público (`git rebase`, `filter-branch`) não é ação a se tomar por padronização de estilo.
+This is guidance going forward, not a history rewrite — earlier
+Portuguese commits stay as they are. Rewriting published history
+(`git rebase`, `filter-branch`) is not something to do for a style
+convention.
 
-Referências: [conventionalcommits.org](https://www.conventionalcommits.org/) para o formato, as 7 regras de Chris Beams ("How to Write a Git Commit Message") para a prosa. Sem linha de atribuição a ferramenta de geração de código.
+No attribution line for code-generation tooling. `.claude/settings.json`
+enforces this for Claude Code sessions.
 
-## Antes de abrir um PR
+References: [conventionalcommits.org](https://www.conventionalcommits.org/)
+for the format, Chris Beams's seven rules ("How to Write a Git Commit
+Message") for the prose.
 
-O site é sem framework e sem build step, deliberadamente — é parte da vitrine: as páginas de demonstração em `sites/` e `design/` provam que dá para entregar peça acabada só com HTML e CSS. Uma contribuição que introduza dependência externa ou etapa de build muda o próprio ponto do projeto; discuta antes de abrir o PR.
+## Code standards
 
-Duas regras que não se negociam nas peças de portfólio: **marca fictícia é identificada como fictícia** na própria página, e **nenhum número entra sem origem** — nem em depoimento, nem em métrica de resultado.
+`CODE_STANDARDS.md` defines how the code is written: language, naming,
+comments, structure, errors, tests, security, accessibility. **Read it
+before writing code.**
+
+## Before opening a PR
+
+The site has no framework and no build step, deliberately — it is part
+of the showcase: the demonstration pages in `sites/` and `design/`
+prove that a finished piece ships with nothing but HTML and CSS. A
+contribution that introduces an external dependency or a build step
+changes the point of the project; discuss it before opening the PR.
+
+Two rules that are not negotiable in the portfolio pieces: **a
+fictional brand is labeled fictional** on the page itself, and **no
+number goes in without a source** — not in a testimonial, not in a
+results metric.

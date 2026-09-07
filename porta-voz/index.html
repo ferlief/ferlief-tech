@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porta-voz — ferlief.tech</title>
+  <meta name="description" content="Chatbot que responde só com texto revisado e cita a passagem de origem. Roda inteiro no navegador: sem servidor, sem chave de API.">
+  <link rel="canonical" href="https://ferlief.tech/porta-voz/">
+  <script>
+    try {
+      const tema = localStorage.getItem('tema');
+      if (tema === 'light' || tema === 'dark') {
+        document.documentElement.dataset.theme = tema;
+      }
+      const idioma = localStorage.getItem('idioma');
+      if (idioma === 'pt' || idioma === 'en') {
+        document.documentElement.dataset.lang = idioma;
+        document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : 'en';
+      }
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/paginas.css">
+  <link rel="stylesheet" href="/css/atividade.css">
+  <link rel="stylesheet" href="/css/porta-voz.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="logo"><a href="/">ferlief.tech</a></p>
+    <nav class="site-nav" aria-label="Navegação do site" data-i18n-aria-label="nav.site">
+      <a href="/" data-i18n="nav.inicio">Início</a>
+      <a href="/sites/" data-i18n="nav.sites">Sites</a>
+      <a href="/design/" data-i18n="nav.design">Design</a>
+      <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+      <a href="/blog/" data-i18n="nav.blog">Blog</a>
+    </nav>
+    <div class="controles">
+      <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
+        <span class="shape shape-lua" aria-hidden="true"></span>
+        <span id="btn-tema-label">Modo escuro</span>
+      </button>
+      <button id="btn-idioma" class="btn-idioma" type="button" aria-pressed="false">
+        <span class="shape shape-bandeira-uk" aria-hidden="true"></span>
+        <span id="btn-idioma-label">English</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="pagina">
+    <div class="container pagina-cabecalho">
+      <p class="eyebrow" data-i18n="pv.eyebrow">Porta-voz</p>
+      <h1 class="t-h2" data-i18n="pv.titulo">Pergunte, e ele mostra de onde tirou</h1>
+      <p class="t-lead" data-i18n="pv.lead">
+        Responde só com texto que eu escrevi e revisei, citando o arquivo de origem.
+        Quando não encontra base, diz que não sabe em vez de inventar. Roda inteiro no
+        seu navegador — sem servidor, sem chave de API, e a pergunta não sai desta aba.
+      </p>
+      <!-- The corpus is Portuguese only. Without translation, an
+           English question would retrieve the wrong passage or none;
+           saying so is more honest than faking bilingual answers. -->
+      <p class="t-lead"><em data-i18n="pv.somentePt">As respostas saem em português — o corpus revisado por trás delas está em português.</em></p>
+    </div>
+
+    <div class="container">
+      <div id="porta-voz-raiz"></div>
+    </div>
+  </main>
+
+  <footer id="atividade-root"></footer>
+
+  <script type="module" src="/js/i18n.js"></script>
+  <script type="module" src="/js/tema.js"></script>
+  <script type="module" src="/js/idioma.js"></script>
+  <script type="module" src="/js/atividade.js"></script>
+  <script type="module">
+    // The module keeps a mount/unmount shape from the layout engine
+    // this site no longer has; it survives because that is how it is
+    // developed and tested in ferlief/porta-voz. This page has a
+    // single view, so one mount is all it needs.
+    import portaVoz from '/js/porta-voz/porta-voz.js';
+    portaVoz.mount(document.getElementById('porta-voz-raiz'));
+  </script>
+</body>
+</html>
