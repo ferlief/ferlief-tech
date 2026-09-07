@@ -4,13 +4,22 @@
    motor. Sem @import, sem fonte externa: nenhuma requisição sai
    daqui além do próprio índice. */
 
+/* Consome os tokens de css/base.css, que resolve claro/escuro por
+   media query e por data-theme (o botão em js/tema.js). Herdando os
+   tokens, o porta-voz acompanha o toggle sem precisar de regra de
+   tema própria — e o bloco prefers-color-scheme que existia aqui
+   sairia errado sob escolha explícita do usuário.
+
+   Os fallbacks depois da vírgula mantêm o arquivo utilizável fora
+   deste site (o demo.html do repositório porta-voz não carrega
+   base.css). */
 .pv-raiz {
-  --pv-tinta: #16161a;
-  --pv-papel: #fbfbf9;
-  --pv-fraco: #6b6b73;
-  --pv-linha: #d9d9d2;
-  --pv-destaque: #1f4bd8;
-  --pv-alerta: #8a5a00;
+  --pv-tinta: var(--fg, #16161a);
+  --pv-papel: var(--surface, #fbfbf9);
+  --pv-fraco: var(--fg-muted, #6b6b73);
+  --pv-linha: var(--border, #d9d9d2);
+  --pv-destaque: var(--accent, #1f4bd8);
+  --pv-alerta: var(--fg-secondary, #8a5a00);
 
   max-width: 46rem;
   margin: 0 auto;
@@ -193,14 +202,4 @@
   font-size: .75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .pv-raiz {
-    --pv-tinta: #ececef;
-    --pv-papel: #131316;
-    --pv-fraco: #93939c;
-    --pv-linha: #33333a;
-    --pv-destaque: #7ea2ff;
-    --pv-alerta: #d9a441;
-  }
-  .pv-texto-gerado { background: rgba(126, 162, 255, .07); }
-}
+.pv-texto-gerado { background: color-mix(in srgb, var(--pv-destaque) 5%, transparent); }

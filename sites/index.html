@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sites e landing pages — ferlief.tech</title>
+  <meta name="description" content="Landing pages e sites institucionais escritos à mão. Cada peça abre em tamanho real no navegador — não é captura de tela.">
+  <link rel="canonical" href="https://ferlief.tech/sites/">
+  <script>
+    try {
+      const tema = localStorage.getItem('tema');
+      if (tema === 'light' || tema === 'dark') {
+        document.documentElement.dataset.theme = tema;
+      }
+      const idioma = localStorage.getItem('idioma');
+      if (idioma === 'pt' || idioma === 'en') {
+        document.documentElement.dataset.lang = idioma;
+        document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : 'en';
+      }
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/paginas.css">
+  <link rel="stylesheet" href="/css/atividade.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="logo"><a href="/">ferlief.tech</a></p>
+    <nav class="site-nav" aria-label="Navegação do site" data-i18n-aria-label="nav.site">
+      <a href="/" data-i18n="nav.inicio">Início</a>
+      <a href="/sites/" aria-current="page" data-i18n="nav.sites">Sites</a>
+      <a href="/design/" data-i18n="nav.design">Design</a>
+      <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+      <a href="/blog/" data-i18n="nav.blog">Blog</a>
+    </nav>
+    <div class="controles">
+      <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
+        <span class="shape shape-lua" aria-hidden="true"></span>
+        <span id="btn-tema-label">Modo escuro</span>
+      </button>
+      <button id="btn-idioma" class="btn-idioma" type="button" aria-pressed="false">
+        <span class="shape shape-bandeira-uk" aria-hidden="true"></span>
+        <span id="btn-idioma-label">English</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="pagina">
+    <div class="container pagina-cabecalho">
+      <p class="eyebrow" data-i18n="nav.sites">Sites</p>
+      <h1 class="t-h2" data-i18n="sites.titulo">Sites e landing pages</h1>
+      <p class="t-lead" data-i18n="sites.lead">Páginas escritas à mão, sem tema nem construtor visual. Cada peça abre aqui mesmo, no navegador, em tamanho real — não é captura de tela.</p>
+    </div>
+
+    <div class="container pagina-corpo">
+      <article class="trabalho trabalho-destaque">
+        <div class="miniatura" aria-hidden="true">
+          <div class="miniatura-barra"><span></span><span></span><span></span></div>
+          <div class="miniatura-tela mock-clinica">
+            <div class="mock-clinica-topo"><i></i><i></i><i></i><i></i></div>
+            <div class="mock-clinica-hero">
+              <div class="mock-clinica-texto"><i></i><i></i><i></i><i></i></div>
+              <div class="mock-clinica-imagem"></div>
+            </div>
+            <div class="mock-clinica-cards"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="trabalho-corpo">
+          <span class="selo-demo" data-i18n="trab.selo">Projeto-demonstração</span>
+          <h2 class="t-h3" data-i18n="trab1.titulo">Clínica Vitalis</h2>
+          <p class="eyebrow" data-i18n="trab1.tipo">Landing page de clínica médica</p>
+          <p data-i18n="trab1.texto">Página única de conversão para um consultório multiespecialidade: agendamento sempre à mão, especialidades, corpo clínico, convênios, horários e dúvidas frequentes.</p>
+
+          <dl class="ficha">
+            <div>
+              <dt data-i18n="sites.fichaObjetivo">Objetivo</dt>
+              <dd data-i18n="sites.fichaObjetivoTexto">Transformar visita em consulta agendada: o botão de agendamento acompanha a rolagem e reaparece ao fim de cada seção.</dd>
+            </div>
+            <div>
+              <dt data-i18n="sites.fichaDecisoes">Decisões</dt>
+              <dd data-i18n="sites.fichaDecisoesTexto">Nenhuma foto de banco de imagens. Corpo clínico com iniciais, especialidades em ícone desenhado à mão — a página carrega em qualquer conexão.</dd>
+            </div>
+            <div>
+              <dt data-i18n="sites.fichaEntrega">O que o cliente recebe</dt>
+              <dd data-i18n="sites.fichaEntregaTexto">HTML e CSS comentados, formulário pronto para conectar, texto revisado e instruções de publicação no domínio próprio.</dd>
+            </div>
+          </dl>
+
+          <div class="trabalho-meta">
+            <div class="etiquetas">
+              <span class="etiqueta">HTML</span>
+              <span class="etiqueta">CSS</span>
+              <span class="etiqueta">Responsivo</span>
+              <span class="etiqueta">Acessível</span>
+            </div>
+            <a class="btn btn-primario" href="/sites/clinica-vitalis/" data-i18n="trab1.link">Abrir a página</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grade">
+      <div class="footer-bloco">
+        <h2>ferlief.tech</h2>
+        <p data-i18n="rodape.sobre">Site pessoal e portfólio. Escrito à mão, sem framework e sem etapa de build — o código-fonte deste site é público.</p>
+      </div>
+      <nav class="footer-bloco" aria-label="Navegação do rodapé">
+        <h2 data-i18n="rodape.navTitulo">Navegação</h2>
+        <a href="/sites/" data-i18n="nav.sites">Sites</a>
+        <a href="/design/" data-i18n="nav.design">Design</a>
+        <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+        <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+        <a href="/blog/" data-i18n="nav.blog">Blog</a>
+      </nav>
+      <div class="footer-bloco">
+        <h2 data-i18n="rodape.contatoTitulo">Contato</h2>
+        <a href="mailto:ferlief@gmail.com">ferlief@gmail.com</a>
+        <a href="https://github.com/ferlief" target="_blank" rel="noopener">github.com/ferlief</a>
+      </div>
+    </div>
+
+    <div class="footer-atividade">
+      <div class="container">
+        <div id="atividade-root"></div>
+      </div>
+    </div>
+
+    <div class="container footer-legal">
+      <span data-i18n="rodape.direitos">Conteúdo e código sob licença MIT.</span>
+      <span data-i18n="rodape.selo">Obsession Labs — método aberto.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/tema.js"></script>
+  <script type="module" src="/js/idioma.js"></script>
+  <script type="module" src="/js/atividade.js"></script>
+</body>
+</html>

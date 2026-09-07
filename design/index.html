@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design e publicidade — ferlief.tech</title>
+  <meta name="description" content="Peças de publicidade de produto: key visual, cartaz, anúncios para feed e story, rótulo e kit de marca.">
+  <link rel="canonical" href="https://ferlief.tech/design/">
+  <script>
+    try {
+      const tema = localStorage.getItem('tema');
+      if (tema === 'light' || tema === 'dark') {
+        document.documentElement.dataset.theme = tema;
+      }
+      const idioma = localStorage.getItem('idioma');
+      if (idioma === 'pt' || idioma === 'en') {
+        document.documentElement.dataset.lang = idioma;
+        document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : 'en';
+      }
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/paginas.css">
+  <link rel="stylesheet" href="/css/atividade.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="logo"><a href="/">ferlief.tech</a></p>
+    <nav class="site-nav" aria-label="Navegação do site" data-i18n-aria-label="nav.site">
+      <a href="/" data-i18n="nav.inicio">Início</a>
+      <a href="/sites/" data-i18n="nav.sites">Sites</a>
+      <a href="/design/" aria-current="page" data-i18n="nav.design">Design</a>
+      <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+      <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+      <a href="/blog/" data-i18n="nav.blog">Blog</a>
+    </nav>
+    <div class="controles">
+      <button id="btn-tema" class="btn-tema" type="button" aria-pressed="false">
+        <span class="shape shape-lua" aria-hidden="true"></span>
+        <span id="btn-tema-label">Modo escuro</span>
+      </button>
+      <button id="btn-idioma" class="btn-idioma" type="button" aria-pressed="false">
+        <span class="shape shape-bandeira-uk" aria-hidden="true"></span>
+        <span id="btn-idioma-label">English</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="pagina">
+    <div class="container pagina-cabecalho">
+      <p class="eyebrow" data-i18n="nav.design">Design</p>
+      <h1 class="t-h2" data-i18n="design.titulo">Design e publicidade</h1>
+      <p class="t-lead" data-i18n="design.lead">Peças de campanha desenhadas para um produto: mesma marca, formatos diferentes, coerência mantida por regra escrita e não por acaso.</p>
+    </div>
+
+    <div class="container pagina-corpo">
+      <article class="trabalho trabalho-destaque">
+        <div class="miniatura" aria-hidden="true">
+          <div class="miniatura-barra"><span></span><span></span><span></span></div>
+          <div class="miniatura-tela mock-pecas"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="trabalho-corpo">
+          <span class="selo-demo" data-i18n="trab.selo">Projeto-demonstração</span>
+          <h2 class="t-h3" data-i18n="trab2.titulo">Serra Alta Café</h2>
+          <p class="eyebrow" data-i18n="trab2.tipo">Publicidade de produto</p>
+          <p data-i18n="trab2.texto">Campanha de lançamento de um café especial: key visual, cartaz, anúncios para feed e story, rótulo do pacote, banner display e o kit de marca que mantém tudo coerente.</p>
+
+          <dl class="ficha">
+            <div>
+              <dt data-i18n="design.fichaObjetivo">Objetivo</dt>
+              <dd data-i18n="design.fichaObjetivoTexto">Lançar um café especial em pacote de 250 g com uma campanha que funciona do cartaz de vitrine ao anúncio de story.</dd>
+            </div>
+            <div>
+              <dt data-i18n="design.fichaDecisoes">Decisões</dt>
+              <dd data-i18n="design.fichaDecisoesTexto">Uma cor de destaque, duas de apoio e uma hierarquia tipográfica só — o suficiente para a peça se reconhecer de longe sem depender de logotipo grande.</dd>
+            </div>
+            <div>
+              <dt data-i18n="design.fichaEntrega">O que o cliente recebe</dt>
+              <dd data-i18n="design.fichaEntregaTexto">Peças em todos os formatos pedidos, kit de marca documentado e as regras de uso escritas para quem for aplicar depois.</dd>
+            </div>
+          </dl>
+
+          <div class="trabalho-meta">
+            <div class="etiquetas">
+              <span class="etiqueta">Key visual</span>
+              <span class="etiqueta">Cartaz</span>
+              <span class="etiqueta">Feed e story</span>
+              <span class="etiqueta">Embalagem</span>
+            </div>
+            <a class="btn btn-primario" href="/design/serra-alta/" data-i18n="trab2.link">Abrir o portfólio</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grade">
+      <div class="footer-bloco">
+        <h2>ferlief.tech</h2>
+        <p data-i18n="rodape.sobre">Site pessoal e portfólio. Escrito à mão, sem framework e sem etapa de build — o código-fonte deste site é público.</p>
+      </div>
+      <nav class="footer-bloco" aria-label="Navegação do rodapé">
+        <h2 data-i18n="rodape.navTitulo">Navegação</h2>
+        <a href="/sites/" data-i18n="nav.sites">Sites</a>
+        <a href="/design/" data-i18n="nav.design">Design</a>
+        <a href="/projetos/" data-i18n="nav.projetos">Projetos</a>
+        <a href="/experiencia/" data-i18n="nav.experiencia">Experiência</a>
+        <a href="/blog/" data-i18n="nav.blog">Blog</a>
+      </nav>
+      <div class="footer-bloco">
+        <h2 data-i18n="rodape.contatoTitulo">Contato</h2>
+        <a href="mailto:ferlief@gmail.com">ferlief@gmail.com</a>
+        <a href="https://github.com/ferlief" target="_blank" rel="noopener">github.com/ferlief</a>
+      </div>
+    </div>
+
+    <div class="footer-atividade">
+      <div class="container">
+        <div id="atividade-root"></div>
+      </div>
+    </div>
+
+    <div class="container footer-legal">
+      <span data-i18n="rodape.direitos">Conteúdo e código sob licença MIT.</span>
+      <span data-i18n="rodape.selo">Obsession Labs — método aberto.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/tema.js"></script>
+  <script type="module" src="/js/idioma.js"></script>
+  <script type="module" src="/js/atividade.js"></script>
+</body>
+</html>

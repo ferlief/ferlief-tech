@@ -4,13 +4,15 @@
 // se um projeto ainda não tem resultados.json publicado, o campo
 // 'resultado' fica ausente no rodapé, não zerado ou inventado.
 
+import { EVENTO_MUDANCA, t } from './i18n.js';
+
 async function montarAtividade() {
   const raiz = document.getElementById('atividade-root');
   if (!raiz) return;
 
   let dados;
   try {
-    const resposta = await fetch('data/atividade.json', { cache: 'no-store' });
+    const resposta = await fetch('/data/atividade.json', { cache: 'no-store' });
     if (!resposta.ok) return;
     dados = await resposta.json();
   } catch {
@@ -52,9 +54,14 @@ async function montarAtividade() {
 
   const rotulo = document.createElement('span');
   rotulo.className = 'atividade-rotulo';
-  rotulo.textContent = 'última evidência publicada';
+  rotulo.textContent = t('atividade.rotulo');
 
   raiz.replaceChildren(rotulo, lista);
 }
+
+window.addEventListener(EVENTO_MUDANCA, () => {
+  const rotulo = document.querySelector('#atividade-root .atividade-rotulo');
+  if (rotulo) rotulo.textContent = t('atividade.rotulo');
+});
 
 montarAtividade();

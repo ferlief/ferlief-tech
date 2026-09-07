@@ -5,10 +5,14 @@
 //
 // porta-voz.js — layout de conversa para o motor de ferlief.tech.
 //
-// Implementa o contrato de js/motor.js: { id, nome, mount, unmount }.
+// Exporta { id, nome, mount, unmount }. Esse contrato vem do antigo
+// motor de layouts deste site, que não existe mais; ele sobrevive
+// porque é o formato do módulo em ferlief/porta-voz, onde o código é
+// desenvolvido e testado. Aqui, porta-voz/index.html monta uma vez e
+// nunca desmonta.
+//
 // mount() cria todo o DOM dentro do container e guarda as referências
-// que unmount() precisa desfazer — o motor não limpa como rede de
-// segurança.
+// que unmount() precisa desfazer.
 //
 // REGRA DE SEGURANÇA DESTE ARQUIVO: nenhum texto que não seja
 // literal deste código entra no DOM via innerHTML. Passagem do
@@ -17,7 +21,7 @@
 // do modelo é influenciável pela pergunta; renderizar qualquer um
 // dos dois como HTML é XSS auto-infligido. Ver AMEACAS.md, A-3.
 
-import { Indice, temBase, LIMIAR_NAO_CALIBRADO } from './porta-voz-recuperacao.js';
+import { Indice, temBase, LIMIAR_NAO_CALIBRADO } from './recuperacao.js';
 
 // Relativo a js/layouts/ neste repositório — o índice é servido
 // de data/, junto com o feed de atividade.
@@ -136,7 +140,7 @@ async function iniciarGeracao(resultados, pergunta, hospedeiro) {
   hospedeiro.appendChild(estadoTexto);
 
   try {
-    const { gerar, verificarSuporte } = await import('./porta-voz-geracao.js');
+    const { gerar, verificarSuporte } = await import('./geracao.js');
     const suporte = await verificarSuporte();
     if (!suporte.ok) {
       estadoTexto.textContent =

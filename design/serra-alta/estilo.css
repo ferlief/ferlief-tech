@@ -1,0 +1,1183 @@
+/* ---------------------------------------------------------------
+   Serra Alta — CSS do portfólio de campanha.
+
+   Toda peça desta página é desenhada em CSS: não há um único arquivo
+   de imagem, nem fonte externa, nem biblioteca. O que parece foto de
+   embalagem é uma caixa com gradiente; o que parece logotipo é um
+   <path> de cinco pontos.
+
+   Duas razões, e as duas são de trabalho, não de purismo: a peça
+   abre instantaneamente em qualquer conexão, e cada formato pode ser
+   reescalado sem exportar de novo — o texto dentro de cada peça é
+   dimensionado em cqw (container query units), então o cartaz A3 e o
+   story mantêm a proporção interna em qualquer largura de tela.
+   --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --laranja: #c25b1e;
+  --laranja-claro: #e8823f;
+  --espresso: #2a1a12;
+  --espresso-fundo: #14100d;
+  --creme: #f3e7d4;
+  --creme-suave: #ded0b9;
+  --mata: #2f5c46;
+  --texto: #b9ab98;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--sans);
+  line-height: 1.6;
+  background: var(--espresso-fundo);
+  color: var(--texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--creme);
+  text-wrap: balance;
+}
+
+svg {
+  display: block;
+}
+
+a {
+  color: var(--laranja-claro);
+}
+
+:focus-visible {
+  outline: 2px solid var(--laranja-claro);
+  outline-offset: 3px;
+}
+
+.envelope {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* marca gráfica da campanha — dois picos, um traço só */
+
+.pico {
+  width: 2rem;
+  fill: var(--laranja);
+}
+
+/* ---------------------------------------------------------------
+   barra de procedência
+   --------------------------------------------------------------- */
+
+.barra-demo {
+  background: #000;
+  color: #c8bba8;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.barra-demo strong {
+  color: var(--creme);
+}
+
+.barra-demo a {
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(232, 130, 63, 0.4);
+}
+
+.barra-demo a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* ---------------------------------------------------------------
+   capa
+   --------------------------------------------------------------- */
+
+.capa {
+  padding-block: clamp(3rem, 2rem + 5vw, 6rem);
+  background:
+    radial-gradient(60rem 30rem at 20% 0%, rgba(194, 91, 30, 0.22), transparent 70%),
+    var(--espresso-fundo);
+  border-bottom: 1px solid rgba(243, 231, 212, 0.12);
+}
+
+.etiqueta {
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--laranja-claro);
+  margin-bottom: 1.25rem;
+}
+
+.capa h1 {
+  font-size: clamp(2.6rem, 1.5rem + 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.capa h1 span {
+  font-family: var(--sans);
+  font-size: clamp(0.8rem, 0.6rem + 0.6vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--laranja-claro);
+  margin-top: 0.9rem;
+}
+
+.capa-chamada {
+  max-width: 42rem;
+  margin-top: 1.75rem;
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.15rem);
+}
+
+.brief {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(243, 231, 212, 0.12);
+}
+
+@media (min-width: 46rem) {
+  .brief {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 68rem) {
+  .brief {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.brief dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--creme-suave);
+  margin-bottom: 0.4rem;
+}
+
+.brief dd {
+  font-size: 0.92rem;
+}
+
+/* ---------------------------------------------------------------
+   pranchas — cada seção apresenta uma peça com legenda técnica
+   --------------------------------------------------------------- */
+
+.pranchas {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 2rem + 4vw, 5rem);
+  padding-block: clamp(3rem, 2rem + 4vw, 5rem);
+}
+
+.prancha-legenda {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(243, 231, 212, 0.12);
+}
+
+.numero {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--laranja);
+  flex: none;
+}
+
+.prancha-legenda h2 {
+  font-size: 1.4rem;
+}
+
+.prancha-legenda p {
+  font-size: 0.85rem;
+  color: #8e8172;
+  margin-top: 0.2rem;
+}
+
+.peca {
+  /* o container de consulta fica no wrapper, não na arte: unidade
+     cqw usada no próprio elemento container resolveria contra o
+     viewport, e o padding da peça precisa ser proporcional a ela */
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.peca figcaption {
+  font-size: 0.8rem;
+  color: #8e8172;
+  line-height: 1.5;
+}
+
+/* toda arte recebe a mesma moldura; o dimensionamento interno vem
+   do container declarado em .peca, logo acima */
+
+.kv,
+.cartaz,
+.post,
+.story,
+.rotulo,
+.banner {
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.9);
+  position: relative;
+}
+
+/* ---------------------------------------------------------------
+   01 — key visual 16:9
+   --------------------------------------------------------------- */
+
+.kv {
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(40cqw 40cqw at 78% 45%, rgba(194, 91, 30, 0.35), transparent 70%),
+    linear-gradient(150deg, #3a251a, var(--espresso) 55%, #1b110b);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 4cqw;
+  padding: 6cqw;
+}
+
+.kv-texto {
+  position: relative;
+  z-index: 2;
+}
+
+.kv-texto .pico {
+  width: 7cqw;
+  margin-bottom: 3cqw;
+}
+
+.kv-sobre {
+  font-size: 1.6cqw;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--laranja-claro);
+  margin-bottom: 2cqw;
+}
+
+.kv h3 {
+  font-size: 7.4cqw;
+  color: var(--creme);
+}
+
+.kv-linha {
+  font-size: 2.1cqw;
+  line-height: 1.5;
+  color: var(--creme-suave);
+  margin-top: 2.5cqw;
+  max-width: 34cqw;
+}
+
+.kv-cta {
+  display: inline-block;
+  margin-top: 4cqw;
+  padding: 1.2cqw 2.6cqw;
+  border-radius: 999px;
+  background: var(--laranja);
+  color: var(--creme);
+  font-size: 1.8cqw;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.kv-produto {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.kv-altitude {
+  position: absolute;
+  right: 3cqw;
+  bottom: -4cqw;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: 24cqw;
+  line-height: 1;
+  color: rgba(243, 231, 212, 0.07);
+  letter-spacing: -0.04em;
+}
+
+/* embalagem — desenhada em caixa, não fotografada */
+
+.pacote {
+  container-type: inline-size;
+  position: relative;
+  width: 62%;
+  max-width: 22rem;
+  aspect-ratio: 3 / 4.2;
+  background: linear-gradient(155deg, #f7eddd 0%, var(--creme) 45%, #d9c8ab 100%);
+  border-radius: 3px 3px 8px 8px;
+  box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.85);
+  display: flex;
+}
+
+.pacote-crimp {
+  position: absolute;
+  top: 0;
+  left: -2%;
+  width: 104%;
+  height: 9%;
+  background: linear-gradient(180deg, #3a251a, var(--espresso));
+  border-radius: 3px;
+}
+
+.pacote-corpo {
+  flex: 1;
+  padding: 16cqw 8cqw 24cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3cqw;
+  text-align: center;
+}
+
+.pico-pacote {
+  width: 22cqw;
+  margin-bottom: 1cqw;
+}
+
+.pacote-marca {
+  font-family: var(--serif);
+  font-size: 15cqw;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--espresso);
+}
+
+.pacote-sub {
+  font-size: 3.4cqw;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--laranja);
+}
+
+.pacote-notas {
+  font-size: 3.6cqw;
+  line-height: 1.4;
+  color: #6b5b48;
+  margin-top: 1cqw;
+}
+
+.pacote-selo {
+  margin-top: 3cqw;
+  padding: 1.6cqw 4cqw;
+  border-radius: 999px;
+  background: var(--espresso);
+  color: var(--creme);
+  font-size: 3.4cqw;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.pacote-valvula {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  width: 12%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #6b5b48, var(--espresso));
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------------------------------------------------------
+   02 — cartaz A3
+   --------------------------------------------------------------- */
+
+.prancha-dupla {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 52rem) {
+  .prancha-dupla {
+    grid-template-columns: minmax(0, 24rem) 1fr;
+    gap: 3rem;
+  }
+}
+
+.cartaz {
+  aspect-ratio: 297 / 420;
+  background: linear-gradient(175deg, #f7eddd, var(--creme) 60%, #e8d9c0);
+  color: var(--espresso);
+  padding: 8cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartaz-topo {
+  display: flex;
+  align-items: center;
+  gap: 2.5cqw;
+}
+
+.cartaz-topo .pico {
+  width: 8cqw;
+}
+
+.cartaz-topo p {
+  font-family: var(--serif);
+  font-size: 5cqw;
+  color: var(--espresso);
+}
+
+.cartaz-meio {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cartaz-sobre {
+  font-size: 3.2cqw;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--laranja);
+  margin-bottom: 3cqw;
+}
+
+.cartaz h3 {
+  font-size: 27cqw;
+  line-height: 0.85;
+  color: var(--espresso);
+  display: flex;
+  flex-direction: column;
+}
+
+.cartaz h3 span {
+  font-family: var(--sans);
+  font-size: 5.5cqw;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mata);
+  margin-top: 2cqw;
+}
+
+.cartaz-linha {
+  font-size: 4cqw;
+  line-height: 1.45;
+  color: #5c4c3c;
+  margin-top: 5cqw;
+  max-width: 90%;
+}
+
+.cartaz-base {
+  border-top: 0.6cqw solid var(--espresso);
+  padding-top: 4cqw;
+}
+
+.cartaz-preco {
+  font-family: var(--serif);
+  font-size: 11cqw;
+  line-height: 1;
+  color: var(--laranja);
+}
+
+.cartaz-preco span {
+  font-family: var(--sans);
+  display: block;
+  font-size: 3.2cqw;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--espresso);
+  margin-bottom: 1cqw;
+}
+
+.cartaz-rodape {
+  margin-top: 3cqw;
+  font-size: 3cqw;
+  letter-spacing: 0.06em;
+  color: #6b5b48;
+}
+
+.prancha-nota h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.prancha-nota h3 + p {
+  margin-bottom: 1.5rem;
+}
+
+.prancha-nota p {
+  font-size: 0.95rem;
+  max-width: 34rem;
+}
+
+/* ---------------------------------------------------------------
+   03 — anúncios de feed 1:1
+   --------------------------------------------------------------- */
+
+.trio {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .trio {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 58rem) {
+  .trio {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.post {
+  aspect-ratio: 1;
+  padding: 9cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.post h3 {
+  font-size: 11cqw;
+  line-height: 1.05;
+}
+
+.post-linha {
+  font-size: 4cqw;
+  line-height: 1.4;
+  margin-top: 4cqw;
+}
+
+.post-marca {
+  margin-top: auto;
+  font-size: 3.4cqw;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+}
+
+.post-oferta {
+  background: linear-gradient(150deg, var(--laranja-claro), var(--laranja) 60%, #9c4413);
+  color: var(--creme);
+}
+
+.post-oferta h3 {
+  color: var(--creme);
+}
+
+.post-tag {
+  align-self: flex-start;
+  padding: 1.4cqw 3.5cqw;
+  border-radius: 999px;
+  background: var(--espresso);
+  color: var(--creme);
+  font-size: 3.2cqw;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 6cqw;
+}
+
+.post-oferta .post-linha {
+  color: rgba(243, 231, 212, 0.88);
+}
+
+.post-beneficio {
+  background: linear-gradient(160deg, #3a251a, var(--espresso) 70%, #170f0a);
+}
+
+.post-beneficio .pico {
+  width: 14cqw;
+  margin-bottom: 6cqw;
+}
+
+.post-beneficio .post-linha {
+  color: var(--creme-suave);
+}
+
+.post-prova {
+  background: linear-gradient(170deg, #f7eddd, var(--creme));
+  color: var(--espresso);
+}
+
+.post-prova h3 {
+  font-size: 7.6cqw;
+  line-height: 1.15;
+  color: var(--espresso);
+}
+
+.post-aspas {
+  font-family: var(--serif);
+  font-size: 18cqw;
+  line-height: 0.6;
+  color: var(--laranja);
+  margin-bottom: 3cqw;
+}
+
+.post-prova .post-linha {
+  color: #6b5b48;
+}
+
+.post-prova .post-marca {
+  color: var(--laranja);
+}
+
+/* ---------------------------------------------------------------
+   04 — story 9:16 e rótulo
+   --------------------------------------------------------------- */
+
+.dupla-vertical {
+  display: grid;
+  gap: 2rem;
+}
+
+/* peça vertical: a largura vem do formato, não da coluna — sem
+   max-width o story de 9:16 ficaria alto demais para caber na tela */
+
+.peca-story {
+  max-width: 18rem;
+}
+
+.peca-rotulo {
+  max-width: 22rem;
+}
+
+@media (min-width: 46rem) {
+  .dupla-vertical {
+    grid-template-columns: minmax(0, 18rem) minmax(0, 22rem);
+    gap: 3rem;
+  }
+}
+
+.story {
+  aspect-ratio: 9 / 16;
+  background:
+    radial-gradient(30cqw 30cqw at 70% 30%, rgba(194, 91, 30, 0.35), transparent 70%),
+    linear-gradient(180deg, #3a251a, var(--espresso) 45%, #170f0a);
+  padding: 7cqw;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-topo {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5cqw;
+}
+
+.story-barra {
+  display: block;
+  height: 1cqw;
+  border-radius: 999px;
+  background: rgba(243, 231, 212, 0.25);
+  overflow: hidden;
+}
+
+.story-barra i {
+  display: block;
+  width: 38%;
+  height: 100%;
+  background: var(--creme);
+}
+
+.story-topo p {
+  font-size: 3.4cqw;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--creme-suave);
+}
+
+.story-meio {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4cqw;
+}
+
+.story-sobre {
+  font-size: 3.4cqw;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--laranja-claro);
+}
+
+.story h3 {
+  font-size: 15cqw;
+  line-height: 1;
+}
+
+.pacote-mini {
+  width: 52%;
+  align-self: center;
+}
+
+.pacote-mini .pacote-corpo {
+  padding: 18cqw 7cqw 12cqw;
+}
+
+.pacote-mini .pacote-marca {
+  font-size: 17cqw;
+}
+
+.pacote-mini .pacote-selo {
+  margin-top: 4cqw;
+  font-size: 4.5cqw;
+}
+
+.story-cta {
+  padding: 3.5cqw;
+  border-radius: 999px;
+  background: var(--laranja);
+  color: var(--creme);
+  font-size: 4cqw;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.rotulo {
+  aspect-ratio: 90 / 120;
+  background: linear-gradient(170deg, #f7eddd, var(--creme));
+  color: var(--espresso);
+  border: 0.8cqw solid var(--espresso);
+  padding: 7cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 5cqw;
+}
+
+.rotulo-topo {
+  text-align: center;
+  border-bottom: 0.5cqw solid var(--espresso);
+  padding-bottom: 4cqw;
+}
+
+.rotulo-topo .pico {
+  width: 16cqw;
+  margin: 0 auto 3cqw;
+}
+
+.rotulo-marca {
+  font-family: var(--serif);
+  font-size: 11cqw;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.rotulo-sub {
+  font-size: 3.2cqw;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  color: var(--laranja);
+  margin-top: 2cqw;
+}
+
+.rotulo-ficha {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2cqw;
+  font-size: 3.6cqw;
+}
+
+.rotulo-ficha div {
+  display: flex;
+  align-items: baseline;
+  gap: 2cqw;
+}
+
+.rotulo-ficha dt {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 3cqw;
+  color: var(--mata);
+  flex: none;
+}
+
+.rotulo-ficha div::after {
+  content: "";
+  order: 1;
+  flex: 1;
+  border-bottom: 1px dotted rgba(42, 26, 18, 0.3);
+}
+
+.rotulo-ficha dd {
+  order: 2;
+  text-align: right;
+  color: #4a3b2e;
+}
+
+.rotulo-base {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2cqw;
+  border-top: 0.5cqw solid var(--espresso);
+  padding-top: 4cqw;
+}
+
+.rotulo-peso {
+  font-family: var(--serif);
+  font-size: 9cqw;
+  line-height: 1;
+  color: var(--laranja);
+}
+
+.rotulo-lote {
+  font-size: 3cqw;
+  letter-spacing: 0.08em;
+  color: #6b5b48;
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------
+   05 — banners display
+   --------------------------------------------------------------- */
+
+.banners {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.peca-retangulo {
+  max-width: 20rem;
+}
+
+.banner-largo {
+  aspect-ratio: 728 / 90;
+  background: linear-gradient(100deg, var(--espresso), #3a251a 60%, var(--laranja));
+  display: flex;
+  align-items: center;
+  gap: 2.5cqw;
+  padding-inline: 3cqw;
+}
+
+.banner-largo .pico {
+  width: 4.5cqw;
+  flex: none;
+}
+
+.banner-marca {
+  font-family: var(--serif);
+  font-size: 3.6cqw;
+  color: var(--creme);
+  letter-spacing: 0.02em;
+  flex: none;
+}
+
+.banner-largo .banner-linha {
+  font-size: 2cqw;
+  color: var(--creme-suave);
+  flex: 1;
+  border-left: 1px solid rgba(243, 231, 212, 0.25);
+  padding-left: 2.5cqw;
+}
+
+.banner-largo .banner-botao {
+  flex: none;
+  padding: 1.4cqw 2.6cqw;
+  font-size: 1.9cqw;
+}
+
+.banner-botao {
+  border-radius: 999px;
+  background: var(--creme);
+  color: var(--espresso);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.banner-bloco {
+  aspect-ratio: 6 / 5;
+  background:
+    radial-gradient(20cqw 20cqw at 80% 20%, rgba(194, 91, 30, 0.4), transparent 70%),
+    linear-gradient(160deg, #3a251a, var(--espresso));
+  padding: 8cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3cqw;
+}
+
+.banner-sobre {
+  font-size: 4cqw;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--laranja-claro);
+}
+
+.banner-bloco h3 {
+  font-size: 13cqw;
+  line-height: 1;
+}
+
+.banner-bloco .banner-linha {
+  font-size: 4.2cqw;
+  color: var(--creme-suave);
+}
+
+.banner-bloco .banner-botao {
+  margin-top: auto;
+  padding: 3cqw 6cqw;
+  font-size: 4cqw;
+}
+
+/* ---------------------------------------------------------------
+   06 — kit de marca
+   --------------------------------------------------------------- */
+
+.kit {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 58rem) {
+  .kit {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kit-bloco {
+  background: rgba(243, 231, 212, 0.04);
+  border: 1px solid rgba(243, 231, 212, 0.12);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.kit-bloco h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.cores {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cores li {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  grid-template-areas:
+    "amostra nome"
+    "amostra codigo"
+    "amostra uso";
+  column-gap: 0.9rem;
+  align-items: center;
+}
+
+.amostra {
+  grid-area: amostra;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(243, 231, 212, 0.2);
+}
+
+.cores strong {
+  grid-area: nome;
+  color: var(--creme);
+  font-size: 0.9rem;
+}
+
+.cores code {
+  grid-area: codigo;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.76rem;
+  color: var(--laranja-claro);
+}
+
+.cores em {
+  grid-area: uso;
+  font-style: normal;
+  font-size: 0.78rem;
+  color: #8e8172;
+  line-height: 1.4;
+}
+
+.tipo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.9rem;
+  border-bottom: 1px solid rgba(243, 231, 212, 0.1);
+}
+
+.tipo:last-child {
+  border-bottom: none;
+}
+
+.tipo-amostra {
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--creme);
+  color: var(--espresso);
+  font-size: 1.6rem;
+}
+
+.tipo-titulo {
+  font-family: var(--serif);
+  font-weight: 600;
+}
+
+.tipo-corpo {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tipo-nome {
+  color: var(--creme);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tipo-uso {
+  font-size: 0.8rem;
+  color: #8e8172;
+  line-height: 1.45;
+  margin-top: 0.2rem;
+}
+
+.regras {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.regras li {
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.regras li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--laranja);
+  border-radius: 1px;
+}
+
+/* ---------------------------------------------------------------
+   rodapé
+   --------------------------------------------------------------- */
+
+.rodape {
+  border-top: 1px solid rgba(243, 231, 212, 0.12);
+  background: #0e0b09;
+  font-size: 0.9rem;
+}
+
+.rodape-grade {
+  display: grid;
+  gap: 2rem;
+  padding-block: 2.5rem;
+}
+
+@media (min-width: 46rem) {
+  .rodape-grade {
+    grid-template-columns: 1.7fr 1fr;
+  }
+}
+
+.rodape-grade div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rodape h2 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #8e8172;
+  margin-bottom: 0.3rem;
+}
+
+.rodape a {
+  color: var(--creme-suave);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.rodape a:hover {
+  color: var(--creme);
+  text-decoration: underline;
+}
+
+.rodape-marca {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--creme);
+  margin-bottom: 0.2rem;
+}
+
+.rodape-legal {
+  border-top: 1px solid rgba(243, 231, 212, 0.1);
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #6f6459;
+}
