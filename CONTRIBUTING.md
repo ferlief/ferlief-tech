@@ -17,6 +17,17 @@ Isto é orientação daqui pra frente, não reescrita de histórico — commits 
 
 Referências: [conventionalcommits.org](https://www.conventionalcommits.org/) para o formato, as 7 regras de Chris Beams ("How to Write a Git Commit Message") para a prosa. Sem linha de atribuição a ferramenta de geração de código.
 
+## Padrão de código
+
+`CODE_STANDARDS.md` define como o código é escrito: idioma,
+nomenclatura, comentários, estrutura, erros, testes, segurança e
+acessibilidade. A regra de base é **todo código em inglês** —
+identificador, arquivo, comentário e commit — com exceção para texto
+que o usuário lê e para termo de domínio sem tradução honesta.
+
+Esse documento está em inglês de propósito: um texto que exige código
+em inglês e é escrito em português desmente a própria regra.
+
 ## Antes de abrir um PR
 
 O site é sem framework e sem build step, deliberadamente — é parte da vitrine: as páginas de demonstração em `sites/` e `design/` provam que dá para entregar peça acabada só com HTML e CSS. Uma contribuição que introduza dependência externa ou etapa de build muda o próprio ponto do projeto; discuta antes de abrir o PR.

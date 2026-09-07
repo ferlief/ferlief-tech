@@ -15,6 +15,7 @@ Site pessoal e portfólio de trabalho: sites e landing pages, peças de publicid
 | `experiencia/`, `blog/` | Páginas de texto do site |
 | `porta-voz/` | Chatbot que responde só com texto revisado e cita a origem |
 | `css/`, `js/` | Sistema de design e módulos do site |
+| `CODE_STANDARDS.md` | Padrão de código: idioma, nomenclatura, testes, segurança |
 
 As duas peças de demonstração são **marcas fictícias**, identificadas como tal numa barra no topo de cada página. Nenhum cliente real, nome emprestado ou resultado inventado aparece no portfólio.
 
