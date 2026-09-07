@@ -1,0 +1,1073 @@
+/* ---------------------------------------------------------------
+   Alexia — Cabelo e moda, conteúdo. Mídia kit para marca patrocinadora.
+
+   CSS isolado de propósito: esta página não carrega /css/base.css.
+   O site é da cliente, não do portfólio, e precisa continuar de pé
+   se ferlief.tech mudar de cara.
+
+   Sem framework, sem CDN: ícone é SVG inline, "foto" é padrão
+   geométrico em gradiente até a imagem real chegar (ver comentário no
+   HTML sobre a estrutura de <picture> já pronta para receber ela).
+
+   Paleta editorial de moda, quente — rosa como cor de marca, dourado
+   como acento de número e destaque, carvão como tinta. Distinta do
+   verde-petróleo da clínica e do terroso da psicóloga: aqui o
+   registro é revista, não consultório.
+
+   DIFERENCIAL TÉCNICO DESTA PEÇA — @container queries:
+   Toda outra peça da casa até agora resolve responsividade só com
+   @media, que enxerga a largura da JANELA. Isso quebra quando o mesmo
+   componente precisa caber em dois lugares de tamanho diferente na
+   MESMA tela — exatamente o caso do cartão de número aqui: ele vive
+   sozinho, largo, na grade de três colunas da seção "Números", e vive
+   comprimido, dentro de um cartão menor, no hero. Com @media isso
+   exigiria duas versões do componente (ou JS medindo layout). Com
+   @container, o próprio .cartao-metrica declara
+   `container-type: inline-size` e os filhos reagem à largura que ELE
+   recebeu do pai, seja qual for — grade larga, cartão estreito, ou
+   uma coluna lateral que ainda nem existe. Um componente, qualquer
+   contêiner, sem duplicar marcação.
+   --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --rosa: #b8465f;
+  --rosa-escuro: #7c2f42;
+  --rosa-fundo: #fbeef1;
+  --rosa-linha: #f0d3da;
+  --carvao: #241f21;
+  --dourado: #b8923f;
+  --branco: #ffffff;
+  --fundo: #fffaf9;
+
+  --texto: #4c3a3e;
+  --texto-suave: #7d6a6d;
+
+  --raio: 10px;
+  --raio-g: 18px;
+  --sombra: 0 1px 2px rgba(124, 47, 66, 0.07), 0 14px 30px -18px rgba(124, 47, 66, 0.38);
+  --sombra-suave: 0 1px 2px rgba(124, 47, 66, 0.05), 0 6px 16px -12px rgba(124, 47, 66, 0.3);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--fundo);
+  padding-bottom: 4.5rem; /* espaço do CTA fixo no celular */
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--carvao);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2rem, 1.3rem + 3vw, 3.1rem); }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.05rem); }
+h3 { font-size: 1.08rem; }
+
+p { text-wrap: pretty; }
+svg { display: block; }
+
+a { color: var(--rosa); }
+
+img { max-width: 100%; height: auto; }
+
+:focus-visible {
+  outline: 2px solid var(--dourado);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.envelope {
+  width: min(100% - 2.5rem, 68rem);
+  margin-inline: auto;
+}
+
+.envelope-estreito {
+  width: min(100% - 2.5rem, 46rem);
+}
+
+.sobretitulo {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--rosa);
+  margin-bottom: 0.6rem;
+}
+
+.chamada {
+  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.18rem);
+  color: var(--texto);
+  margin-top: 1rem;
+  max-width: 46ch;
+}
+
+/* ---------------------------------------------------------------
+   botão
+   --------------------------------------------------------------- */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px; /* alvo de toque mínimo — requisito, não estética */
+  padding: 0.6rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: var(--raio);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.94rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.botao-primario {
+  background: var(--rosa);
+  color: var(--branco);
+}
+
+.botao-primario:hover {
+  background: var(--rosa-escuro);
+}
+
+.botao-fantasma {
+  background: transparent;
+  border-color: var(--rosa-linha);
+  color: var(--rosa-escuro);
+}
+
+.botao-fantasma:hover {
+  border-color: var(--rosa);
+  background: var(--rosa-fundo);
+}
+
+.botao-grande {
+  min-height: 52px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+}
+
+.botao-bloco {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------
+   cabeçalho
+   --------------------------------------------------------------- */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 250, 249, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rosa-linha);
+}
+
+.cabecalho-linha {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 4.5rem;
+  padding-block: 0.6rem;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--carvao);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.marca svg {
+  width: 30px;
+  height: 30px;
+  color: var(--rosa);
+  flex-shrink: 0;
+}
+
+.marca-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.marca-texto strong {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.marca-texto em {
+  font-style: normal;
+  font-size: 0.74rem;
+  color: var(--texto-suave);
+  letter-spacing: 0.02em;
+}
+
+.menu {
+  display: flex;
+  gap: 1.15rem;
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+.menu a {
+  color: var(--texto);
+  text-decoration: none;
+  padding-block: 0.3rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.menu a:hover {
+  color: var(--rosa);
+  border-bottom-color: var(--rosa);
+}
+
+.cabecalho .botao-primario {
+  flex-shrink: 0;
+}
+
+@media (max-width: 64rem) {
+  .menu { display: none; }
+  .cabecalho .botao-primario { margin-left: auto; }
+}
+
+/* ---------------------------------------------------------------
+   hero
+   --------------------------------------------------------------- */
+
+.hero {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  background:
+    radial-gradient(60ch 40ch at 85% 6%, rgba(184, 70, 95, 0.10), transparent 70%),
+    radial-gradient(46ch 32ch at 4% 96%, rgba(184, 146, 63, 0.10), transparent 70%),
+    var(--fundo);
+}
+
+.hero-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 60rem) {
+  .hero-grade {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
+}
+
+.hero-texto {
+  min-width: 0; /* impede que h1 estoure a coluna do grid */
+}
+
+.hero h1 {
+  margin-top: 0.3rem;
+  max-width: 19ch;
+}
+
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.reforcos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  list-style: none;
+  margin-top: 1.6rem;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.reforcos li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.reforcos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dourado);
+}
+
+.reforcos-escuros {
+  color: rgba(251, 238, 241, 0.82);
+}
+
+.reforcos-escuros li::before {
+  background: var(--dourado);
+}
+
+/* ---------------------------------------------------------------
+   cartão de mídia kit — o artefato do hero
+
+   Não é ilustração: é literalmente o cartão-resumo que uma marca
+   recebe. Mostra a capa (padrão geométrico até a foto real entrar),
+   identidade, e reaproveita .cartao-metrica dentro de um espaço
+   estreito — a demonstração viva da técnica de container query.
+   --------------------------------------------------------------- */
+
+.cartao-mediakit {
+  background: var(--branco);
+  border: 1px solid var(--rosa-linha);
+  border-radius: var(--raio-g);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+
+/* Moldura de foto: mesma técnica das outras peças (gradiente CSS no
+   lugar de arquivo de imagem), aplicada aqui com disciplina extra,
+   já que esta é a peça onde imagem real é inevitável mais cedo. O
+   padrão usa listras diagonais em rosa e dourado — lembra tecido,
+   sem imitar foto nenhuma. */
+.moldura-foto {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--rosa) 0 3%,
+      var(--rosa-escuro) 3% 6%,
+      var(--dourado) 6% 7.5%,
+      var(--rosa-fundo) 7.5% 14%
+    );
+}
+
+.moldura-foto-capa {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.mediakit-corpo {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mediakit-identidade {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.mediakit-nome {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--carvao);
+}
+
+.mediakit-handle {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.mediakit-categoria {
+  font-size: 0.85rem;
+  color: var(--rosa-escuro);
+  font-weight: 600;
+  margin-top: -0.6rem;
+}
+
+/* ---------------------------------------------------------------
+   .cartao-metrica — o componente com @container queries
+
+   container-type: inline-size transforma o próprio cartão num
+   contêiner de consulta: os filhos abaixo (.cartao-metrica-corpo)
+   passam a poder reagir à LARGURA QUE ESTE CARTÃO RECEBEU, não à
+   largura da janela. container-name dá um nome à consulta para não
+   colidir com outros contêineres que a página venha a ter.
+
+   Efeito prático, sem nenhuma classe extra: dentro do cartão estreito
+   do hero (~260px) o ícone fica acima do número; dentro da grade
+   larga da seção "Números" (~300–380px por coluna) ícone e número
+   ficam lado a lado. A mesma marcação HTML, em dois lugares.
+   --------------------------------------------------------------- */
+
+.cartao-metrica {
+  container-type: inline-size;
+  container-name: metrica;
+  background: var(--branco);
+  border: 1px solid var(--rosa-linha);
+  border-radius: var(--raio-g);
+  padding: 1.25rem;
+}
+
+.mediakit-corpo .cartao-metrica {
+  background: var(--rosa-fundo);
+  border-color: transparent;
+}
+
+.cartao-metrica-icone {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--rosa-fundo);
+  color: var(--rosa);
+  flex-shrink: 0;
+}
+
+.mediakit-corpo .cartao-metrica-icone {
+  background: var(--branco);
+}
+
+.cartao-metrica-icone svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cartao-metrica-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.cartao-metrica-valor {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--dourado);
+  line-height: 1.15;
+}
+
+.cartao-metrica-rotulo {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  text-wrap: balance;
+}
+
+/* Layout padrão (contêiner estreito, ex.: dentro do cartão de mídia
+   kit): ícone acima, texto abaixo, tudo à esquerda. */
+.cartao-metrica-icone,
+.cartao-metrica-texto {
+  margin-top: 0.6rem;
+}
+
+.cartao-metrica-icone:first-child {
+  margin-top: 0;
+}
+
+/* A partir de 15rem de largura DO PRÓPRIO CARTÃO — não da janela —
+   ícone e texto passam a ficar lado a lado. Um cartão na grade larga
+   cruza esse limiar; o mesmo cartão espremido no hero, não. */
+@container metrica (min-width: 15rem) {
+  .cartao-metrica {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cartao-metrica-icone,
+  .cartao-metrica-texto {
+    margin-top: 0;
+  }
+}
+
+/* A partir de 20rem, ainda mais respiro e número maior — cabe numa
+   coluna de desktop com folga. */
+@container metrica (min-width: 20rem) {
+  .cartao-metrica {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .cartao-metrica-valor {
+    font-size: 1.4rem;
+  }
+}
+
+/* ---------------------------------------------------------------
+   seções
+   --------------------------------------------------------------- */
+
+.secao {
+  padding-block: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+
+.secao-clara {
+  background: var(--rosa-fundo);
+}
+
+.secao-topo {
+  max-width: 52ch;
+  margin-bottom: 2.5rem;
+}
+
+.secao-chamada {
+  margin-top: 0.9rem;
+  color: var(--texto-suave);
+  font-size: 1.02rem;
+}
+
+.nota-secao {
+  margin-top: 2rem;
+  padding: 1.1rem 1.3rem;
+  border-left: 3px solid var(--dourado);
+  background: rgba(184, 146, 63, 0.08);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  font-size: 0.92rem;
+  color: var(--texto);
+  max-width: 62ch;
+}
+
+/* ---------------------------------------------------------------
+   grade de números
+
+   Este grid é responsivo por @media — decide QUANTAS colunas cabem
+   na largura da JANELA (empilhado no celular, três no desktop). É um
+   eixo independente do @container de dentro de cada .cartao-metrica,
+   que decide como CADA CARTÃO se organiza por dentro. Um resolve
+   quantidade de colunas; o outro resolve o conteúdo de uma coluna.
+   --------------------------------------------------------------- */
+
+.grade-metricas {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 40rem) {
+  .grade-metricas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .grade-metricas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------------------------------------------------------------
+   cartões genéricos (entregas, parcerias)
+   --------------------------------------------------------------- */
+
+.cartoes {
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--rosa-linha);
+  border-radius: var(--raio-g);
+  padding: 1.5rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.secao-clara .cartao {
+  border-color: rgba(184, 70, 95, 0.16);
+}
+
+.cartao h3 {
+  margin-bottom: 0.5rem;
+}
+
+.cartao p {
+  font-size: 0.94rem;
+  color: var(--texto-suave);
+}
+
+.icone {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: var(--rosa-fundo);
+  color: var(--rosa);
+}
+
+.icone svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.grade-entregas .prazo {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rosa-linha);
+  font-size: 0.86rem;
+  color: var(--texto);
+}
+
+.grade-entregas .prazo strong {
+  color: var(--rosa-escuro);
+}
+
+/* ---------------------------------------------------------------
+   trabalhos anteriores / parcerias
+   --------------------------------------------------------------- */
+
+.grade-parcerias {
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.cartao-parceria {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cartao-parceria p {
+  font-size: 0.92rem;
+}
+
+.cartao-parceria strong {
+  color: var(--carvao);
+}
+
+.etiqueta-parceria {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rosa-escuro);
+  background: var(--rosa-fundo);
+  border: 1px solid var(--rosa-linha);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  margin-bottom: 0.35rem;
+}
+
+/* ---------------------------------------------------------------
+   conteúdo em destaque — grade de "posts"
+   --------------------------------------------------------------- */
+
+.grade-conteudo {
+  list-style: none;
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 36rem) {
+  .grade-conteudo {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.post-destaque {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.post-imagem {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Seis variações do mesmo recurso — gradiente cônico girado e
+   recortado em diagonal — para a grade não parecer repetição de um
+   único bloco colorido. Zero arquivo de imagem, zero peso extra. */
+.post-padrao-1 { background: conic-gradient(from 20deg, var(--rosa), var(--dourado), var(--rosa-escuro), var(--rosa)); }
+.post-padrao-2 { background: linear-gradient(155deg, var(--dourado), var(--rosa-fundo) 60%); }
+.post-padrao-3 { background: conic-gradient(from 200deg, var(--rosa-escuro), var(--rosa), var(--dourado), var(--rosa-escuro)); }
+.post-padrao-4 { background: linear-gradient(20deg, var(--carvao), var(--rosa) 65%); }
+.post-padrao-5 { background: conic-gradient(from 80deg, var(--dourado), var(--rosa-fundo), var(--rosa), var(--dourado)); }
+.post-padrao-6 { background: linear-gradient(200deg, var(--rosa), var(--carvao) 70%); }
+
+.post-legenda {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  line-height: 1.45;
+}
+
+.post-formato {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rosa-escuro);
+  margin-bottom: 0.2rem;
+}
+
+/* ---------------------------------------------------------------
+   sobre
+   --------------------------------------------------------------- */
+
+.sobre-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 3vw, 3rem);
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .sobre-grade {
+    grid-template-columns: 1.3fr 0.7fr;
+  }
+}
+
+.sobre-grade > div > p {
+  margin-top: 1rem;
+  max-width: 58ch;
+}
+
+.cartao-citacao {
+  padding: 1.8rem;
+  border-radius: var(--raio-g);
+  background: var(--rosa-fundo);
+  border: 1px solid var(--rosa-linha);
+}
+
+.cartao-citacao p {
+  font-family: var(--serif);
+  font-size: 1.14rem;
+  line-height: 1.5;
+  color: var(--rosa-escuro);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------
+   dúvidas — <details> nativo, sem JavaScript
+   --------------------------------------------------------------- */
+
+.duvidas {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.duvidas details {
+  background: var(--branco);
+  border: 1px solid rgba(184, 70, 95, 0.16);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.duvidas summary {
+  padding: 1rem 3rem 1rem 1.15rem;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--carvao);
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.duvidas summary::-webkit-details-marker { display: none; }
+
+.duvidas summary::after {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--rosa);
+  border-bottom: 2px solid var(--rosa);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform .2s ease;
+}
+
+.duvidas details[open] summary::after {
+  transform: translateY(-25%) rotate(225deg);
+}
+
+.duvidas summary:hover {
+  background: var(--rosa-fundo);
+}
+
+.duvidas p {
+  padding: 0 1.15rem 1.15rem;
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  max-width: 62ch;
+}
+
+/* ---------------------------------------------------------------
+   contato
+   --------------------------------------------------------------- */
+
+.secao-escura {
+  background: var(--carvao);
+  color: var(--rosa-fundo);
+}
+
+.secao-escura h2 {
+  color: var(--branco);
+}
+
+.secao-escura .sobretitulo {
+  color: var(--dourado);
+}
+
+.secao-escura p {
+  color: rgba(251, 238, 241, 0.86);
+}
+
+.contato-grade {
+  display: grid;
+  gap: clamp(2rem, 1rem + 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .contato-grade {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.contato-texto p {
+  margin-top: 1rem;
+  max-width: 42ch;
+}
+
+.formulario {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  background: var(--branco);
+  border-radius: var(--raio-g);
+  padding: clamp(1.4rem, 1rem + 1.5vw, 2rem);
+  box-shadow: var(--sombra);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo-largo {
+  grid-column: 1 / -1;
+}
+
+.campo label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--carvao);
+}
+
+.opcional {
+  font-weight: 400;
+  color: var(--texto-suave);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  min-height: 44px;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--rosa-linha);
+  border-radius: var(--raio);
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: var(--fundo);
+  width: 100%;
+}
+
+.campo textarea {
+  min-height: auto;
+  resize: vertical;
+}
+
+.campo input:focus-visible,
+.campo select:focus-visible,
+.campo textarea:focus-visible {
+  border-color: var(--rosa);
+  background: var(--branco);
+}
+
+.aviso-form {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.83rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+.aviso-form-ativo {
+  color: var(--rosa);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------
+   rodapé
+   --------------------------------------------------------------- */
+
+.rodape {
+  background: var(--carvao);
+  color: rgba(251, 238, 241, 0.72);
+  padding-top: 3rem;
+  font-size: 0.92rem;
+}
+
+.rodape-grade {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  padding-bottom: 2.5rem;
+}
+
+.rodape h2 {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(251, 238, 241, 0.5);
+  margin-bottom: 0.8rem;
+}
+
+.rodape a {
+  display: block;
+  color: rgba(251, 238, 241, 0.82);
+  text-decoration: none;
+  padding-block: 0.28rem;
+}
+
+.rodape a:hover {
+  color: var(--branco);
+  text-decoration: underline;
+}
+
+.rodape p {
+  color: rgba(251, 238, 241, 0.72);
+}
+
+.marca-rodape {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--branco);
+  margin-bottom: 0.4rem;
+}
+
+.rodape-nota {
+  margin-top: 0.4rem;
+  font-size: 0.86rem;
+}
+
+.rodape-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem 1.5rem;
+  padding-block: 1.2rem;
+  border-top: 1px solid rgba(251, 238, 241, 0.14);
+  font-size: 0.82rem;
+  color: rgba(251, 238, 241, 0.55);
+}
+
+.rodape-legal a {
+  display: inline;
+  color: rgba(251, 238, 241, 0.75);
+}
+
+/* ---------------------------------------------------------------
+   CTA fixo — só no celular
+   --------------------------------------------------------------- */
+
+.cta-fixo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  background: var(--rosa);
+  color: var(--branco);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 -6px 20px -10px rgba(36, 31, 33, 0.5);
+}
+
+@media (min-width: 48rem) {
+  .cta-fixo { display: none; }
+  body { padding-bottom: 0; }
+}
+
+/* ---------------------------------------------------------------
+   movimento reduzido
+   --------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
