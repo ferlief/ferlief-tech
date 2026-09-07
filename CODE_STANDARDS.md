@@ -1,8 +1,6 @@
 # Code standards
 
-How code is written across this ecosystem. Written in English on
-purpose: a document that mandates English code and is itself in
-Portuguese undercuts its own rule.
+How code and documentation are written across this ecosystem.
 
 `CONTRIBUTING.md` covers commit format and the rules specific to the
 portfolio pieces. This file covers the code itself.
@@ -11,9 +9,11 @@ portfolio pieces. This file covers the code itself.
 
 ## 1. Language
 
-**All code is written in English.** Identifiers, file and directory
+**Everything is written in English.** Identifiers, file and directory
 names, comments, commit messages, branch names, test names, log
-output, and error messages.
+output, error messages — and the repository's documentation:
+`README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, design notes, threat
+models, evaluation protocols.
 
 This holds regardless of the language spoken while the code is being
 written. Conversation language and code language are independent
@@ -33,17 +33,29 @@ failure a convention exists to prevent.
   read is code that cannot be evaluated.
 - Contributors, tooling, linters, and error messages assume it.
 
-**The two exceptions**, both narrow:
+**The exceptions**, all narrow:
 
-- **User-facing text.** Interface copy, page content, documentation
-  written for a Portuguese-speaking reader. `README.md` and
-  `CONTRIBUTING.md` stay in Portuguese; that is a choice about
-  audience, not about code.
+- **Copy the audience reads.** Interface strings, page content, and
+  the demonstration pieces serve Brazilian clients; their language is
+  a commercial decision. On this site that copy lives in the PT/EN
+  dictionary (`js/i18n.js`) and inside `sites/` and `design/`.
+  Documentation is not covered by this exception — a `README.md` is
+  read by the people evaluating the work, and half of them do not
+  read Portuguese.
+- **A project written for a Portuguese-speaking community.**
+  `protocolo-vies` is written for Latin American researchers; its
+  audience is the reason it exists, so it stays in Portuguese
+  end to end. This is an exception granted per project and stated out
+  loud, never assumed.
 - **Domain terms with no honest translation.** A legal, cultural, or
   regulatory term that changes meaning when translated (`CPF`, `CNPJ`,
   `SUS`) keeps its original form. Document it in a comment the first
   time it appears. This exception covers proper nouns, not laziness:
   `corpus`, `layout`, and `evidence` all translate fine.
+- **A published path.** A directory that is already a live URL
+  (`projetos/`, `experiencia/`, `porta-voz/`) is not renamed: the cost
+  is broken links and lost search rankings, paid by visitors, for a
+  consistency nobody sees. New paths are English.
 
 ## 2. Naming
 
@@ -175,16 +187,17 @@ are part of the change.
 
 ## 10. Current state — this is not yet true
 
-Stating a standard is not meeting it. As of 2026-09-07 this
-repository does not comply with section 1:
+Stating a standard is not meeting it. As of 2026-09-07:
 
 | Area | State |
 |---|---|
-| `js/*.js` (`motor`, `catalogo`, `atividade`, `idioma`, `tema`, `projetos`) | Portuguese identifiers and comments |
+| `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `CODE_STANDARDS.md` | English |
+| `js/*.js` (`atividade`, `idioma`, `tema`, `projetos`, `i18n`) | Portuguese identifiers and comments |
 | `js/porta-voz/*` | Portuguese identifiers and comments |
 | `scripts/atualiza_atividade.py` | Portuguese |
+| `js/i18n.js` dictionary values | PT and EN — correct, this is visitor copy |
 | Commit history | Mixed; Portuguese before 2026-09 |
-| `README.md`, `CONTRIBUTING.md` | Portuguese — intentional, section 1 exception |
+| Published directory names | Portuguese, and staying — see section 1 |
 
 The rule applies to **new code from now on**. Existing code is
 migrated when it is touched for another reason, never in a rename-only
