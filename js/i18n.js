@@ -33,6 +33,11 @@ const DICIONARIO = {
     'tema.escuro': 'Modo escuro',
     'atividade.rotulo': 'Última evidência publicada',
 
+    'pv.eyebrow': 'Porta-voz',
+    'pv.titulo': 'Pergunte, e ele mostra de onde tirou',
+    'pv.lead': 'Responde só com texto que eu escrevi e revisei, citando o arquivo de origem. Quando não encontra base, diz que não sabe em vez de inventar. Roda inteiro no seu navegador — sem servidor, sem chave de API, e a pergunta não sai desta aba.',
+    'pv.somentePt': 'As respostas saem em português — o corpus revisado por trás delas está em português.',
+
     'home.eyebrow': 'Desenvolvimento e design — Rio de Janeiro, atendimento remoto',
     'home.titulo': 'Sites que abrem rápido, funcionam no celular e explicam o que você vende.',
     'home.lead': 'Landing pages, sites institucionais e peças de campanha. Tudo escrito à mão em HTML, CSS e JavaScript — sem tema comprado, sem construtor visual, sem plugin que quebra na próxima atualização. No fim, o código é seu.',
@@ -157,6 +162,11 @@ const DICIONARIO = {
     'tema.claro': 'Light mode',
     'tema.escuro': 'Dark mode',
     'atividade.rotulo': 'Latest published evidence',
+
+    'pv.eyebrow': 'Porta-voz',
+    'pv.titulo': 'Ask, and it shows you where the answer came from',
+    'pv.lead': 'It answers only with text I wrote and reviewed, citing the source file. When it finds no basis, it says it does not know instead of making something up. It runs entirely in your browser — no server, no API key, and your question never leaves this tab.',
+    'pv.somentePt': 'Answers come out in Portuguese — the reviewed corpus behind them is written in Portuguese.',
 
     'home.eyebrow': 'Development and design — Rio de Janeiro, working remotely',
     'home.titulo': 'Websites that load fast, work on a phone, and explain what you sell.',
