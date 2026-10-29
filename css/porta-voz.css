@@ -1,0 +1,205 @@
+/* Copied from ferlief/porta-voz (private). Do not edit here. */
+/* porta-voz.css — conversation UI styles.
+   Everything is pv- prefixed so it cannot collide with a host page's
+   styles. No @import and no external font: nothing leaves this file
+   over the network.
+
+   The palette consumes the host site's design tokens when they exist.
+   The fallbacks after each comma keep the file usable standalone, in
+   demo.html, where no base.css is loaded.
+
+   There is deliberately NO prefers-color-scheme block here: the host
+   resolves light and dark through its own tokens, including an
+   explicit choice in a theme button. A media query at this level would
+   override that choice and get it wrong. */
+
+.pv-root {
+  --pv-ink: var(--fg, #16161a);
+  --pv-paper: var(--surface, #fbfbf9);
+  --pv-muted: var(--fg-muted, #6b6b73);
+  --pv-line: var(--border, #d9d9d2);
+  --pv-accent: var(--accent, #1f4bd8);
+  --pv-warn: var(--fg-secondary, #8a5a00);
+
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  color: var(--pv-ink);
+  font: 400 1rem/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.pv-title {
+  margin: 0 0 .35rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.pv-subtitle {
+  margin: 0 0 1.75rem;
+  max-width: 34rem;
+  color: var(--pv-muted);
+  font-size: .9rem;
+}
+
+.pv-form {
+  display: flex;
+  gap: .5rem;
+}
+
+.pv-field {
+  flex: 1;
+  min-width: 0;
+  padding: .7rem .85rem;
+  border: 1px solid var(--pv-line);
+  border-radius: 2px;
+  background: var(--pv-paper);
+  color: inherit;
+  font: inherit;
+}
+
+.pv-field:focus-visible,
+.pv-submit:focus-visible,
+.pv-suggestion:focus-visible,
+.pv-generate-button:focus-visible {
+  outline: 2px solid var(--pv-accent);
+  outline-offset: 2px;
+}
+
+.pv-submit,
+.pv-generate-button {
+  padding: .7rem 1.1rem;
+  border: 1px solid var(--pv-ink);
+  border-radius: 2px;
+  background: var(--pv-ink);
+  color: var(--pv-paper);
+  font: inherit;
+  cursor: pointer;
+}
+
+.pv-submit[disabled] {
+  border-color: var(--pv-line);
+  background: var(--pv-line);
+  color: var(--pv-muted);
+  cursor: progress;
+}
+
+.pv-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pv-suggestion {
+  padding: .3rem .6rem;
+  border: 1px solid var(--pv-line);
+  border-radius: 2px;
+  background: none;
+  color: var(--pv-muted);
+  font: inherit;
+  font-size: .82rem;
+  cursor: pointer;
+}
+
+.pv-suggestion:hover { color: var(--pv-ink); border-color: var(--pv-muted); }
+
+.pv-response { margin-top: 2rem; }
+
+.pv-question-echo {
+  margin: 0 0 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--pv-line);
+  font-size: 1.05rem;
+}
+
+.pv-label {
+  display: block;
+  margin-bottom: .2rem;
+  color: var(--pv-muted);
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.pv-passages-heading {
+  margin: 0 0 .8rem;
+  color: var(--pv-muted);
+  font-size: .8rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.pv-passage {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--pv-line);
+}
+
+.pv-passage-title {
+  margin: 0 0 .4rem;
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.pv-passage-text {
+  margin: 0 0 .6rem;
+  white-space: pre-wrap; /* o corpus é markdown: preserva a quebra da autora */
+}
+
+.pv-provenance { font-size: .78rem; color: var(--pv-muted); }
+
+.pv-file {
+  display: inline-block;
+  margin-bottom: .3rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.pv-explanation summary { cursor: pointer; }
+
+.pv-terms {
+  margin: .4rem 0 0;
+  padding-left: 1.1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.pv-missing { margin: .4rem 0 0; color: var(--pv-warn); }
+
+.pv-abstention {
+  padding: 1rem 1.1rem;
+  border: 1px dashed var(--pv-line);
+  border-radius: 2px;
+}
+
+.pv-abstention p { margin: 0; }
+.pv-abstention-note { margin-top: .5rem !important; color: var(--pv-muted); font-size: .8rem; }
+
+.pv-generate-offer {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--pv-line);
+}
+
+.pv-offer-text { margin: 0 0 .8rem; color: var(--pv-muted); font-size: .85rem; }
+
+.pv-generate-status { margin: 0 0 .6rem; color: var(--pv-muted); font-size: .85rem; }
+
+.pv-generated-text {
+  margin: 0;
+  padding: .9rem 1rem;
+  border-left: 2px solid var(--pv-accent);
+  background: rgba(31, 75, 216, .04);
+  white-space: pre-wrap;
+}
+
+.pv-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--pv-line);
+  color: var(--pv-muted);
+  font-size: .75rem;
+}
+
+.pv-generated-text { background: color-mix(in srgb, var(--pv-accent) 5%, transparent); }
