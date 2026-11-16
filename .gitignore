@@ -14,6 +14,7 @@ Thumbs.db
 
 # contexto local de trabalho, nao versionado
 CLAUDE.md
+.claude/settings.json
 
 # --- dados que nunca sobem ---------------------------------------
 # Modelos e vetores. refs.pkl contem embeddings faciais: dado
