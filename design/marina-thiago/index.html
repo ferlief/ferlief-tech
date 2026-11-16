@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marina &amp; Thiago — filme de casamento | ferlief.tech</title>
+  <meta name="description" content="Edição cinematográfica de um filme de casamento em 4K: decupagem, estrutura narrativa, áudio ambiente e grade de cor, do material bruto ao corte final de 10 minutos.">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <header class="capa">
+    <div class="envelope capa-nav">
+      <a href="/">ferlief.tech</a>
+      <a href="/design/">← voltar ao portfólio</a>
+    </div>
+    <div class="envelope capa-corpo">
+      <p class="etiqueta-tipo">Edição de vídeo · filme de casamento</p>
+      <h1>Marina &amp; Thiago</h1>
+    </div>
+    <div class="envelope">
+      <div class="slate">
+        <div><span class="k">Duração final</span><span class="v">10:00</span></div>
+        <div><span class="k">Captação</span><span class="v">4K · documental</span></div>
+        <div><span class="k">Entrega</span><span class="v">Corte final + redes</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="bloco">
+      <div class="envelope">
+        <h2>Brief</h2>
+        <p>Material bruto captado em 4K com muitos momentos espontâneos — sem encenação, sem retomadas. O pedido de Marina e Thiago era um corte cinematográfico e fluido que preservasse a espontaneidade da captação: os discursos inteiros onde importam, o áudio ambiente como parte da textura, e uma curva emocional que sustente 10 minutos sem cansar.</p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="envelope">
+        <h2>Abordagem</h2>
+        <ol class="abordagem">
+          <li>
+            <span class="n">01</span>
+            <div><h3>Decupagem</h3><p>Log de todo o material bruto por tipo de momento (chegada, cerimônia, discursos, festa) e por qualidade emocional do plano, antes de qualquer corte.</p></div>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <div><h3>Estrutura</h3><p>Arco do dia reconstruído em blocos, priorizando continuidade emocional sobre ordem cronológica estrita onde isso servia ao ritmo.</p></div>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <div><h3>Áudio</h3><p>Discursos e áudio ambiente tratados como camada principal, não como acompanhamento da trilha — a trilha entra para sustentar, não para cobrir.</p></div>
+          </li>
+          <li>
+            <span class="n">04</span>
+            <div><h3>Cor</h3><p>Grade de cor unificando takes de câmeras e condições de luz distintas em uma paleta cinematográfica coerente do início ao fim.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="envelope">
+        <h2>Antes / Depois</h2>
+        <p>Um trecho do material bruto ao lado do resultado final, para mostrar a distância entre captação e corte.</p>
+
+        <div class="compare">
+          <figure class="antes">
+            <div class="rotulo"><span class="ponto"></span>Bruto — original</div>
+            <div class="video-quadro">
+              <video controls preload="metadata">
+                <source src="assets/videos/bruto.mp4" type="video/mp4">
+              </video>
+              <div class="marcador" data-fallback>
+                <span>vídeo original ainda não adicionado</span>
+                <span class="caminho">assets/videos/bruto.mp4</span>
+              </div>
+            </div>
+          </figure>
+
+          <figure class="depois">
+            <div class="rotulo"><span class="ponto"></span>Editado — final</div>
+            <div class="video-quadro">
+              <video controls preload="metadata">
+                <source src="assets/videos/editado.mp4" type="video/mp4">
+              </video>
+              <div class="marcador" data-fallback>
+                <span>vídeo editado ainda não adicionado</span>
+                <span class="caminho">assets/videos/editado.mp4</span>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco" style="border-bottom: none;">
+      <div class="envelope">
+        <h2>Ferramentas</h2>
+        <div class="tools">
+          <span>DaVinci Resolve</span>
+          <span>Correção de cor</span>
+          <span>Mixagem de áudio</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="envelope rodape-grade">
+      <span>Direção de corte, cor e som: ferlief.tech</span>
+      <div>
+        <a href="/design/">Voltar ao portfólio</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:ferlief@gmail.com">ferlief@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.video-quadro').forEach(function (quadro) {
+      var video = quadro.querySelector('video');
+      var marcador = quadro.querySelector('[data-fallback]');
+      var mostrar = function () { marcador.style.display = 'flex'; video.style.display = 'none'; };
+      var esconder = function () { marcador.style.display = 'none'; };
+      marcador.style.display = 'none';
+      video.addEventListener('error', mostrar);
+      video.addEventListener('loadeddata', esconder);
+      var src = video.querySelector('source').getAttribute('src');
+      fetch(src, { method: 'HEAD' }).then(function (r) { if (!r.ok) mostrar(); }).catch(mostrar);
+    });
+  </script>
+
+</body>
+</html>

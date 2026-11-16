@@ -330,6 +330,467 @@
   opacity: 0.55;
 }
 
+/* mock 3 — site de psicóloga (Jéssica Felipe): hero de duas colunas,
+   texto à esquerda e um cartão de passos numerados à direita — o
+   mesmo artefato "como começa" que substitui a agenda de horários da
+   clínica, porque psicologia não é auto-serviço. */
+
+.mock-jessica {
+  background: #f7ece7;
+}
+
+.mock-jessica-topo {
+  height: 12%;
+  background: #ffffff;
+  border-bottom: 1px solid #e6d3cb;
+  display: flex;
+  align-items: center;
+  gap: 4%;
+  padding-inline: 5%;
+}
+
+.mock-jessica-topo i {
+  display: block;
+  height: 24%;
+  border-radius: 2px;
+  background: #e6d3cb;
+}
+
+.mock-jessica-topo i:first-child {
+  flex: 0 0 16%;
+  height: 34%;
+  border-radius: 50%;
+  background: #8a4a3d;
+}
+
+.mock-jessica-hero {
+  flex: 1;
+  display: flex;
+  gap: 5%;
+  padding: 7% 5%;
+}
+
+.mock-jessica-texto {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 8%;
+}
+
+.mock-jessica-texto i {
+  display: block;
+  height: 10%;
+  border-radius: 2px;
+  background: #d8bcae;
+}
+
+.mock-jessica-texto i:first-child {
+  height: 20%;
+  width: 88%;
+  background: #8a4a3d;
+}
+
+.mock-jessica-cartao {
+  flex: 1;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e6d3cb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16%;
+  padding: 8%;
+}
+
+.mock-jessica-cartao i {
+  display: block;
+  height: 14%;
+  border-radius: 40px;
+  background: #eee1d9;
+  position: relative;
+  padding-left: 22%;
+}
+
+.mock-jessica-cartao i::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18%;
+  height: 100%;
+  border-radius: 50%;
+  background: #8a4a3d;
+}
+
+/* mock 4 — site de escrita e fotografia (Felipe Moreira): título em
+   serifa grande, uma faixa "antes/depois" de revisão de texto, e uma
+   fileira de padrões distintos representando a galeria em
+   scroll-snap. */
+
+.mock-felipe-moreira {
+  background: #f7f3ea;
+}
+
+.mock-felipe-moreira-topo {
+  height: 10%;
+  background: #1c2430;
+}
+
+.mock-felipe-moreira-titulo {
+  padding: 8% 6% 4%;
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+}
+
+.mock-felipe-moreira-titulo i {
+  display: block;
+  height: 13%;
+  border-radius: 2px;
+  background: #1c2430;
+}
+
+.mock-felipe-moreira-titulo i:nth-child(2) {
+  width: 70%;
+  background: #a89f88;
+}
+
+.mock-felipe-moreira-diff {
+  margin: 0 6%;
+  display: flex;
+  gap: 4%;
+  height: 20%;
+}
+
+.mock-felipe-moreira-diff i {
+  flex: 1;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #e6ddc9;
+  position: relative;
+}
+
+.mock-felipe-moreira-diff i:first-child::after {
+  content: "";
+  position: absolute;
+  inset: 30% 12%;
+  height: 12%;
+  background: #8c3a2b;
+  opacity: 0.55;
+}
+
+.mock-felipe-moreira-diff i:last-child::after {
+  content: "";
+  position: absolute;
+  inset: 30% 12%;
+  height: 12%;
+  background: #52504a;
+  opacity: 0.35;
+}
+
+.mock-felipe-moreira-galeria {
+  margin-top: auto;
+  display: flex;
+  gap: 3%;
+  padding: 5% 6%;
+  height: 22%;
+}
+
+.mock-felipe-moreira-galeria i {
+  flex: 1;
+  border-radius: 3px;
+}
+
+.mock-felipe-moreira-galeria i:nth-child(1) {
+  background: repeating-linear-gradient(45deg, #1c2430, #1c2430 3px, #d8d0bc 3px, #d8d0bc 6px);
+}
+
+.mock-felipe-moreira-galeria i:nth-child(2) {
+  background: radial-gradient(circle, #8c3a2b, #52504a);
+}
+
+.mock-felipe-moreira-galeria i:nth-child(3) {
+  background: linear-gradient(160deg, #52504a, #1c2430);
+}
+
+.mock-felipe-moreira-galeria i:nth-child(4) {
+  background: #d8d0bc;
+}
+
+/* mock 5 — media kit de criadora de conteúdo (Alexia): capa com
+   textura diagonal, grade de cartões de métrica com @container
+   queries, e uma fileira de conteúdo em grade. */
+
+.mock-alexia {
+  background: #fffaf9;
+}
+
+.mock-alexia-capa {
+  height: 34%;
+  background:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.14) 0 6px, transparent 6px 14px),
+    linear-gradient(135deg, #b8465f, #b8923f);
+}
+
+.mock-alexia-metricas {
+  display: flex;
+  gap: 4%;
+  padding: 6%;
+  flex: 1;
+}
+
+.mock-alexia-metricas i {
+  flex: 1;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #f0d3da;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14%;
+}
+
+.mock-alexia-metricas i::before {
+  content: "";
+  display: block;
+  width: 46%;
+  height: 16%;
+  border-radius: 2px;
+  background: #b8923f;
+}
+
+.mock-alexia-metricas i::after {
+  content: "";
+  display: block;
+  width: 66%;
+  height: 8%;
+  border-radius: 2px;
+  background: #f0d3da;
+}
+
+.mock-alexia-grade {
+  display: flex;
+  gap: 3%;
+  padding: 0 6% 6%;
+  height: 18%;
+}
+
+.mock-alexia-grade i {
+  flex: 1;
+  border-radius: 3px;
+}
+
+.mock-alexia-grade i:nth-child(1) { background: #b8465f; }
+.mock-alexia-grade i:nth-child(2) { background: #b8923f; }
+.mock-alexia-grade i:nth-child(3) { background: #241f21; }
+
+/* mock 6 — canal de afiliação (Mariana): hero com cartão de oferta em
+   destaque, chips de categoria e grade de catálogo — o filtro com
+   estado na URL fica implícito no chip ativo em cor sólida. */
+
+.mock-mariana {
+  background: #fbfdfc;
+}
+
+.mock-mariana-topo {
+  height: 10%;
+  background: #085a46;
+}
+
+.mock-mariana-hero {
+  flex: 0.9;
+  display: flex;
+  gap: 5%;
+  padding: 6% 6% 4%;
+}
+
+.mock-mariana-texto {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  gap: 14%;
+  justify-content: center;
+}
+
+.mock-mariana-texto i {
+  display: block;
+  height: 14%;
+  border-radius: 2px;
+  background: #cbe6dc;
+}
+
+.mock-mariana-texto i:first-child {
+  width: 85%;
+  height: 20%;
+  background: #0d7a5f;
+}
+
+.mock-mariana-oferta {
+  flex: 1;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #cbe6dc;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12%;
+}
+
+.mock-mariana-oferta i {
+  display: block;
+  border-radius: 2px;
+  background: #e8f5f0;
+  height: 12%;
+}
+
+.mock-mariana-oferta i:last-child {
+  width: 45%;
+  background: #e0562f;
+}
+
+.mock-mariana-chips {
+  display: flex;
+  gap: 4%;
+  padding: 0 6%;
+  height: 10%;
+}
+
+.mock-mariana-chips i {
+  flex: 1;
+  border-radius: 20px;
+  background: #e8f5f0;
+}
+
+.mock-mariana-chips i:first-child {
+  background: #0d7a5f;
+  flex: 0.7;
+}
+
+.mock-mariana-grade {
+  display: flex;
+  gap: 3%;
+  padding: 5% 6%;
+  flex: 1;
+}
+
+.mock-mariana-grade i {
+  flex: 1;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #cbe6dc;
+}
+
+/* mock 7 — cadastro de quatro etapas (Régua, peça fictícia): a barra
+   de progresso é o próprio argumento de venda desta peça — o resto do
+   mock fica deliberadamente simples para não competir com ela. */
+
+.mock-regua {
+  background: #eef2f9;
+  justify-content: center;
+  gap: 14%;
+  padding: 8%;
+}
+
+.mock-regua-progresso {
+  display: flex;
+  align-items: center;
+  gap: 4%;
+}
+
+.mock-regua-progresso i {
+  width: 13%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #c7d2e6;
+  flex-shrink: 0;
+}
+
+.mock-regua-progresso i:first-child {
+  background: #2b4d8c;
+  border-color: #2b4d8c;
+}
+
+.mock-regua-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 18%;
+}
+
+.mock-regua-campos i {
+  display: block;
+  height: 16%;
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid #c7d2e6;
+}
+
+.mock-regua-campos i:nth-child(2) {
+  width: 60%;
+}
+
+.mock-regua-botao {
+  align-self: flex-end;
+  width: 30%;
+  height: 14%;
+  border-radius: 20px;
+  background: #3f7d2e;
+}
+
+/* mock 8 — timeline de edição de vídeo (Marina & Thiago): a tela é o
+   plano final em grade de cor, a trilha embaixo é o corte — clipes de
+   tamanho desigual, como um projeto real de NLE, nunca segmentos
+   iguais. */
+
+.mock-casamento {
+  background: #0e0d0c;
+  padding: 7%;
+  gap: 7%;
+}
+
+.mock-casamento-tela {
+  flex: 1;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2f6f68 0%, #1c1a17 55%, #c97a3a 100%);
+  position: relative;
+}
+
+.mock-casamento-tela::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7% 0 7% 11%;
+  border-color: transparent transparent transparent rgba(244, 242, 238, 0.85);
+  transform: translate(-40%, -50%);
+}
+
+.mock-casamento-trilha {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  gap: 4%;
+  flex: none;
+}
+
+.mock-casamento-trilha i {
+  display: block;
+  height: 60%;
+  border-radius: 2px;
+  background: #3a3733;
+}
+
+.mock-casamento-trilha i:nth-child(1) { flex: 1.6; }
+.mock-casamento-trilha i:nth-child(2) { flex: 0.8; background: #c97a3a; height: 100%; }
+.mock-casamento-trilha i:nth-child(3) { flex: 2.4; }
+.mock-casamento-trilha i:nth-child(4) { flex: 1; background: #2f6f68; height: 80%; }
+.mock-casamento-trilha i:nth-child(5) { flex: 1.2; }
+
 /* Em /sites e /design há um projeto por página: o cartão vira duas
    colunas para a miniatura não ocupar a tela inteira sozinha. */
 
