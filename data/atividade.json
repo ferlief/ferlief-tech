@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-26T18:40:42Z",
+  "atualizado_em": "2026-11-27T18:31:16Z",
   "projetos": [
     {
       "repo": "anatomia",
@@ -25,9 +25,9 @@
       "repo": "ferlief-tech",
       "url": "https://github.com/ferlief/ferlief-tech",
       "ultimo_commit": {
-        "sha": "ff4dbeb",
+        "sha": "0234fe8",
         "mensagem": "chore: update activity feed",
-        "data": "2026-11-25T18:51:58Z"
+        "data": "2026-11-26T18:40:42Z"
       },
       "resultado": null
     }
